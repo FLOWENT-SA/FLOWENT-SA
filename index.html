@@ -1,111 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!--
-  =====================================================================
-  FLOWENT WEBSITE - BRAND APPLIED VERSION
-  =====================================================================
-
-  THIS FILE IS MADE FOR A BEGINNER.
-  You can use it even if you do not understand code.
-
-  ---------------------------------------------------------------------
-  WHAT THIS VERSION DOES:
-  ---------------------------------------------------------------------
-  - Applies Flowent brand colors
-  - Uses Flowent logo files
-  - Uses Flowent English font style (Chakra Petch)
-  - Keeps everything in ONE FILE for simplicity
-  - Includes very clear editing instructions inside the code
-
-  ---------------------------------------------------------------------
-  BEFORE YOU UPLOAD THIS TO GITHUB, PREPARE THESE FILES FROM YOUR ZIP:
-  ---------------------------------------------------------------------
-
-  1) MAIN LOGO FILE
-     From your brand zip, use this exact file:
-     BRAND ASSETS/LOGO/SVG/FLOWENT - MAIN LOGO.svg
-
-  2) ENGLISH FONT FILES
-     From your brand zip, use these exact files:
-     ChakraPetch-Regular.ttf
-     ChakraPetch-Medium.ttf
-     ChakraPetch-SemiBold.ttf
-     ChakraPetch-Bold.ttf
-
-  ---------------------------------------------------------------------
-  WHERE THESE FILES SHOULD GO INSIDE YOUR GITHUB REPOSITORY:
-  ---------------------------------------------------------------------
-
-  Put them like this:
-
-  assets/logo-main.svg
-  assets/fonts/ChakraPetch-Regular.ttf
-  assets/fonts/ChakraPetch-Medium.ttf
-  assets/fonts/ChakraPetch-SemiBold.ttf
-  assets/fonts/ChakraPetch-Bold.ttf
-
-  ---------------------------------------------------------------------
-  VERY IMPORTANT:
-  ---------------------------------------------------------------------
-  Rename your uploaded files exactly like above so the code works directly.
-
-  Example:
-  If your logo file name currently is:
-  FLOWENT - MAIN LOGO.svg
-
-  Rename it on your computer first to:
-  logo-main.svg
-
-  Then upload it into:
-  assets/
-
-  ---------------------------------------------------------------------
-  SEARCH THESE TITLES TO EDIT FAST:
-  ---------------------------------------------------------------------
-  1) BRAND COLORS
-  2) FONT FILES
-  3) HEADER
-  4) HERO CONTENT
-  5) SERVICES
-  6) ABOUT FLOWENT
-  7) CONTACT LINKS
-  8) FOOTER
-
-  ---------------------------------------------------------------------
-  HOW TO CHANGE TEXT:
-  ---------------------------------------------------------------------
-  Replace the visible words only.
-
-  Example:
-  <h1>Your new title here</h1>
-
-  ---------------------------------------------------------------------
-  HOW TO CHANGE CONTACT LINKS:
-  ---------------------------------------------------------------------
-  Search for these placeholders or current links:
-  - https://wa.me/966500000000
-  - mailto:hello@flowentsa.com
-  - https://instagram.com/flowent
-  - https://linkedin.com/company/flowent
-
-  ---------------------------------------------------------------------
-  HOW TO CHANGE THE LOGO:
-  ---------------------------------------------------------------------
-  Search for:
-  LOGO FILE PATH
-
-  Current file path:
-  assets/logo-main.svg
-
-  If you use another name, update that path in the code.
-  =====================================================================
-  -->
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flowent | Technology, Yours Truly.</title>
-  <meta name="description" content="Flowent builds sharper digital presence, cleaner communication, and better execution for modern brands." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flowent | Custom Tech That Fits</title>
+  <meta name="description" content="Flowent builds affordable custom tech for SMEs: websites, recruitment portals, employee service portals, ERP systems, internal dashboards, and AI-powered operations tools.">
 
   <style>
     @font-face {
@@ -138,42 +37,81 @@
     }
 
     :root {
-      --bg: #ffffff;
-      --bg-soft: #f7f7f5;
-      --card: #ffffff;
-      --line: rgba(0,0,0,0.10);
+      --bg: #f3f3ef;
+      --bg-2: #ffffff;
       --text: #111111;
-      --muted: rgba(0,0,0,0.68);
-      --teal: #00bfa5;
+      --muted: #5b5b5b;
+      --line: rgba(0,0,0,.09);
+      --teal: #21d7c2;
+      --teal-deep: #0ea896;
       --orange: #e37526;
-      --container: 1180px;
-      --radius: 24px;
-      --shadow: 0 18px 50px rgba(0,0,0,0.08);
+      --cream: #fff9f5;
+      --black: #040404;
+      --shadow: 0 24px 80px rgba(0,0,0,.08);
+      --radius: 28px;
+      --container: 1280px;
+      --ease: cubic-bezier(.22,1,.36,1);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      color: var(--text);
-      background: linear-gradient(180deg, #ffffff 0%, #fbfbf9 100%);
       font-family: "Chakra Petch", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(33,215,194,.10), transparent 24%),
+        radial-gradient(circle at 85% 16%, rgba(227,117,38,.10), transparent 18%),
+        linear-gradient(180deg, #ffffff 0%, #f3f3ef 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body.menu-open,
+    body.intro-active {
+      overflow: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+    img, video { display: block; max-width: 100%; }
+    button { font: inherit; }
 
     .container {
       width: min(calc(100% - 32px), var(--container));
       margin: 0 auto;
     }
 
+    .noise,
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .noise {
+      opacity: .06;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(0,0,0,.14) 0 1px, transparent 1px),
+        radial-gradient(circle at 80% 60%, rgba(0,0,0,.08) 0 1px, transparent 1px);
+      background-size: 12px 12px, 18px 18px;
+      mix-blend-mode: multiply;
+    }
+
+    .grid-overlay {
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.18));
+    }
+
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(14px);
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,.78);
       border-bottom: 1px solid var(--line);
     }
 
@@ -182,36 +120,104 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
+      position: relative;
+      z-index: 2;
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      width: 190px;
-      height: auto;
+    .brand-mark {
+      width: 182px;
+      filter: drop-shadow(0 6px 16px rgba(33,215,194,.08));
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      font-size: 15px;
-      color: rgba(0,0,0,0.78);
     }
 
-    .nav-links a:hover { color: var(--orange); }
+    .nav-links a {
+      position: relative;
+      color: var(--text);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--teal));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .28s var(--ease);
+    }
+
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-switch,
+    .ghost-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid rgba(227,117,38,.20);
+      background: rgba(255,249,245,.9);
+      color: var(--orange);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.9);
+      padding: 0;
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      position: absolute;
+      transition: .28s var(--ease);
+    }
+    .menu-toggle::before { transform: translateY(-6px); }
+    .menu-toggle::after { transform: translateY(6px); }
+    .menu-open .menu-toggle span { opacity: 0; }
+    .menu-open .menu-toggle::before { transform: rotate(45deg); }
+    .menu-open .menu-toggle::after { transform: rotate(-45deg); }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
+      min-height: 54px;
       padding: 0 22px;
       border: 1px solid transparent;
       font-family: inherit;
@@ -220,58 +226,116 @@
       letter-spacing: .05em;
       text-transform: uppercase;
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
-      transition: .2s ease;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .28s var(--ease), color .28s var(--ease), border-color .28s var(--ease);
+      cursor: pointer;
     }
 
-    .btn:hover { transform: translateY(-2px); }
-
+    .btn:hover { transform: translateY(-3px); }
     .btn-primary {
       background: var(--orange);
-      color: #ffffff;
-      box-shadow: 0 12px 28px rgba(227,117,38,0.18);
+      color: #fff;
+      box-shadow: 0 16px 28px rgba(227,117,38,.18);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 20px 34px rgba(227,117,38,.24);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.84);
+      color: var(--orange);
+      border-color: rgba(227,117,38,.26);
     }
 
-    .btn-secondary {
-      border-color: rgba(227,117,38,0.35);
+    .section {
+      position: relative;
+      z-index: 2;
+      padding: 100px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 14px 8px 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.86);
       color: var(--orange);
-      background: #fffaf7;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      font-weight: 700;
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--teal));
+      clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
+    }
+
+    .section-title {
+      margin: 18px 0 14px;
+      font-size: clamp(36px, 5vw, 74px);
+      line-height: .93;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+      max-width: 1100px;
+    }
+
+    .section-copy {
+      margin: 0;
+      max-width: 900px;
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.09);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,248,244,.96)),
+        linear-gradient(90deg, transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%),
+        linear-gradient(transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%);
+      background-size: auto, 120px 120px, 120px 120px;
+      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--teal));
+      opacity: .7;
     }
 
     .hero {
-      padding: 56px 0 48px;
+      padding: 58px 0 46px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.16fr .84fr;
       gap: 24px;
       align-items: stretch;
     }
 
-    .panel {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,248,245,0.98)),
-        linear-gradient(90deg, transparent 0, rgba(0,0,0,0.02) 49.5%, transparent 50%),
-        linear-gradient(transparent 0, rgba(0,0,0,0.02) 49.5%, transparent 50%);
-      background-size: auto, 120px 120px, 120px 120px;
-      border: 1px solid rgba(0,0,0,0.10);
-      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
     .hero-main {
-      padding: clamp(28px, 4vw, 56px);
-      min-height: 620px;
-      position: relative;
-      overflow: hidden;
+      min-height: 760px;
+      padding: clamp(30px, 4vw, 60px);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      align-items: center;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(249,249,246,0.96)),
-        radial-gradient(circle at 90% 18%, rgba(0,191,165,0.08), transparent 0 16%),
-        radial-gradient(circle at 88% 22%, rgba(227,117,38,0.10), transparent 0 24%);
+        radial-gradient(circle at 82% 18%, rgba(33,215,194,.12), transparent 0 16%),
+        radial-gradient(circle at 88% 20%, rgba(227,117,38,.10), transparent 0 22%),
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,247,243,.98));
     }
 
     .hero-main::before {
@@ -279,251 +343,635 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, transparent 0, rgba(0,0,0,0.03) 49.5%, transparent 50%),
-        linear-gradient(transparent 0, rgba(0,0,0,0.03) 49.5%, transparent 50%);
+        linear-gradient(90deg, transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%),
+        linear-gradient(transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%);
       background-size: 120px 120px;
-      opacity: .25;
+      opacity: .28;
       pointer-events: none;
     }
 
-    .hero-inner { position: relative; z-index: 1; }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
 
-    .kicker {
-      margin: 0 0 14px;
-      color: var(--teal);
+    .hero-tag {
+      margin: 0 0 16px;
+      color: var(--teal-deep);
       text-transform: uppercase;
       letter-spacing: .18em;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .hero-logo {
-      width: min(100%, 540px);
-      margin: 0 0 22px;
+      width: min(100%, 590px);
+      margin: 0 0 26px;
+      transform: translateZ(0);
     }
 
     .hero-title {
-      margin: 0 0 18px;
-      font-size: clamp(42px, 7vw, 90px);
-      line-height: .9;
-      letter-spacing: -.05em;
+      margin: 0 0 20px;
+      font-size: clamp(48px, 7.2vw, 108px);
+      line-height: .86;
+      letter-spacing: -.06em;
       text-transform: uppercase;
-      color: var(--teal);
+      color: var(--teal-deep);
+      max-width: 960px;
     }
-
-    .hero-title .accent { color: var(--teal); }
 
     .hero-copy {
       margin: 0 0 28px;
-      max-width: 720px;
+      max-width: 820px;
+      font-size: 19px;
+      line-height: 1.85;
       color: var(--text);
-      font-size: 18px;
-      line-height: 1.8;
     }
 
-    .btn-row {
+    .hero-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
     }
 
-    .side-grid {
+    .hero-marquee {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-marquee span {
+      padding: 10px 14px;
+      background: rgba(255,249,245,.88);
+      border: 1px solid rgba(227,117,38,.18);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+    }
+
+    .hero-side {
       display: grid;
       grid-template-rows: 1fr 1fr;
       gap: 24px;
     }
 
-    .stat-card {
-      padding: 28px;
-      min-height: 298px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.10);
+    .side-card {
+      min-height: 368px;
+      padding: 30px;
     }
 
-    .label {
-      display: inline-block;
+    .mini-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
       margin-bottom: 18px;
-      padding: 9px 16px 9px 14px;
-      border: 1px solid rgba(0,0,0,0.14);
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(0,0,0,.10);
       color: var(--orange);
-      text-transform: uppercase;
-      font-size: 13px;
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: .12em;
-      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
-      background: rgba(255,255,255,0.82);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
-    }
-
-    .stat-title {
-      margin: 0 0 12px;
-      font-size: clamp(32px, 5vw, 66px);
-      line-height: .95;
-      letter-spacing: -.04em;
       text-transform: uppercase;
-      color: var(--teal);
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
     }
 
-    .stat-copy {
+    .side-title {
+      margin: 0 0 14px;
+      font-size: clamp(30px, 4.5vw, 70px);
+      line-height: .92;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+    }
+
+    .side-copy {
       margin: 0;
       max-width: 420px;
-      color: var(--text);
+      font-size: 17px;
       line-height: 1.8;
+      color: var(--text);
+    }
+
+    .video-shell {
+      margin-top: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(227,117,38,.18);
+      background: var(--cream);
+      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
+      box-shadow: 0 14px 24px rgba(227,117,38,.06);
+      transform: translateZ(0);
+    }
+
+    .video-shell img,
+    .video-shell video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform .7s var(--ease);
+    }
+
+    .video-shell:hover img,
+    .video-shell:hover video {
+      transform: scale(1.08);
+    }
+
+    .video-note {
+      padding: 14px 16px;
+      border-top: 1px solid rgba(0,0,0,.06);
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
     .signal {
       position: absolute;
       left: 28px;
       right: 28px;
-      bottom: 24px;
-      height: 90px;
+      bottom: 22px;
+      height: 94px;
       display: grid;
       grid-template-columns: repeat(7,1fr);
+      gap: 10px;
       align-items: end;
-      gap: 8px;
     }
 
     .signal span {
-      background: linear-gradient(180deg, rgba(227,117,38,0.9), rgba(0,191,165,1));
-      clip-path: polygon(0 0,100% 0,85% 100%,0 100%);
-      animation: pulse 2.8s ease-in-out infinite;
+      background: linear-gradient(180deg, rgba(227,117,38,.88), rgba(33,215,194,.96));
+      clip-path: polygon(0 0,100% 0,86% 100%,0 100%);
+      animation: signalPulse 2.8s ease-in-out infinite;
     }
     .signal span:nth-child(1){height:18%;animation-delay:0s}
-    .signal span:nth-child(2){height:42%;animation-delay:.15s}
-    .signal span:nth-child(3){height:64%;animation-delay:.3s}
+    .signal span:nth-child(2){height:40%;animation-delay:.15s}
+    .signal span:nth-child(3){height:60%;animation-delay:.3s}
     .signal span:nth-child(4){height:100%;animation-delay:.45s}
-    .signal span:nth-child(5){height:58%;animation-delay:.6s}
+    .signal span:nth-child(5){height:56%;animation-delay:.6s}
     .signal span:nth-child(6){height:78%;animation-delay:.75s}
     .signal span:nth-child(7){height:30%;animation-delay:.9s}
+    @keyframes signalPulse { 0%,100%{transform:scaleY(1);opacity:.86} 50%{transform:scaleY(1.08);opacity:1} }
 
-    @keyframes pulse {
-      0%,100% { transform: scaleY(1); opacity: .85; }
-      50% { transform: scaleY(1.08); opacity: 1; }
+    .bilingual {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
-    .section {
-      padding: 96px 0;
+    .lang-block {
+      padding: 22px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.84);
+      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
+    .lang-title {
+      margin: 0 0 12px;
       color: var(--orange);
       text-transform: uppercase;
-      letter-spacing: .14em;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 8px 14px 8px 12px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.9);
+      letter-spacing: .12em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .stats-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .stat-box {
+      min-height: 190px;
+      padding: 24px;
+    }
+
+    .stat-num {
+      margin: 0 0 8px;
+      font-size: clamp(30px,4vw,56px);
+      line-height: .88;
+      color: var(--teal-deep);
+    }
+
+    .stat-label {
+      margin: 0 0 10px;
+      color: var(--orange);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .stat-desc {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .chart-wrap {
+      margin-top: 30px;
+      padding: 20px;
+    }
+
+    .chart {
+      height: 280px;
+      display: flex;
+      align-items: end;
+      gap: 14px;
+      padding-top: 30px;
+    }
+
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bar {
+      width: 100%;
+      max-width: 88px;
+      background: linear-gradient(180deg, rgba(227,117,38,.86), rgba(33,215,194,.96));
+      clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
+      box-shadow: 0 14px 18px rgba(33,215,194,.12);
+      transition: transform .32s var(--ease);
+    }
+
+    .bar-col:hover .bar { transform: translateY(-6px) scaleY(1.03); }
+    .bar-col span {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-align: center;
+      max-width: 150px;
+    }
+
+    /* SERVICES WALL */
+    .services-stage {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      min-height: 640px;
+      border: 1px solid rgba(0,0,0,.09);
+      background: rgba(255,255,255,.8);
+      box-shadow: var(--shadow);
+      clip-path: polygon(0 0,100% 0,99% 100%,0 100%);
+      overflow: hidden;
+    }
+
+    .service-tile {
+      position: relative;
+      min-width: 0;
+      display: flex;
+      align-items: end;
+      justify-content: flex-start;
+      padding: 26px 18px;
+      border-right: 1px solid rgba(0,0,0,.07);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,248,244,.95)),
+        linear-gradient(90deg, transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%),
+        linear-gradient(transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%);
+      background-size: auto, 120px 120px, 120px 120px;
+      cursor: pointer;
+      transition: grid-column .5s var(--ease), background .5s var(--ease), transform .4s var(--ease), width .4s var(--ease);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .service-tile:last-child { border-right: 0; }
+
+    .service-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(33,215,194,.20), transparent 0 22%),
+        radial-gradient(circle at 76% 20%, rgba(227,117,38,.12), transparent 0 30%);
+      opacity: 0;
+      transition: opacity .45s var(--ease);
+      z-index: 0;
+    }
+
+    .service-tile:hover::before,
+    .service-tile.active::before { opacity: 1; }
+
+    .service-tile .service-name {
+      position: absolute;
+      left: 22px;
+      bottom: 28px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 26px;
+      line-height: .95;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+      transition: opacity .35s var(--ease), transform .4s var(--ease), color .35s var(--ease);
+      z-index: 1;
+    }
+
+    .service-tile:hover .service-name,
+    .service-tile.active .service-name {
+      opacity: 0;
+      transform: rotate(180deg) translateY(-12px);
+    }
+
+    .service-panel {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .38s var(--ease), transform .38s var(--ease);
+      pointer-events: none;
+    }
+
+    .service-tile:hover .service-panel,
+    .service-tile.active .service-panel {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .service-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 12px;
+      margin-bottom: 14px;
+      background: rgba(255,249,245,.88);
+      border: 1px solid rgba(227,117,38,.18);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 36px;
-      height: 3px;
-      display: block;
-      background: linear-gradient(90deg, var(--orange), var(--teal));
-      clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
-    }
-
-    .section-title {
-      margin: 0 0 14px;
-      font-size: clamp(34px, 6vw, 64px);
-      line-height: .96;
+    .service-panel h3 {
+      margin: 0 0 12px;
+      font-size: clamp(34px,4vw,60px);
+      line-height: .92;
+      letter-spacing: -.05em;
       text-transform: uppercase;
-      letter-spacing: -.04em;
-      color: var(--teal);
+      color: var(--teal-deep);
+      max-width: 620px;
     }
 
-    .section-copy {
+    .service-panel p {
       margin: 0;
-      max-width: 760px;
+      max-width: 560px;
+      font-size: 17px;
+      line-height: 1.9;
       color: var(--text);
-      font-size: 18px;
-      line-height: 1.8;
     }
 
-    .services-grid,
-    .reasons-grid,
+    .service-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      max-width: 620px;
+    }
+
+    .service-list li {
+      padding-left: 16px;
+      position: relative;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .service-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 8px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--teal));
+    }
+
+    .service-visual {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      width: min(36vw, 360px);
+      aspect-ratio: 1.05;
+      border: 1px solid rgba(0,0,0,.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,248,245,.94)),
+        radial-gradient(circle at 30% 20%, rgba(227,117,38,.14), transparent 0 18%),
+        radial-gradient(circle at 70% 70%, rgba(33,215,194,.16), transparent 0 28%);
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+      overflow: hidden;
+      box-shadow: 0 18px 26px rgba(0,0,0,.08);
+    }
+
+    .service-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .65s var(--ease);
+    }
+
+    .service-tile:hover .service-visual img,
+    .service-tile.active .service-visual img {
+      transform: scale(1.08);
+    }
+
+    .service-visual-fallback {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: rgba(0,0,0,.22);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+
+    .service-tile:hover,
+    .service-tile.active {
+      transform: translateY(-4px);
+    }
+
+    .services-stage:has(.service-tile:hover) .service-tile,
+    .services-stage .service-tile.active {
+      grid-column: span 1;
+    }
+
+    .services-stage:has(.service-tile:hover) .service-tile:hover,
+    .services-stage .service-tile.active {
+      grid-column: span 6;
+    }
+
+    .story-grid,
+    .proof-grid,
+    .pricing-grid,
+    .faq-grid,
     .contact-grid {
       margin-top: 34px;
       display: grid;
+      grid-template-columns: repeat(2,1fr);
       gap: 22px;
     }
 
-    .services-grid { grid-template-columns: repeat(3,1fr); }
-    .reasons-grid { grid-template-columns: repeat(2,1fr); }
-    .contact-grid { grid-template-columns: repeat(2,1fr); }
-
-    .card {
-      padding: 28px;
-      min-height: 220px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.10);
+    .story-card,
+    .proof-card,
+    .pricing-card,
+    .faq-card,
+    .contact-card {
+      padding: 30px;
     }
 
-    .number {
-      width: 50px;
-      height: 50px;
+    .story-card h3,
+    .proof-card h3,
+    .pricing-card h3,
+    .faq-card h3,
+    .contact-card h3 {
+      margin: 0 0 14px;
+      font-size: 32px;
+      line-height: .96;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+    }
+
+    .story-card p,
+    .proof-card p,
+    .pricing-card p,
+    .faq-card p,
+    .contact-card p,
+    .story-card li,
+    .proof-card li,
+    .pricing-card li,
+    .faq-card li,
+    .contact-card li {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .timeline {
+      margin-top: 24px;
       display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      background: #fffaf7;
-      border: 1px solid rgba(227,117,38,0.25);
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 16px 18px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.86);
+      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
+    }
+
+    .step .num {
       color: var(--orange);
       font-weight: 700;
-      clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 28px;
-      line-height: 1;
+      font-size: 18px;
       text-transform: uppercase;
-      letter-spacing: -.03em;
-      color: var(--teal);
     }
 
-    .card p {
-      margin: 0;
-      color: var(--text);
-      line-height: 1.8;
-      font-size: 16px;
+    .client-gallery {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 18px;
     }
 
-    .edge {
+    .thumb {
+      position: relative;
+      overflow: hidden;
+      min-height: 230px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: #ecece8;
+      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
+      box-shadow: 0 14px 22px rgba(0,0,0,.06);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .72s var(--ease), filter .72s var(--ease);
+    }
+
+    .thumb::after {
+      content: "Open Project";
       position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 120px;
-      height: 5px;
-      background: linear-gradient(90deg, var(--orange), var(--teal));
+      left: 18px;
+      bottom: 18px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(0,0,0,.08);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .35s var(--ease), transform .35s var(--ease);
+    }
+
+    .thumb:hover img {
+      transform: scale(1.09);
+      filter: saturate(1.03) contrast(1.02);
+    }
+
+    .thumb:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pricing-cards {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .pricing-chip {
+      padding: 16px 18px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.86);
+      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
     }
 
     .contact-list {
       display: grid;
       gap: 14px;
-      margin-top: 22px;
+      margin-top: 20px;
     }
 
     .contact-item {
       display: block;
       padding: 16px 18px;
-      border: 1px solid rgba(227,117,38,0.18);
-      background: #fffaf7;
+      border: 1px solid rgba(227,117,38,.18);
+      background: rgba(255,249,245,.9);
       clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
-      transition: .2s ease;
-      box-shadow: 0 10px 26px rgba(227,117,38,0.06);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
     }
 
     .contact-item:hover {
       transform: translateY(-2px);
-      border-color: rgba(227,117,38,0.45);
+      box-shadow: 0 12px 22px rgba(227,117,38,.08);
+      border-color: rgba(227,117,38,.34);
     }
 
     .contact-item strong {
@@ -532,151 +980,374 @@
       color: var(--orange);
       text-transform: uppercase;
       letter-spacing: .12em;
-      font-size: 13px;
+      font-size: 12px;
     }
 
-    .contact-item span {
+    .contact-item span { color: var(--text); line-height: 1.7; }
+
+    .mobile-drawer {
+      position: fixed;
+      inset: 82px 16px auto 16px;
+      padding: 18px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(0,0,0,.08);
+      clip-path: polygon(0 0,100% 0,98% 100%,0 100%);
+      box-shadow: var(--shadow);
+      z-index: 35;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: .28s var(--ease);
+    }
+
+    .mobile-drawer a {
       display: block;
-      color: var(--text);
-      line-height: 1.6;
-      word-break: break-word;
+      padding: 14px 6px;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .note {
-      margin-top: 22px;
-      padding: 16px 18px;
-      border: 1px dashed rgba(227,117,38,0.34);
-      background: #fffaf7;
-      color: var(--text);
-      line-height: 1.8;
-      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
-      box-shadow: 0 10px 24px rgba(227,117,38,0.05);
+    .mobile-drawer a:last-child { border-bottom: 0; }
+
+    .menu-open .mobile-drawer {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     .site-footer {
-      padding: 28px 0 48px;
+      position: relative;
+      z-index: 2;
+      padding: 32px 0 52px;
       border-top: 1px solid var(--line);
-      color: rgba(0,0,0,0.68);
-      text-transform: uppercase;
+      color: rgba(0,0,0,.66);
       font-size: 14px;
+      text-transform: uppercase;
       letter-spacing: .06em;
     }
 
     .footer-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
     }
 
-    @media (max-width: 1024px) {
+    /* INTRO */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: #030303;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      transition: opacity .8s var(--ease), visibility .8s var(--ease);
+    }
+
+    .intro::before,
+    .intro::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 90px 90px;
+      opacity: .35;
+      animation: introGrid 6s linear infinite;
+    }
+
+    .intro::after {
+      background-image: none;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(33,215,194,.18), transparent 22%),
+        radial-gradient(circle at 56% 48%, rgba(227,117,38,.12), transparent 28%);
+      animation: none;
+    }
+
+    @keyframes introGrid {
+      from { transform: translateY(0); }
+      to { transform: translateY(40px); }
+    }
+
+    .intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .intro-core {
+      position: relative;
+      width: min(88vw, 760px);
+      aspect-ratio: 1.9;
+      display: grid;
+      place-items: center;
+    }
+
+    .intro-logo {
+      position: relative;
+      width: min(92%, 640px);
+      filter: drop-shadow(0 20px 30px rgba(33,215,194,.12));
+      animation: introReveal 1.3s var(--ease) both .2s;
+    }
+
+    .intro-glitch,
+    .intro-glitch::before,
+    .intro-glitch::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('assets/logo-main.svg') center / contain no-repeat;
+      mix-blend-mode: screen;
+      opacity: .96;
+    }
+
+    .intro-glitch::before {
+      transform: translate(6px, -3px);
+      filter: hue-rotate(25deg) saturate(1.2);
+      opacity: .4;
+      animation: glitchA .14s steps(2) infinite;
+    }
+
+    .intro-glitch::after {
+      transform: translate(-7px, 4px);
+      filter: hue-rotate(-20deg) saturate(1.2);
+      opacity: .32;
+      animation: glitchB .12s steps(2) infinite;
+    }
+
+    .intro-scan {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.08) 50%, transparent 100%);
+      mix-blend-mode: screen;
+      animation: scan 1.2s linear infinite;
+    }
+
+    .intro-caption {
+      position: absolute;
+      bottom: -34px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.76);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes introReveal {
+      0% { transform: scale(.84); opacity: 0; filter: blur(10px); }
+      100% { transform: scale(1); opacity: 1; filter: blur(0); }
+    }
+
+    @keyframes glitchA {
+      0%,100% { clip-path: inset(10% 0 68% 0); }
+      50% { clip-path: inset(60% 0 12% 0); }
+    }
+    @keyframes glitchB {
+      0%,100% { clip-path: inset(72% 0 8% 0); }
+      50% { clip-path: inset(14% 0 58% 0); }
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    @media (max-width: 1200px) {
+      .services-stage {
+        grid-template-columns: repeat(3, 1fr);
+        min-height: auto;
+      }
+      .services-stage:has(.service-tile:hover) .service-tile:hover,
+      .services-stage .service-tile.active {
+        grid-column: span 3;
+      }
+      .service-visual {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 18px;
+      }
+    }
+
+    @media (max-width: 1100px) {
       .hero-grid,
-      .services-grid,
-      .reasons-grid,
-      .contact-grid {
+      .stats-grid,
+      .story-grid,
+      .proof-grid,
+      .pricing-grid,
+      .faq-grid,
+      .contact-grid,
+      .bilingual,
+      .client-gallery {
         grid-template-columns: 1fr;
       }
-      .side-grid { grid-template-rows: auto; }
+      .hero-side { grid-template-rows: auto; }
+    }
+
+    @media (max-width: 920px) {
+      .nav-links,
+      .nav-right .lang-switch {
+        display: none;
+      }
+      .menu-toggle { display: inline-flex; position: relative; }
+      .nav-right { margin-left: auto; }
+      .services-stage {
+        grid-template-columns: 1fr;
+      }
+      .services-stage:has(.service-tile:hover) .service-tile:hover,
+      .services-stage .service-tile.active {
+        grid-column: span 1;
+      }
+      .service-tile {
+        min-height: 120px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(0,0,0,.07);
+      }
+      .service-tile .service-name {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        writing-mode: initial;
+        transform: none;
+        opacity: 1 !important;
+        margin-right: auto;
+      }
+      .service-panel {
+        opacity: 1;
+        transform: none;
+        display: none;
+      }
+      .service-tile.active .service-panel { display: block; }
+      .service-tile.active .service-name { display: none; }
     }
 
     @media (max-width: 820px) {
-      .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 14px 0;
-      }
-      .brand { width: 100%; justify-content: center; }
-      .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 16px; }
+      .hero-main,
+      .side-card,
+      .story-card,
+      .proof-card,
+      .pricing-card,
+      .faq-card,
+      .contact-card,
+      .stat-box,
+      .chart-wrap { padding: 24px; }
+      .hero-title { font-size: clamp(38px, 10vw, 76px); }
+      .section { padding: 80px 0; }
+      .step { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
-      .section { padding: 76px 0; }
-      .hero { padding-top: 32px; }
-      .hero-main, .stat-card, .card { padding: 24px; }
-      .btn-row { display: grid; }
+      .hero-actions { display: grid; }
       .btn { width: 100%; }
-      .brand-logo { width: 160px; }
+      .hero { padding-top: 30px; }
+      .brand-mark { width: 150px; }
+      .hero-main { min-height: auto; }
+      .intro-caption { font-size: 10px; letter-spacing: .16em; }
     }
   </style>
 </head>
-<body>
-  <!-- ================================================================
-       HEADER
-       ================================================================ -->
+<body class="intro-active">
+  <div class="intro" id="intro">
+    <div class="intro-core">
+      <img class="intro-logo" src="assets/logo-main.svg" alt="Flowent intro logo">
+      <div class="intro-glitch" aria-hidden="true"></div>
+      <div class="intro-scan" aria-hidden="true"></div>
+      <div class="intro-caption">Custom technology for smaller teams with serious ambition</div>
+    </div>
+  </div>
+
+  <div class="noise" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
   <header class="site-header">
     <div class="container nav">
-      <a href="#top" class="brand" aria-label="Flowent home">
-        <!-- LOGO FILE PATH -->
-        <img
-          class="brand-logo"
-          src="assets/logo-main.svg"
-          alt="Flowent logo"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-        />
-        <span class="brand-fallback">FLOWENT</span>
+      <a href="#top" aria-label="Flowent home">
+        <img class="brand-mark" src="assets/logo-main.svg" alt="Flowent logo">
       </a>
 
       <nav class="nav-links">
+        <a href="#why">Why</a>
         <a href="#services">Services</a>
-        <a href="#about">About</a>
+        <a href="#proof">BIG Case</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="btn btn-primary" href="#contact">Start a Project</a>
+      <div class="nav-right">
+        <span class="lang-switch">AR / EN</span>
+        <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span></button>
+      </div>
     </div>
   </header>
 
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="#why">Why Flowent</a>
+    <a href="#services">Services</a>
+    <a href="#story">How It Works</a>
+    <a href="#proof">BIG Case Study</a>
+    <a href="#contact">Contact</a>
+  </div>
+
   <main id="top">
-    <!-- ============================================================
-         HERO CONTENT
-         Edit this section first if you want to change the homepage tone.
-         ============================================================ -->
     <section class="hero">
       <div class="container hero-grid">
         <section class="panel hero-main">
-          <p class="hero-kicker">Tech Solutions</p>
+          <div class="hero-inner">
+            <p class="hero-tag">Affordable custom tech for SMEs</p>
+            <img class="hero-logo" src="assets/logo-main.svg" alt="Flowent main logo">
+            <h1 class="hero-title">Technology,<br>Yours Truly.</h1>
+            <p class="hero-copy">
+              Flowent exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Talk on WhatsApp</a>
+              <a class="btn btn-secondary" href="#services">Explore Services</a>
+            </div>
+            <div class="hero-marquee">
+              <span>Websites</span>
+              <span>Recruitment Portals</span>
+              <span>Employee Service Portals</span>
+              <span>ERP Systems</span>
+              <span>Dashboards</span>
+              <span>AI Operations</span>
+            </div>
 
-          <div class="hero-logo-wrap">
-            <img
-              class="hero-logo"
-              src="assets/logo-main.svg"
-              alt="Flowent main logo"
-              onerror="this.style.display='none'"
-            />
-          </div>
-
-          <h1 class="hero-title">
-            Technology,<br />
-            Yours <span class="accent">Truly.</span>
-          </h1>
-
-          <p class="hero-copy">
-            Flowent builds digital presence with more clarity, sharper brand communication, and cleaner execution. Designed for modern businesses that want a smarter, more confident first impression.
-          </p>
-
-          <div class="btn-row">
-            <!-- CONTACT LINKS -->
-            <a class="btn btn-primary" href="https://wa.me/966500000000" target="_blank" rel="noopener">Talk on WhatsApp</a>
-            <a class="btn btn-secondary" href="mailto:hello@flowentsa.com">Email Flowent</a>
+            <div class="bilingual">
+              <div class="lang-block">
+                <p class="lang-title">English</p>
+                <p style="margin:0;line-height:1.9;">Flowent started because small and medium businesses often do not have the budget for overpriced platforms across HR, operations, accounting, dashboards, and internal systems. So instead of forcing subscriptions on them, we build exactly what they need in a simpler and more affordable way.</p>
+              </div>
+              <div class="lang-block" dir="rtl" lang="ar">
+                <p class="lang-title">العربية</p>
+                <p style="margin:0;line-height:2;">بدأت فلوينت لأن كثيرًا من المنشآت الصغيرة والمتوسطة تحتاج حلولًا تقنية فعلًا، لكن لا تملك ميزانيات ضخمة للاشتراك في منصات كثيرة ومكلفة. لذلك تبدأ فلوينت من فهم الاحتياج الحقيقي، ثم تبني حلًا مخصصًا، بسيطًا، وبتكلفة معقولة جدًا.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <aside class="hero-side">
-          <article class="stat-card">
-            <span class="stat-label">Built on Brand</span>
-            <h2 class="stat-big">Flowent<br />System</h2>
-            <p class="stat-copy">
-              This version follows your Flowent identity with the actual color palette, tech-style typography, sharp angled layouts, and a cleaner futuristic mood.
-            </p>
+          <article class="panel side-card">
+            <span class="mini-label">Built on actual need</span>
+            <h2 class="side-title">Custom.<br>Lean.<br>Useful.</h2>
+            <p class="side-copy">No fixed product shelf. No enterprise theater. Flowent starts with the friction point, then builds the most useful system around it.</p>
+            <div class="video-shell">
+              <img src="assets/preview-reel-01.jpg" alt="Flowent product reel preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+              <div class="service-visual-fallback" style="display:none;aspect-ratio:16/9;">Intro Reel Placeholder</div>
+              <div class="video-note">Replace with a branded intro reel, walkthrough, or motion teaser</div>
+            </div>
           </article>
 
-          <article class="stat-card">
-            <span class="stat-label">Starter Site</span>
-            <h2 class="stat-big">Fast.<br />Clean.<br />Scalable.</h2>
-            <p class="stat-copy">
-              Start with a focused one-page website now. Add more pages later once the brand, messaging, and offers become more detailed.
-            </p>
+          <article class="panel side-card">
+            <span class="mini-label">Built to scale with the client</span>
+            <h2 class="side-title">Fast.<br>Sharp.<br>Scalable.</h2>
+            <p class="side-copy">Launch a focused version first. Add depth later. Flowent is designed to reduce complexity, not create more of it.</p>
             <div class="signal" aria-hidden="true">
               <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             </div>
@@ -685,127 +1356,311 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SERVICES
-         Replace these with Flowent's actual services later if needed.
-         ============================================================ -->
-    <section id="services" class="section">
+    <section class="section" id="why">
       <div class="container">
-        <div class="eyebrow">Services</div>
-        <h2 class="section-title">What Flowent Does</h2>
+        <span class="eyebrow">Why Flowent started</span>
+        <h2 class="section-title">Because smaller businesses deserve custom technology too</h2>
         <p class="section-copy">
-          Keep version one clear and simple. Three strong service pillars are enough for now.
+          Many businesses do not need a giant software stack. They need the right subset, designed around how they really run. Flowent is built for that gap: fewer subscriptions, better fit, simpler systems, and more control.
         </p>
 
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="card-number">01</div>
-            <h3>Brand Clarity</h3>
-            <p>
-              Sharper positioning, stronger messaging, and a clearer story so the brand stops looking scattered.
-            </p>
-            <div class="service-edge"></div>
+        <div class="stats-grid">
+          <article class="panel stat-box">
+            <p class="stat-label">Problem</p>
+            <h3 class="stat-num">01</h3>
+            <p class="stat-desc">Too many teams are trapped inside expensive subscriptions they barely use.</p>
+          </article>
+          <article class="panel stat-box">
+            <p class="stat-label">Reality</p>
+            <h3 class="stat-num">02</h3>
+            <p class="stat-desc">They need practical systems, not enterprise overhead with 70 unused modules.</p>
+          </article>
+          <article class="panel stat-box">
+            <p class="stat-label">Flowent</p>
+            <h3 class="stat-num">03</h3>
+            <p class="stat-desc">We design the stack around the client’s pain, workflow, budget, and internal capability.</p>
+          </article>
+          <article class="panel stat-box">
+            <p class="stat-label">Outcome</p>
+            <h3 class="stat-num">04</h3>
+            <p class="stat-desc">Lower cost, better adoption, cleaner visibility, and a system people actually use.</p>
+          </article>
+        </div>
+
+        <div class="panel chart-wrap">
+          <span class="mini-label">Flowent value logic</span>
+          <div class="chart">
+            <div class="bar-col"><div class="bar" style="height:76%"></div><span>Traditional software cost</span></div>
+            <div class="bar-col"><div class="bar" style="height:44%"></div><span>Custom build investment</span></div>
+            <div class="bar-col"><div class="bar" style="height:28%"></div><span>Unused feature waste</span></div>
+            <div class="bar-col"><div class="bar" style="height:84%"></div><span>Operational clarity gained</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <span class="eyebrow">Services wall</span>
+        <h2 class="section-title">Hover any service. Let it take over the whole stage.</h2>
+        <p class="section-copy">
+          Flowent does not sell a rigid product list. But these are some of the custom systems we can design and build depending on what the client actually needs.
+        </p>
+
+        <div class="services-stage" id="servicesStage">
+          <article class="service-tile active">
+            <div class="service-name">Websites</div>
+            <div class="service-panel">
+              <span class="service-kicker">01 / Websites</span>
+              <h3>Websites that feel premium, not templated</h3>
+              <p>Marketing websites, bilingual corporate sites, landing pages, portfolio experiences, and service-led fronts built to look serious and convert properly without the weight of bloated website stacks.</p>
+              <ul class="service-list">
+                <li>Brand-led marketing sites</li>
+                <li>Bilingual layouts and content blocks</li>
+                <li>Custom interactions and motion</li>
+                <li>Built inside the client’s own digital ecosystem</li>
+              </ul>
+              <div class="service-visual">
+                <img src="assets/service-websites.jpg" alt="Flowent websites showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="service-visual-fallback" style="display:none;">Websites Visual</div>
+              </div>
+            </div>
           </article>
 
-          <article class="service-card">
-            <div class="card-number">02</div>
-            <h3>Digital Presence</h3>
-            <p>
-              Landing pages and digital touchpoints designed to look clean, modern, and ready for serious business.
-            </p>
-            <div class="service-edge"></div>
+          <article class="service-tile">
+            <div class="service-name">Recruitment</div>
+            <div class="service-panel">
+              <span class="service-kicker">02 / Recruitment Portals</span>
+              <h3>Hiring experiences inside the company’s own site</h3>
+              <p>Interactive recruitment systems with branded vacancy pages, auto-filled application context, filtering logic, admin handling, and a much cleaner applicant journey than generic job posting forms.</p>
+              <ul class="service-list">
+                <li>Job listings and vacancy pages</li>
+                <li>Smart forms and application routing</li>
+                <li>Branded employer experience</li>
+                <li>Expandable later into full recruitment workflows</li>
+              </ul>
+              <div class="service-visual">
+                <img src="assets/service-recruitment.jpg" alt="Recruitment portal showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="service-visual-fallback" style="display:none;">Recruitment Visual</div>
+              </div>
+            </div>
           </article>
 
-          <article class="service-card">
-            <div class="card-number">03</div>
-            <h3>Execution Support</h3>
-            <p>
-              Content systems, launch support, and practical creative materials that help ideas move in the real world.
-            </p>
-            <div class="service-edge"></div>
+          <article class="service-tile">
+            <div class="service-name">Employee</div>
+            <div class="service-panel">
+              <span class="service-kicker">03 / Employee Service Portals</span>
+              <h3>Internal employee systems without paying for oversized HR stacks</h3>
+              <p>Custom internal service portals on the company’s own website for requests, approvals, onboarding, profiles, notices, leave handling, and internal communication flows.</p>
+              <ul class="service-list">
+                <li>Requests and approvals</li>
+                <li>Employee profiles and onboarding</li>
+                <li>Role-based access</li>
+                <li>Alternative to costly external HR platforms</li>
+              </ul>
+              <div class="service-visual">
+                <img src="assets/service-employee.jpg" alt="Employee portal showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="service-visual-fallback" style="display:none;">Employee Portal Visual</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-tile">
+            <div class="service-name">ERP</div>
+            <div class="service-panel">
+              <span class="service-kicker">04 / ERP Systems</span>
+              <h3>Mini or mid-size ERP logic built around real operations</h3>
+              <p>Not every company needs a monster ERP rollout. Some need a focused operational core for approvals, records, finance visibility, inventory logic, or internal controls — and nothing more.</p>
+              <ul class="service-list">
+                <li>Only the modules that matter</li>
+                <li>Cleaner rollout and lower complexity</li>
+                <li>Built around current process reality</li>
+                <li>Expandable when the client grows</li>
+              </ul>
+              <div class="service-visual">
+                <img src="assets/service-erp.jpg" alt="ERP showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="service-visual-fallback" style="display:none;">ERP Visual</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-tile">
+            <div class="service-name">AI Ops</div>
+            <div class="service-panel">
+              <span class="service-kicker">05 / AI Internal Operations</span>
+              <h3>Use AI where it reduces friction, not where it looks trendy</h3>
+              <p>Flowent can help structure internal operations with AI-powered support across routing, summaries, search, monitoring, task shaping, repetitive admin assistance, and better internal visibility.</p>
+              <ul class="service-list">
+                <li>Internal process automation</li>
+                <li>Workflow support and summarization</li>
+                <li>Operational assistants for teams</li>
+                <li>Applied AI with practical value</li>
+              </ul>
+              <div class="service-visual">
+                <img src="assets/service-ai.jpg" alt="AI operations showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="service-visual-fallback" style="display:none;">AI Operations Visual</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-tile">
+            <div class="service-name">Dashboards</div>
+            <div class="service-panel">
+              <span class="service-kicker">06 / Dashboards & Monitoring</span>
+              <h3>Dashboards that make decisions clearer, not prettier only</h3>
+              <p>Internal platforms and dashboards for management, operations, HR, project health, financial visibility, and executive-level monitoring — designed around the decisions the business actually needs to make.</p>
+              <ul class="service-list">
+                <li>Executive visibility</li>
+                <li>Team and project tracking</li>
+                <li>Internal KPI platforms</li>
+                <li>Better reporting inside one environment</li>
+              </ul>
+              <div class="service-visual">
+                <img src="assets/service-dashboards.jpg" alt="Dashboards showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="service-visual-fallback" style="display:none;">Dashboards Visual</div>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         ABOUT FLOWENT
-         ============================================================ -->
-    <section id="about" class="section">
+    <section class="section" id="story">
       <div class="container">
-        <div class="eyebrow">About Flowent</div>
-        <h2 class="section-title">Built to Move Ideas Forward</h2>
-        <p class="section-copy">
-          Flowent is not about adding more noise. It is about building cleaner systems, better communication, and a more deliberate digital presence.
-        </p>
-
-        <div class="reasons-grid">
-          <article class="reason-card">
-            <h3>Tech-Led Feel</h3>
-            <p>
-              The identity already signals a futuristic and technical attitude. This site translates that into layout, motion, contrast, and structure.
-            </p>
+        <span class="eyebrow">How Flowent works</span>
+        <h2 class="section-title">Diagnosis first. Product second.</h2>
+        <div class="story-grid">
+          <article class="panel story-card">
+            <h3>We start from the friction point</h3>
+            <p>Flowent does not begin by pushing a pre-packaged tool. It begins by asking what is slowing the team down, what they are overpaying for, and what should actually live inside their own ecosystem instead of rented external software.</p>
+            <ul>
+              <li>What process feels expensive or clumsy?</li>
+              <li>What tools are being paid for but not fully used?</li>
+              <li>What needs to be unified, simplified, or automated?</li>
+            </ul>
           </article>
-
-          <article class="reason-card">
-            <h3>Sharp by Design</h3>
-            <p>
-              Angled shapes, hard cuts, bold typography, and high-contrast color pairings create a distinct first impression.
-            </p>
-          </article>
-
-          <article class="reason-card">
-            <h3>Easy to Manage</h3>
-            <p>
-              No WordPress complexity. No plugins. Just one clean file, your logo, your fonts, and your content.
-            </p>
-          </article>
-
-          <article class="reason-card">
-            <h3>Ready to Grow</h3>
-            <p>
-              Once the first version is live, the next steps can be additional pages, a case studies section, a form, or a bilingual version.
-            </p>
+          <article class="panel story-card">
+            <h3>Then we build the right-fit system</h3>
+            <p>Some clients need a recruitment portal. Some need an internal dashboard. Some need a service portal or a lean ERP layer. The point is not the label. The point is solving the right problem at the right level.</p>
+            <div class="timeline">
+              <div class="step"><div class="num">01</div><div><strong>Discovery</strong><br>Understand the workflow, friction, and business logic.</div></div>
+              <div class="step"><div class="num">02</div><div><strong>Solution Map</strong><br>Define what should be custom-built and what should be avoided.</div></div>
+              <div class="step"><div class="num">03</div><div><strong>Build</strong><br>Launch a focused system without unnecessary complexity.</div></div>
+              <div class="step"><div class="num">04</div><div><strong>Scale</strong><br>Add only what creates real value later.</div></div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         CONTACT LINKS
-         Replace all current links with the real Flowent links.
-         ============================================================ -->
-    <section id="contact" class="section">
+    <section class="section" id="proof">
       <div class="container">
-        <div class="eyebrow">Contact</div>
-        <h2 class="section-title">Start the First Version Right</h2>
+        <span class="eyebrow">Client proof</span>
+        <h2 class="section-title">What Flowent built for BIG Creative Boutique</h2>
         <p class="section-copy">
-          Keep the call to action direct. One WhatsApp link and one email are enough for the first version.
+          BIG is a visible proof of Flowent’s approach: custom systems, integrated into the company’s own ecosystem, with branded user experience and practical business value.
+        </p>
+
+        <div class="proof-grid">
+          <article class="panel proof-card">
+            <h3>From our clients</h3>
+            <p><strong>BIG Creative Boutique</strong></p>
+            <ul>
+              <li>Interactive recruitment portal</li>
+              <li>Portfolio and project showcase experience</li>
+              <li>Shared services / internal employee portal</li>
+              <li>Operational and admin flows inside the website itself</li>
+            </ul>
+            <p>Use this section later to add outcomes, screenshots, and results once you are ready to publish them more openly.</p>
+          </article>
+
+          <article class="panel proof-card">
+            <h3>Explore the build</h3>
+            <p>Each tile below can later link to a dedicated mini case study page or detailed walkthrough.</p>
+            <div class="client-gallery">
+              <a class="thumb" href="#"><img src="assets/case-big-01.jpg" alt="BIG case 1" onerror="this.style.display='none'"></a>
+              <a class="thumb" href="#"><img src="assets/case-big-02.jpg" alt="BIG case 2" onerror="this.style.display='none'"></a>
+              <a class="thumb" href="#"><img src="assets/case-big-03.jpg" alt="BIG case 3" onerror="this.style.display='none'"></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing-logic">
+      <div class="container">
+        <span class="eyebrow">Why this model wins</span>
+        <h2 class="section-title">You do not need seven subscriptions to run one company</h2>
+        <div class="pricing-grid">
+          <article class="panel pricing-card">
+            <h3>Traditional Route</h3>
+            <div class="pricing-cards">
+              <div class="pricing-chip">Separate HR platform</div>
+              <div class="pricing-chip">Separate ERP subscription</div>
+              <div class="pricing-chip">Separate dashboard stack</div>
+              <div class="pricing-chip">Separate website vendor</div>
+              <div class="pricing-chip">Separate integrations and monthly overhead</div>
+            </div>
+          </article>
+          <article class="panel pricing-card">
+            <h3>Flowent Route</h3>
+            <div class="pricing-cards">
+              <div class="pricing-chip">Understand the problem first</div>
+              <div class="pricing-chip">Build only what the business needs</div>
+              <div class="pricing-chip">Keep ownership closer to the client</div>
+              <div class="pricing-chip">Reduce fragmentation across systems</div>
+              <div class="pricing-chip">Make the stack leaner and more affordable</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title">Common questions</h2>
+        <div class="faq-grid">
+          <article class="panel faq-card">
+            <h3>Do you sell fixed software packages?</h3>
+            <p>No. Flowent is deliberately custom-led. We assess the challenge first, then recommend and build the most useful solution.</p>
+          </article>
+          <article class="panel faq-card">
+            <h3>Are your solutions only for large enterprises?</h3>
+            <p>No. Flowent especially exists for SMEs that need strong tech without giant enterprise pricing or unnecessary complexity.</p>
+          </article>
+          <article class="panel faq-card">
+            <h3>Can you build inside our current website?</h3>
+            <p>Yes. In many cases that is exactly the point: keep the solution inside your ecosystem rather than scattering it across unrelated platforms.</p>
+          </article>
+          <article class="panel faq-card">
+            <h3>Can this start small and grow later?</h3>
+            <p>Yes. The preferred model is to launch the most useful version first, then add layers once the value is proven.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <span class="eyebrow">Let’s build what you actually need</span>
+        <h2 class="section-title">Tell Flowent where the friction is</h2>
+        <p class="section-copy">
+          If your company is overpaying for disconnected tools, struggling with internal visibility, or needs a custom system that actually matches how the business runs, Flowent is built for that.
         </p>
 
         <div class="contact-grid">
-          <article class="contact-card">
-            <h3>Reach Flowent</h3>
-            <p>
-              Change the details below to the real contact information.
-            </p>
-
+          <article class="panel contact-card">
+            <h3>Start here</h3>
             <div class="contact-list">
               <a class="contact-item" href="mailto:hello@flowentsa.com">
                 <strong>Email</strong>
                 <span>hello@flowentsa.com</span>
               </a>
-
               <a class="contact-item" href="https://wa.me/966500000000" target="_blank" rel="noopener">
                 <strong>WhatsApp</strong>
                 <span>+966 50 000 0000</span>
               </a>
-
-              <a class="contact-item" href="https://instagram.com/flowent" target="_blank" rel="noopener">
-                <strong>Instagram</strong>
-                <span>@flowent</span>
-              </a>
-
               <a class="contact-item" href="https://linkedin.com/company/flowent" target="_blank" rel="noopener">
                 <strong>LinkedIn</strong>
                 <span>Flowent</span>
@@ -813,19 +1668,17 @@
             </div>
           </article>
 
-          <article class="contact-card">
-            <h3>Beginner Note</h3>
-            <p>
-              This version intentionally avoids a website form so setup stays simple. Once the site is live, a free form can be added in the next version.
-            </p>
-
-            <div class="contact-note">
-              Important: for the exact branded look, upload the logo SVG and Chakra Petch font files into the file paths written at the top of this code.
-            </div>
-
-            <div class="btn-row" style="margin-top:22px;">
-              <a class="btn btn-primary" href="https://wa.me/966500000000" target="_blank" rel="noopener">Message on WhatsApp</a>
-              <a class="btn btn-secondary" href="mailto:hello@flowentsa.com">Send an Email</a>
+          <article class="panel contact-card">
+            <h3>What to send us</h3>
+            <ul>
+              <li>What tool or process is currently painful?</li>
+              <li>What are you paying for today?</li>
+              <li>What should be simplified, unified, or automated?</li>
+              <li>What would success look like in 90 days?</li>
+            </ul>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;">
+              <a class="btn btn-primary" href="https://wa.me/966500000000" target="_blank" rel="noopener">Talk on WhatsApp</a>
+              <a class="btn btn-secondary" href="mailto:hello@flowentsa.com">Email Flowent</a>
             </div>
           </article>
         </div>
@@ -833,14 +1686,78 @@
     </section>
   </main>
 
-  <!-- ================================================================
-       FOOTER
-       ================================================================ -->
   <footer class="site-footer">
     <div class="container footer-row">
       <div>© 2026 Flowent. All Rights Reserved.</div>
-      <div>Technology, Yours Truly.</div>
+      <div>Custom tech for smaller teams with serious ambition.</div>
     </div>
   </footer>
+
+  <script>
+    const intro = document.getElementById('intro');
+    const body = document.body;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function endIntro() {
+      intro.classList.add('hidden');
+      body.classList.remove('intro-active');
+      sessionStorage.setItem('flowent_intro_seen', '1');
+    }
+
+    if (sessionStorage.getItem('flowent_intro_seen') === '1' || reduceMotion) {
+      intro.classList.add('hidden');
+      body.classList.remove('intro-active');
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(endIntro, 2200);
+      });
+      intro.addEventListener('click', endIntro);
+    }
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        body.classList.toggle('menu-open');
+      });
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => body.classList.remove('menu-open'));
+      });
+    }
+
+    // Services interaction for touch + desktop fallback
+    const serviceTiles = document.querySelectorAll('.service-tile');
+    serviceTiles.forEach(tile => {
+      tile.addEventListener('click', () => {
+        if (window.innerWidth <= 920) {
+          const already = tile.classList.contains('active');
+          serviceTiles.forEach(t => t.classList.remove('active'));
+          if (!already) tile.classList.add('active');
+        }
+      });
+      tile.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 920) {
+          serviceTiles.forEach(t => t.classList.remove('active'));
+          tile.classList.add('active');
+        }
+      });
+    });
+
+    // Simple parallax nudge on hero cards
+    const heroPanels = document.querySelectorAll('.hero-main, .side-card');
+    heroPanels.forEach(panel => {
+      panel.addEventListener('mousemove', e => {
+        if (window.innerWidth < 1024) return;
+        const rect = panel.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        panel.style.transform = `translate3d(${x * 8}px, ${y * 8}px, 0)`;
+      });
+      panel.addEventListener('mouseleave', () => {
+        panel.style.transform = 'translate3d(0,0,0)';
+      });
+    });
+  </script>
 </body>
 </html>
