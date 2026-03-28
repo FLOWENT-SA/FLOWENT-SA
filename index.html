@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flowent | Custom Tech That Fits</title>
-  <meta name="description" content="Flowent builds affordable custom tech for SMEs: websites, recruitment portals, employee service portals, ERP systems, internal dashboards, and AI-powered operations tools.">
+  <title>FLOWENT | Custom Tech That Fits</title>
+  <meta name="description" content="FLOWENT builds affordable custom technology for SMEs: websites, portals, dashboards, ERP systems, and AI-powered internal operations tools.">
 
   <style>
     @font-face {
@@ -37,19 +37,22 @@
     }
 
     :root {
-      --bg: #f3f3ef;
-      --bg-2: #ffffff;
-      --text: #111111;
-      --muted: #5b5b5b;
+      --bg: #f5f4ef;
+      --surface: #ffffff;
+      --surface-soft: #fbfaf7;
+      --text: #121212;
+      --muted: #575757;
       --line: rgba(0,0,0,.09);
       --teal: #21d7c2;
-      --teal-deep: #0ea896;
+      --teal-deep: #00bfa5;
       --orange: #e37526;
-      --cream: #fff9f5;
-      --black: #040404;
-      --shadow: 0 24px 80px rgba(0,0,0,.08);
-      --radius: 28px;
-      --container: 1280px;
+      --blue: #009acb;
+      --blue-soft: #e4f7ff;
+      --orange-soft: #fff2e8;
+      --teal-soft: #eafffb;
+      --red-soft: #f9e8ee;
+      --shadow: 0 22px 70px rgba(0,0,0,.07);
+      --container: 1240px;
       --ease: cubic-bezier(.22,1,.36,1);
     }
 
@@ -58,52 +61,108 @@
     body {
       margin: 0;
       font-family: "Chakra Petch", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(33,215,194,.10), transparent 24%),
-        radial-gradient(circle at 85% 16%, rgba(227,117,38,.10), transparent 18%),
-        linear-gradient(180deg, #ffffff 0%, #f3f3ef 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #f5f4ef 100%);
       color: var(--text);
       overflow-x: hidden;
     }
 
-    body.menu-open,
-    body.intro-active {
-      overflow: hidden;
-    }
+    body.intro-active,
+    body.menu-open { overflow: hidden; }
 
     a { color: inherit; text-decoration: none; }
-    img, video { display: block; max-width: 100%; }
+    img { display: block; max-width: 100%; }
     button { font: inherit; }
 
-    .container {
-      width: min(calc(100% - 32px), var(--container));
-      margin: 0 auto;
-    }
+    .container { width: min(calc(100% - 32px), var(--container)); margin: 0 auto; }
 
-    .noise,
     .grid-overlay {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 1;
-    }
-
-    .noise {
-      opacity: .06;
+      opacity: .16;
       background-image:
-        radial-gradient(circle at 20% 20%, rgba(0,0,0,.14) 0 1px, transparent 1px),
-        radial-gradient(circle at 80% 60%, rgba(0,0,0,.08) 0 1px, transparent 1px);
-      background-size: 12px 12px, 18px 18px;
-      mix-blend-mode: multiply;
-    }
-
-    .grid-overlay {
-      opacity: .22;
-      background-image:
-        linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
+        linear-gradient(rgba(0,0,0,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.035) 1px, transparent 1px);
       background-size: 120px 120px;
-      mask-image: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.18));
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.14));
+    }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: #030303;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      transition: opacity .8s var(--ease), visibility .8s var(--ease);
+    }
+    .intro.hidden { opacity: 0; visibility: hidden; }
+    .intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 90px 90px;
+      opacity: .35;
+    }
+    .intro-wrap {
+      position: relative;
+      width: min(84vw, 760px);
+      aspect-ratio: 2.2;
+      display: grid;
+      place-items: center;
+    }
+    .intro-logo {
+      width: min(92%, 640px);
+      position: relative;
+      z-index: 2;
+      animation: introReveal 1.3s var(--ease) both .15s;
+    }
+    .intro-glitch,
+    .intro-glitch::before,
+    .intro-glitch::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('assets/logo-main.svg') center / contain no-repeat;
+      mix-blend-mode: screen;
+    }
+    .intro-glitch::before {
+      transform: translate(6px,-3px);
+      opacity: .35;
+      animation: glitchA .14s steps(2) infinite;
+    }
+    .intro-glitch::after {
+      transform: translate(-7px,4px);
+      opacity: .26;
+      animation: glitchB .12s steps(2) infinite;
+    }
+    .intro-scan {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.08) 50%, transparent 100%);
+      animation: scan 1.2s linear infinite;
+      z-index: 3;
+    }
+    @keyframes introReveal {
+      0% { transform: scale(.84); opacity: 0; filter: blur(10px); }
+      100% { transform: scale(1); opacity: 1; filter: blur(0); }
+    }
+    @keyframes glitchA {
+      0%,100% { clip-path: inset(10% 0 68% 0); }
+      50% { clip-path: inset(60% 0 12% 0); }
+    }
+    @keyframes glitchB {
+      0%,100% { clip-path: inset(72% 0 8% 0); }
+      50% { clip-path: inset(14% 0 58% 0); }
+    }
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
     }
 
     .site-header {
@@ -111,7 +170,7 @@
       top: 0;
       z-index: 30;
       backdrop-filter: blur(16px);
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.84);
       border-bottom: 1px solid var(--line);
     }
 
@@ -125,31 +184,26 @@
       z-index: 2;
     }
 
-    .brand-mark {
-      width: 182px;
-      filter: drop-shadow(0 6px 16px rgba(33,215,194,.08));
-    }
+    .brand-mark { width: 180px; }
 
     .nav-links {
       display: flex;
       align-items: center;
       gap: 24px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
-
     .nav-links a {
       position: relative;
       color: var(--text);
     }
-
     .nav-links a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -7px;
+      bottom: -8px;
       width: 100%;
       height: 2px;
       background: linear-gradient(90deg, var(--orange), var(--teal));
@@ -157,30 +211,53 @@
       transform-origin: left;
       transition: transform .28s var(--ease);
     }
-
     .nav-links a:hover::after { transform: scaleX(1); }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
 
-    .lang-switch,
-    .ghost-chip {
+    .lang-switch {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
       min-height: 42px;
       padding: 0 14px;
-      border: 1px solid rgba(227,117,38,.20);
-      background: rgba(255,249,245,.9);
+      border: 1px solid rgba(227,117,38,.22);
+      background: var(--orange-soft);
       color: var(--orange);
       text-transform: uppercase;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: .09em;
+      letter-spacing: .08em;
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+      cursor: pointer;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .28s var(--ease), color .28s var(--ease), border-color .28s var(--ease);
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 16px 28px rgba(227,117,38,.18);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.88);
+      color: var(--orange);
+      border-color: rgba(227,117,38,.25);
     }
 
     .menu-toggle {
@@ -194,8 +271,8 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      position: relative;
     }
-
     .menu-toggle span,
     .menu-toggle::before,
     .menu-toggle::after {
@@ -213,43 +290,41 @@
     .menu-open .menu-toggle::before { transform: rotate(45deg); }
     .menu-open .menu-toggle::after { transform: rotate(-45deg); }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 54px;
-      padding: 0 22px;
-      border: 1px solid transparent;
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: .05em;
+    .mobile-drawer {
+      position: fixed;
+      inset: 82px 16px auto 16px;
+      padding: 18px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(0,0,0,.08);
+      clip-path: polygon(0 0,100% 0,98% 100%,0 100%);
+      box-shadow: var(--shadow);
+      z-index: 35;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: .28s var(--ease);
+    }
+    .mobile-drawer a {
+      display: block;
+      padding: 14px 6px;
+      border-bottom: 1px solid rgba(0,0,0,.06);
       text-transform: uppercase;
-      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
-      transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .28s var(--ease), color .28s var(--ease), border-color .28s var(--ease);
-      cursor: pointer;
+      letter-spacing: .08em;
+      font-size: 13px;
+      font-weight: 700;
     }
-
-    .btn:hover { transform: translateY(-3px); }
-    .btn-primary {
-      background: var(--orange);
-      color: #fff;
-      box-shadow: 0 16px 28px rgba(227,117,38,.18);
-    }
-    .btn-primary:hover {
-      box-shadow: 0 20px 34px rgba(227,117,38,.24);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,.84);
-      color: var(--orange);
-      border-color: rgba(227,117,38,.26);
-    }
+    .mobile-drawer a:last-child { border-bottom: 0; }
+    .menu-open .mobile-drawer { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
     .section {
       position: relative;
       z-index: 2;
-      padding: 100px 0;
+      padding: 96px 0;
     }
+    .section.alt-blue { background: linear-gradient(180deg, var(--blue-soft), #f4fbff); }
+    .section.alt-orange { background: linear-gradient(180deg, var(--orange-soft), #fffaf6); }
+    .section.alt-teal { background: linear-gradient(180deg, var(--teal-soft), #f7fffd); }
+    .section.alt-red { background: linear-gradient(180deg, var(--red-soft), #fff8fb); }
 
     .eyebrow {
       display: inline-flex;
@@ -265,7 +340,6 @@
       font-weight: 700;
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
     }
-
     .eyebrow::before {
       content: "";
       width: 34px;
@@ -276,17 +350,16 @@
 
     .section-title {
       margin: 18px 0 14px;
-      font-size: clamp(36px, 5vw, 74px);
+      font-size: clamp(34px, 5vw, 72px);
       line-height: .93;
       letter-spacing: -.05em;
       text-transform: uppercase;
       color: var(--teal-deep);
       max-width: 1100px;
     }
-
     .section-copy {
       margin: 0;
-      max-width: 900px;
+      max-width: 860px;
       color: var(--text);
       font-size: 18px;
       line-height: 1.85;
@@ -304,31 +377,25 @@
       clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
       box-shadow: var(--shadow);
     }
-
     .panel::after {
       content: "";
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      left: 0; right: 0; bottom: 0;
       height: 4px;
       background: linear-gradient(90deg, var(--orange), var(--teal));
       opacity: .7;
     }
 
-    .hero {
-      padding: 58px 0 46px;
-    }
-
+    .hero { padding: 58px 0 44px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.16fr .84fr;
+      grid-template-columns: 1.14fr .86fr;
       gap: 24px;
       align-items: stretch;
     }
 
     .hero-main {
-      min-height: 760px;
+      min-height: 700px;
       padding: clamp(30px, 4vw, 60px);
       display: flex;
       align-items: center;
@@ -337,7 +404,6 @@
         radial-gradient(circle at 88% 20%, rgba(227,117,38,.10), transparent 0 22%),
         linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,247,243,.98));
     }
-
     .hero-main::before {
       content: "";
       position: absolute;
@@ -349,13 +415,7 @@
       opacity: .28;
       pointer-events: none;
     }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-    }
-
+    .hero-inner { position: relative; z-index: 1; width: 100%; }
     .hero-tag {
       margin: 0 0 16px;
       color: var(--teal-deep);
@@ -364,23 +424,15 @@
       font-size: 13px;
       font-weight: 700;
     }
-
-    .hero-logo {
-      width: min(100%, 590px);
-      margin: 0 0 26px;
-      transform: translateZ(0);
-    }
-
     .hero-title {
       margin: 0 0 20px;
-      font-size: clamp(48px, 7.2vw, 108px);
-      line-height: .86;
+      font-size: clamp(52px, 7vw, 110px);
+      line-height: .84;
       letter-spacing: -.06em;
       text-transform: uppercase;
       color: var(--teal-deep);
       max-width: 960px;
     }
-
     .hero-copy {
       margin: 0 0 28px;
       max-width: 820px;
@@ -388,43 +440,14 @@
       line-height: 1.85;
       color: var(--text);
     }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
-
-    .hero-marquee {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .hero-marquee span {
-      padding: 10px 14px;
-      background: rgba(255,249,245,.88);
-      border: 1px solid rgba(227,117,38,.18);
-      color: var(--orange);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
-    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
     .hero-side {
       display: grid;
       grid-template-rows: 1fr 1fr;
       gap: 24px;
     }
-
-    .side-card {
-      min-height: 368px;
-      padding: 30px;
-    }
-
+    .side-card { min-height: 338px; padding: 30px; }
     .mini-label {
       display: inline-flex;
       align-items: center;
@@ -440,7 +463,6 @@
       text-transform: uppercase;
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
     }
-
     .side-title {
       margin: 0 0 14px;
       font-size: clamp(30px, 4.5vw, 70px);
@@ -449,38 +471,23 @@
       text-transform: uppercase;
       color: var(--teal-deep);
     }
-
-    .side-copy {
-      margin: 0;
-      max-width: 420px;
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--text);
-    }
-
+    .side-copy { margin: 0; max-width: 420px; font-size: 17px; line-height: 1.8; color: var(--text); }
     .video-shell {
       margin-top: 24px;
       overflow: hidden;
       border: 1px solid rgba(227,117,38,.18);
-      background: var(--cream);
+      background: var(--orange-soft);
       clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
       box-shadow: 0 14px 24px rgba(227,117,38,.06);
       transform: translateZ(0);
     }
-
-    .video-shell img,
-    .video-shell video {
+    .video-shell img {
       width: 100%;
       aspect-ratio: 16 / 9;
       object-fit: cover;
       transition: transform .7s var(--ease);
     }
-
-    .video-shell:hover img,
-    .video-shell:hover video {
-      transform: scale(1.08);
-    }
-
+    .video-shell:hover img { transform: scale(1.08); }
     .video-note {
       padding: 14px 16px;
       border-top: 1px solid rgba(0,0,0,.06);
@@ -490,111 +497,26 @@
       letter-spacing: .08em;
     }
 
-    .signal {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 22px;
-      height: 94px;
-      display: grid;
-      grid-template-columns: repeat(7,1fr);
-      gap: 10px;
-      align-items: end;
-    }
-
-    .signal span {
-      background: linear-gradient(180deg, rgba(227,117,38,.88), rgba(33,215,194,.96));
-      clip-path: polygon(0 0,100% 0,86% 100%,0 100%);
-      animation: signalPulse 2.8s ease-in-out infinite;
-    }
-    .signal span:nth-child(1){height:18%;animation-delay:0s}
-    .signal span:nth-child(2){height:40%;animation-delay:.15s}
-    .signal span:nth-child(3){height:60%;animation-delay:.3s}
-    .signal span:nth-child(4){height:100%;animation-delay:.45s}
-    .signal span:nth-child(5){height:56%;animation-delay:.6s}
-    .signal span:nth-child(6){height:78%;animation-delay:.75s}
-    .signal span:nth-child(7){height:30%;animation-delay:.9s}
-    @keyframes signalPulse { 0%,100%{transform:scaleY(1);opacity:.86} 50%{transform:scaleY(1.08);opacity:1} }
-
-    .bilingual {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .lang-block {
-      padding: 22px;
-      border: 1px solid rgba(0,0,0,.08);
-      background: rgba(255,255,255,.84);
-      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
-    }
-
-    .lang-title {
-      margin: 0 0 12px;
-      color: var(--orange);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
     .stats-grid {
       margin-top: 34px;
       display: grid;
       grid-template-columns: repeat(4,1fr);
       gap: 18px;
     }
+    .stat-box { min-height: 180px; padding: 24px; }
+    .stat-num { margin: 0 0 8px; font-size: clamp(30px,4vw,56px); line-height: .88; color: var(--teal-deep); }
+    .stat-label { margin: 0 0 10px; color: var(--orange); text-transform: uppercase; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+    .stat-desc { margin: 0; color: var(--text); line-height: 1.7; font-size: 15px; }
 
-    .stat-box {
-      min-height: 190px;
-      padding: 24px;
-    }
-
-    .stat-num {
-      margin: 0 0 8px;
-      font-size: clamp(30px,4vw,56px);
-      line-height: .88;
-      color: var(--teal-deep);
-    }
-
-    .stat-label {
-      margin: 0 0 10px;
-      color: var(--orange);
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .12em;
-    }
-
-    .stat-desc {
-      margin: 0;
-      color: var(--text);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    .chart-wrap {
-      margin-top: 30px;
-      padding: 20px;
-    }
-
+    .chart-wrap { margin-top: 30px; padding: 20px; }
     .chart {
-      height: 280px;
+      height: 260px;
       display: flex;
       align-items: end;
       gap: 14px;
       padding-top: 30px;
     }
-
-    .bar-col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
+    .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; }
     .bar {
       width: 100%;
       max-width: 88px;
@@ -603,256 +525,81 @@
       box-shadow: 0 14px 18px rgba(33,215,194,.12);
       transition: transform .32s var(--ease);
     }
-
     .bar-col:hover .bar { transform: translateY(-6px) scaleY(1.03); }
-    .bar-col span {
-      font-size: 11px;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: .08em;
-      text-align: center;
-      max-width: 150px;
-    }
+    .bar-col span { font-size: 11px; text-transform: uppercase; color: var(--muted); letter-spacing: .08em; text-align: center; max-width: 150px; }
 
-    /* SERVICES WALL */
-    .services-stage {
+    .services-grid {
       margin-top: 34px;
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 14px;
-      min-height: 640px;
-    }
-
-    .service-tile {
-      position: relative;
-      min-width: 0;
-      min-height: 640px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 24px 18px;
-      cursor: pointer;
-      transition: flex .45s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
-      isolation: isolate;
-    }
-
-    .service-tile::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 78% 18%, rgba(33,215,194,.18), transparent 0 20%),
-        radial-gradient(circle at 74% 22%, rgba(227,117,38,.12), transparent 0 28%);
-      opacity: 0;
-      transition: opacity .4s var(--ease);
-      z-index: 0;
-    }
-
-    .service-tile:hover::before,
-    .service-tile.active::before { opacity: 1; }
-
-    .service-tile .service-name {
-      position: absolute;
-      left: 18px;
-      bottom: 24px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 24px;
-      line-height: .95;
-      letter-spacing: -.03em;
-      text-transform: uppercase;
-      color: var(--teal-deep);
-      transition: opacity .3s var(--ease), transform .3s var(--ease);
-      z-index: 1;
-    }
-
-    .service-tile:hover .service-name,
-    .service-tile.active .service-name {
-      opacity: 0;
-      transform: rotate(180deg) translateY(-14px);
-    }
-
-    .service-panel {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .35s var(--ease), transform .35s var(--ease);
-      pointer-events: none;
-    }
-
-    .service-tile:hover .service-panel,
-    .service-tile.active .service-panel {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .service-kicker {
-      display: inline-flex;
-      align-items: center;
-      min-height: 36px;
-      padding: 0 12px;
-      margin-bottom: 14px;
-      background: rgba(255,249,245,.88);
-      border: 1px solid rgba(227,117,38,.18);
-      color: var(--orange);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
-    }
-
-    .service-panel h3 {
-      margin: 0 0 12px;
-      font-size: clamp(34px,4vw,60px);
-      line-height: .92;
-      letter-spacing: -.05em;
-      text-transform: uppercase;
-      color: var(--teal-deep);
-      max-width: 620px;
-    }
-
-    .service-panel p {
-      margin: 0;
-      max-width: 560px;
-      font-size: 17px;
-      line-height: 1.9;
-      color: var(--text);
-    }
-
-    .service-list {
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      max-width: 620px;
-    }
-
-    .service-list li {
-      padding-left: 16px;
-      position: relative;
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    .service-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 12px;
-      width: 8px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--orange), var(--teal));
-    }
-
-    .service-visual {
-      position: absolute;
-      right: 22px;
-      bottom: 22px;
-      width: min(34vw, 340px);
-      aspect-ratio: 1.02;
-      border: 1px solid rgba(0,0,0,.08);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,248,245,.94)),
-        radial-gradient(circle at 30% 20%, rgba(227,117,38,.14), transparent 0 18%),
-        radial-gradient(circle at 70% 70%, rgba(33,215,194,.16), transparent 0 28%);
-      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
-      overflow: hidden;
-      box-shadow: 0 18px 26px rgba(0,0,0,.08);
-    }
-
-    .service-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .65s var(--ease);
-    }
-
-    .service-tile:hover .service-visual img,
-    .service-tile.active .service-visual img {
-      transform: scale(1.08);
-    }
-
-    .service-visual-fallback {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      color: rgba(0,0,0,.22);
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-    }
-
-    .services-stage:hover .service-tile {
-      grid-column: span 1;
-    }
-
-    .services-stage .service-tile.active {
-      grid-column: span 1;
-    }
-
-    .services-stage .service-tile.is-expanded {
-      grid-column: 1 / -1;
-    }
-
-    .story-grid,
-    .proof-grid,
-    .pricing-grid,
-    .faq-grid,
-    .contact-grid {
-      margin-top: 34px;
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 22px;
     }
-
-    .story-card,
-    .proof-card,
-    .pricing-card,
-    .faq-card,
-    .contact-card {
-      padding: 30px;
+    .service-card { padding: 28px; min-height: 260px; }
+    .service-card:hover { transform: translateY(-4px); transition: transform .3s var(--ease); }
+    .number {
+      width: 52px; height: 52px;
+      display: grid; place-items: center;
+      margin-bottom: 18px;
+      background: var(--orange-soft);
+      border: 1px solid rgba(227,117,38,.24);
+      color: var(--orange);
+      font-weight: 700;
+      clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
     }
-
+    .service-card h3,
     .story-card h3,
     .proof-card h3,
     .pricing-card h3,
     .faq-card h3,
-    .contact-card h3 {
-      margin: 0 0 14px;
-      font-size: 32px;
+    .contact-card h3,
+    .ops-card h4,
+    .showcase-panel h3 {
+      margin: 0 0 12px;
+      font-size: 30px;
       line-height: .96;
       letter-spacing: -.03em;
       text-transform: uppercase;
       color: var(--teal-deep);
     }
-
+    .service-card p,
     .story-card p,
     .proof-card p,
     .pricing-card p,
     .faq-card p,
     .contact-card p,
+    .service-card li,
     .story-card li,
     .proof-card li,
     .pricing-card li,
     .faq-card li,
-    .contact-card li {
+    .contact-card li,
+    .showcase-panel p,
+    .ops-card p {
       color: var(--text);
       font-size: 16px;
       line-height: 1.9;
     }
 
-    .timeline {
-      margin-top: 24px;
+    .story-grid,
+    .pricing-grid,
+    .faq-grid,
+    .contact-grid,
+    .showcase-head,
+    .ops-grid {
+      margin-top: 34px;
       display: grid;
-      gap: 14px;
+      grid-template-columns: repeat(2,1fr);
+      gap: 22px;
     }
+    .ops-grid { grid-template-columns: repeat(4,1fr); }
+    .story-card,
+    .pricing-card,
+    .faq-card,
+    .contact-card,
+    .showcase-panel,
+    .ops-card { padding: 30px; }
 
+    .timeline { margin-top: 22px; display: grid; gap: 14px; }
     .step {
       display: grid;
       grid-template-columns: 80px 1fr;
@@ -863,198 +610,24 @@
       background: rgba(255,255,255,.86);
       clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
     }
+    .step .num { color: var(--orange); font-weight: 700; font-size: 18px; text-transform: uppercase; }
 
-    .step .num {
-      color: var(--orange);
-      font-weight: 700;
-      font-size: 18px;
-      text-transform: uppercase;
-    }
-
-    .client-gallery {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .thumb {
-      position: relative;
-      overflow: hidden;
-      min-height: 230px;
-      border: 1px solid rgba(0,0,0,.08);
-      background: #ecece8;
-      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
-      box-shadow: 0 14px 22px rgba(0,0,0,.06);
-    }
-
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .72s var(--ease), filter .72s var(--ease);
-    }
-
-    .thumb::after {
-      content: "Open Project";
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      padding: 10px 12px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(0,0,0,.08);
-      color: var(--orange);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .35s var(--ease), transform .35s var(--ease);
-    }
-
-    .thumb:hover img {
-      transform: scale(1.09);
-      filter: saturate(1.03) contrast(1.02);
-    }
-
-    .thumb:hover::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .pricing-cards {
-      display: grid;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .pricing-chip {
-      padding: 16px 18px;
-      border: 1px solid rgba(0,0,0,.08);
-      background: rgba(255,255,255,.86);
-      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .contact-item {
-      display: block;
-      padding: 16px 18px;
-      border: 1px solid rgba(227,117,38,.18);
-      background: rgba(255,249,245,.9);
-      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
-      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
-    }
-
-    .contact-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 22px rgba(227,117,38,.08);
-      border-color: rgba(227,117,38,.34);
-    }
-
-    .contact-item strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--orange);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 12px;
-    }
-
-    .contact-item span { color: var(--text); line-height: 1.7; }
-
-    .mobile-drawer {
-      position: fixed;
-      inset: 82px 16px auto 16px;
-      padding: 18px;
-      background: rgba(255,255,255,.96);
-      border: 1px solid rgba(0,0,0,.08);
-      clip-path: polygon(0 0,100% 0,98% 100%,0 100%);
-      box-shadow: var(--shadow);
-      z-index: 35;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-10px);
-      transition: .28s var(--ease);
-    }
-
-    .mobile-drawer a {
-      display: block;
-      padding: 14px 6px;
-      border-bottom: 1px solid rgba(0,0,0,.06);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .mobile-drawer a:last-child { border-bottom: 0; }
-
-    .menu-open .mobile-drawer {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-        .showcase-shell {
-      margin-top: 34px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .showcase-head {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .showcase-panel {
-      padding: 28px;
-      min-height: 280px;
-    }
-
-    .showcase-kpis {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
-
+    .showcase-shell { margin-top: 34px; display: grid; gap: 18px; }
+    .showcase-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 18px; }
     .kpi-chip {
       padding: 16px 16px 18px;
       border: 1px solid rgba(0,0,0,.08);
       background: rgba(255,255,255,.88);
       clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
     }
-
-    .kpi-chip strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 28px;
-      line-height: .9;
-      color: var(--teal-deep);
-    }
-
-    .kpi-chip span {
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-    }
+    .kpi-chip strong { display: block; margin-bottom: 6px; font-size: 28px; line-height: .9; color: var(--teal-deep); }
+    .kpi-chip span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
 
     .rail {
       display: grid;
-      grid-template-columns: repeat(4, minmax(260px,1fr));
+      grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 16px;
     }
-
     .rail-card {
       position: relative;
       min-height: 320px;
@@ -1063,16 +636,11 @@
       background: #efefea;
       clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
       box-shadow: 0 16px 24px rgba(0,0,0,.06);
-      transform: translateZ(0);
     }
-
     .rail-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover;
       transition: transform .85s var(--ease), filter .85s var(--ease);
     }
-
     .rail-card::before {
       content: "";
       position: absolute;
@@ -1080,16 +648,11 @@
       background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,.72) 100%);
       z-index: 1;
     }
-
     .rail-meta {
       position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      z-index: 2;
-      color: #fff;
+      left: 18px; right: 18px; bottom: 18px;
+      z-index: 2; color: #fff;
     }
-
     .rail-meta .micro {
       display: inline-flex;
       min-height: 32px;
@@ -1105,55 +668,14 @@
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
       backdrop-filter: blur(8px);
     }
+    .rail-meta h4 { margin: 0 0 6px; font-size: 30px; line-height: .95; letter-spacing: -.03em; text-transform: uppercase; }
+    .rail-meta p { margin: 0; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.86); }
+    .rail-card:hover img { transform: scale(1.1); filter: saturate(1.06) contrast(1.03); }
 
-    .rail-meta h4 {
-      margin: 0 0 6px;
-      font-size: 30px;
-      line-height: .95;
-      letter-spacing: -.03em;
-      text-transform: uppercase;
-    }
-
-    .rail-meta p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255,255,255,.86);
-    }
-
-    .rail-card:hover img {
-      transform: scale(1.1);
-      filter: saturate(1.06) contrast(1.03);
-    }
-
-    .ops-grid {
-      margin-top: 34px;
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 18px;
-    }
-
-    .ops-card {
-      padding: 22px;
-      min-height: 250px;
-    }
-
-    .ops-card h4 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: -.03em;
-      color: var(--teal-deep);
-    }
-
-    .ops-card p { margin: 0; color: var(--text); line-height: 1.8; font-size: 15px; }
-
+    .ops-card { min-height: 240px; }
     .ops-icon {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
+      width: 46px; height: 46px;
+      display: grid; place-items: center;
       margin-bottom: 16px;
       background: rgba(255,249,245,.92);
       border: 1px solid rgba(227,117,38,.18);
@@ -1162,6 +684,28 @@
       font-weight: 700;
       clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
     }
+
+    .faq-grid { grid-template-columns: repeat(2,1fr); }
+
+    .contact-list { display: grid; gap: 14px; margin-top: 20px; }
+    .contact-item {
+      display: block;
+      padding: 16px 18px;
+      border: 1px solid rgba(227,117,38,.18);
+      background: rgba(255,249,245,.9);
+      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+    }
+    .contact-item:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(227,117,38,.08); border-color: rgba(227,117,38,.34); }
+    .contact-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 12px;
+    }
+    .contact-item span { color: var(--text); line-height: 1.7; }
 
     .site-footer {
       position: relative;
@@ -1173,164 +717,19 @@
       text-transform: uppercase;
       letter-spacing: .06em;
     }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    /* INTRO */
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: #030303;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      transition: opacity .8s var(--ease), visibility .8s var(--ease);
-    }
-
-    .intro::before,
-    .intro::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-      background-size: 90px 90px;
-      opacity: .35;
-      animation: introGrid 6s linear infinite;
-    }
-
-    .intro::after {
-      background-image: none;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(33,215,194,.18), transparent 22%),
-        radial-gradient(circle at 56% 48%, rgba(227,117,38,.12), transparent 28%);
-      animation: none;
-    }
-
-    @keyframes introGrid {
-      from { transform: translateY(0); }
-      to { transform: translateY(40px); }
-    }
-
-    .intro.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .intro-core {
-      position: relative;
-      width: min(88vw, 760px);
-      aspect-ratio: 1.9;
-      display: grid;
-      place-items: center;
-    }
-
-    .intro-logo {
-      position: relative;
-      width: min(92%, 640px);
-      filter: drop-shadow(0 20px 30px rgba(33,215,194,.12));
-      animation: introReveal 1.3s var(--ease) both .2s;
-    }
-
-    .intro-glitch,
-    .intro-glitch::before,
-    .intro-glitch::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('assets/logo-main.svg') center / contain no-repeat;
-      mix-blend-mode: screen;
-      opacity: .96;
-    }
-
-    .intro-glitch::before {
-      transform: translate(6px, -3px);
-      filter: hue-rotate(25deg) saturate(1.2);
-      opacity: .4;
-      animation: glitchA .14s steps(2) infinite;
-    }
-
-    .intro-glitch::after {
-      transform: translate(-7px, 4px);
-      filter: hue-rotate(-20deg) saturate(1.2);
-      opacity: .32;
-      animation: glitchB .12s steps(2) infinite;
-    }
-
-    .intro-scan {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.08) 50%, transparent 100%);
-      mix-blend-mode: screen;
-      animation: scan 1.2s linear infinite;
-    }
-
-    .intro-caption {
-      position: absolute;
-      bottom: -34px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,.76);
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    @keyframes introReveal {
-      0% { transform: scale(.84); opacity: 0; filter: blur(10px); }
-      100% { transform: scale(1); opacity: 1; filter: blur(0); }
-    }
-
-    @keyframes glitchA {
-      0%,100% { clip-path: inset(10% 0 68% 0); }
-      50% { clip-path: inset(60% 0 12% 0); }
-    }
-    @keyframes glitchB {
-      0%,100% { clip-path: inset(72% 0 8% 0); }
-      50% { clip-path: inset(14% 0 58% 0); }
-    }
-
-    @keyframes scan {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
-    }
-
-    @media (max-width: 1200px) {
-      .service-visual {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        margin-top: 18px;
-      }
-    }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
     @media (max-width: 1100px) {
-      .showcase-head,
-      .ops-grid,
-      .showcase-kpis {
-        grid-template-columns: 1fr;
-      }
-      .rail {
-        grid-template-columns: 1fr 1fr;
-      }
       .hero-grid,
       .stats-grid,
       .story-grid,
-      .proof-grid,
       .pricing-grid,
       .faq-grid,
       .contact-grid,
-      .bilingual,
-      .client-gallery {
+      .showcase-head,
+      .ops-grid,
+      .showcase-kpis,
+      .rail {
         grid-template-columns: 1fr;
       }
       .hero-side { grid-template-rows: auto; }
@@ -1341,103 +740,73 @@
       .nav-right .lang-switch {
         display: none;
       }
-      .menu-toggle { display: inline-flex; position: relative; }
-      .nav-right { margin-left: auto; }
-      .services-stage {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .service-tile {
-        min-height: auto;
-        padding: 22px 18px;
-      }
-      .service-tile .service-name {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        writing-mode: initial;
-        transform: none;
-        opacity: 1 !important;
-        margin-right: auto;
-      }
-      .service-panel {
-        opacity: 1;
-        transform: none;
-        display: none;
-      }
-      .service-tile.is-expanded .service-panel,
-      .service-tile.active .service-panel { display: block; }
-      .service-tile.is-expanded .service-name,
-      .service-tile.active .service-name { display: none; }
-    }
-
-    @media (max-width: 820px) {
+      .menu-toggle { display: inline-flex; }
       .hero-main,
       .side-card,
+      .service-card,
       .story-card,
-      .proof-card,
       .pricing-card,
       .faq-card,
       .contact-card,
       .stat-box,
+      .showcase-panel,
+      .ops-card,
       .chart-wrap { padding: 24px; }
-      .hero-title { font-size: clamp(38px, 10vw, 76px); }
-      .section { padding: 80px 0; }
+      .services-grid { grid-template-columns: 1fr; }
       .step { grid-template-columns: 1fr; }
     }
 
+    @media (max-width: 820px) {
+      .nav { min-height: 74px; }
+      .brand-mark { width: 150px; }
+      .hero-title { font-size: clamp(40px, 11vw, 76px); }
+      .section { padding: 78px 0; }
+    }
+
     @media (max-width: 640px) {
-      .rail { grid-template-columns: 1fr; }
-      .ops-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 28px; }
       .hero-actions { display: grid; }
       .btn { width: 100%; }
-      .hero { padding-top: 30px; }
-      .brand-mark { width: 150px; }
-      .hero-main { min-height: auto; }
-      .intro-caption { font-size: 10px; letter-spacing: .16em; }
     }
   </style>
 </head>
 <body class="intro-active">
   <div class="intro" id="intro">
-    <div class="intro-core">
-      <img class="intro-logo" src="assets/logo-main.svg" alt="Flowent intro logo">
+    <div class="intro-wrap">
+      <img class="intro-logo" src="assets/logo-main.svg" alt="FLOWENT intro logo">
       <div class="intro-glitch" aria-hidden="true"></div>
       <div class="intro-scan" aria-hidden="true"></div>
-      <div class="intro-caption">Custom technology for smaller teams with serious ambition</div>
     </div>
   </div>
 
-  <div class="noise" aria-hidden="true"></div>
   <div class="grid-overlay" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container nav">
-      <a href="#top" aria-label="Flowent home">
-        <img class="brand-mark" src="assets/logo-main.svg" alt="Flowent logo">
+      <a href="#top" aria-label="FLOWENT home">
+        <img class="brand-mark" src="assets/logo-main.svg" alt="FLOWENT logo">
       </a>
 
       <nav class="nav-links">
-        <a href="#why">Why</a>
-        <a href="#services">Services</a>
-        <a href="#proof">BIG Case</a>
-        <a href="#contact">Contact</a>
+        <a href="#why" data-i18n="navWhy">Why</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#showcase" data-i18n="navShowcase">Showcase</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
 
       <div class="nav-right">
         <button class="lang-switch" id="langToggle" type="button">AR / EN</button>
-        <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
+        <a class="btn btn-primary" href="#contact" data-i18n="navCta">Book a Call</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span></button>
       </div>
     </div>
   </header>
 
   <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#why">Why Flowent</a>
-    <a href="#services">Services</a>
-    <a href="#story">How It Works</a>
-    <a href="#proof">BIG Case Study</a>
-    <a href="#contact">Contact</a>
+    <a href="#why" data-i18n="navWhy">Why</a>
+    <a href="#services" data-i18n="navServices">Services</a>
+    <a href="#showcase" data-i18n="navShowcase">Showcase</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
   </div>
 
   <main id="top">
@@ -1446,417 +815,137 @@
         <section class="panel hero-main">
           <div class="hero-inner">
             <p class="hero-tag" data-i18n="heroTag">Affordable custom tech for SMEs</p>
-            <img class="hero-logo" src="assets/logo-main.svg" alt="Flowent main logo">
             <h1 class="hero-title" data-i18n="heroTitle">Technology,<br>Yours Truly.</h1>
-            <p class="hero-copy" data-i18n="heroCopy">
-              Flowent exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.
-            </p>
+            <p class="hero-copy" data-i18n="heroCopy">FLOWENT exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact" data-i18n="heroBtn1">Talk on WhatsApp</a>
+              <a class="btn btn-primary" href="https://wa.me/966583941213" target="_blank" rel="noopener" data-i18n="heroBtn1">Talk on WhatsApp</a>
               <a class="btn btn-secondary" href="#services" data-i18n="heroBtn2">Explore Services</a>
-            </div>
-            <div class="hero-marquee">
-              <span>Websites</span>
-              <span>Recruitment Portals</span>
-              <span>Employee Service Portals</span>
-              <span>ERP Systems</span>
-              <span>Dashboards</span>
-              <span>AI Operations</span>
-            </div>
-
-            <div class="bilingual">
-              <div class="lang-block">
-                <p class="lang-title">English</p>
-                <p id="langBlockEn" style="margin:0;line-height:1.9;">Flowent started because small and medium businesses often do not have the budget for overpriced platforms across HR, operations, accounting, dashboards, and internal systems. So instead of forcing subscriptions on them, we build exactly what they need in a simpler and more affordable way.</p>
-              </div>
-              <div class="lang-block" dir="rtl" lang="ar">
-                <p class="lang-title">العربية</p>
-                <p id="langBlockAr" style="margin:0;line-height:2;">بدأت فلوينت لأن كثيرًا من المنشآت الصغيرة والمتوسطة تحتاج حلولًا تقنية فعلًا، لكن لا تملك ميزانيات ضخمة للاشتراك في منصات كثيرة ومكلفة. لذلك تبدأ فلوينت من فهم الاحتياج الحقيقي، ثم تبني حلًا مخصصًا، بسيطًا، وبتكلفة معقولة جدًا.</p>
-              </div>
             </div>
           </div>
         </section>
 
         <aside class="hero-side">
           <article class="panel side-card">
-            <span class="mini-label">Built on actual need</span>
-            <h2 class="side-title">Custom.<br>Lean.<br>Useful.</h2>
-            <p class="side-copy">No fixed product shelf. No enterprise theater. Flowent starts with the friction point, then builds the most useful system around it.</p>
-            <div class="video-shell">
-              <img src="assets/preview-reel-01.jpg" alt="Flowent product reel preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-              <div class="service-visual-fallback" style="display:none;aspect-ratio:16/9;">Intro Reel Placeholder</div>
-              <div class="video-note">Replace with a branded intro reel, walkthrough, or motion teaser</div>
-            </div>
+            <span class="mini-label" data-i18n="sideLabel1">Built on actual need</span>
+            <h2 class="side-title" data-i18n="sideTitle1">Custom.<br>Lean.<br>Useful.</h2>
+            <p class="side-copy" data-i18n="sideCopy1">No fixed product shelf. FLOWENT starts with the friction point, then builds the most useful system around it.</p>
           </article>
 
           <article class="panel side-card">
-            <span class="mini-label">Built to scale with the client</span>
-            <h2 class="side-title">Fast.<br>Sharp.<br>Scalable.</h2>
-            <p class="side-copy">Launch a focused version first. Add depth later. Flowent is designed to reduce complexity, not create more of it.</p>
-            <div class="signal" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
+            <span class="mini-label" data-i18n="sideLabel2">Built to scale with the client</span>
+            <h2 class="side-title" data-i18n="sideTitle2">Fast.<br>Sharp.<br>Scalable.</h2>
+            <p class="side-copy" data-i18n="sideCopy2">Launch a focused version first. Add depth later. FLOWENT is designed to reduce complexity, not create more of it.</p>
           </article>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="why">
+    <section class="section alt-blue" id="why">
       <div class="container">
-        <span class="eyebrow">Why Flowent started</span>
-        <h2 class="section-title">Because smaller businesses deserve custom technology too</h2>
-        <p class="section-copy">
-          Many businesses do not need a giant software stack. They need the right subset, designed around how they really run. Flowent is built for that gap: fewer subscriptions, better fit, simpler systems, and more control.
-        </p>
+        <span class="eyebrow" data-i18n="whyEyebrow">Why FLOWENT started</span>
+        <h2 class="section-title" data-i18n="whyTitle">Because smaller businesses deserve custom technology too</h2>
+        <p class="section-copy" data-i18n="whyCopy">Many businesses do not need a giant software stack. They need the right subset, designed around how they really run. FLOWENT is built for that gap: fewer subscriptions, better fit, simpler systems, and more control.</p>
 
         <div class="stats-grid">
           <article class="panel stat-box">
-            <p class="stat-label">Problem</p>
+            <p class="stat-label" data-i18n="stat1Label">Problem</p>
             <h3 class="stat-num">01</h3>
-            <p class="stat-desc">Too many teams are trapped inside expensive subscriptions they barely use.</p>
+            <p class="stat-desc" data-i18n="stat1Desc">Too many teams are trapped inside expensive subscriptions they barely use.</p>
           </article>
           <article class="panel stat-box">
-            <p class="stat-label">Reality</p>
+            <p class="stat-label" data-i18n="stat2Label">Reality</p>
             <h3 class="stat-num">02</h3>
-            <p class="stat-desc">They need practical systems, not enterprise overhead with 70 unused modules.</p>
+            <p class="stat-desc" data-i18n="stat2Desc">They need practical systems, not enterprise overhead with 70 unused modules.</p>
           </article>
           <article class="panel stat-box">
-            <p class="stat-label">Flowent</p>
+            <p class="stat-label" data-i18n="stat3Label">FLOWENT</p>
             <h3 class="stat-num">03</h3>
-            <p class="stat-desc">We design the stack around the client’s pain, workflow, budget, and internal capability.</p>
+            <p class="stat-desc" data-i18n="stat3Desc">We design the stack around the client’s pain, workflow, budget, and internal capability.</p>
           </article>
           <article class="panel stat-box">
-            <p class="stat-label">Outcome</p>
+            <p class="stat-label" data-i18n="stat4Label">Outcome</p>
             <h3 class="stat-num">04</h3>
-            <p class="stat-desc">Lower cost, better adoption, cleaner visibility, and a system people actually use.</p>
+            <p class="stat-desc" data-i18n="stat4Desc">Lower cost, better adoption, cleaner visibility, and a system people actually use.</p>
           </article>
         </div>
 
         <div class="panel chart-wrap">
-          <span class="mini-label">Flowent value logic</span>
+          <span class="mini-label" data-i18n="chartLabel">FLOWENT value logic</span>
           <div class="chart">
-            <div class="bar-col"><div class="bar" style="height:76%"></div><span>Traditional software cost</span></div>
-            <div class="bar-col"><div class="bar" style="height:44%"></div><span>Custom build investment</span></div>
-            <div class="bar-col"><div class="bar" style="height:28%"></div><span>Unused feature waste</span></div>
-            <div class="bar-col"><div class="bar" style="height:84%"></div><span>Operational clarity gained</span></div>
+            <div class="bar-col"><div class="bar" style="height:76%"></div><span data-i18n="bar1">Traditional software cost</span></div>
+            <div class="bar-col"><div class="bar" style="height:44%"></div><span data-i18n="bar2">Custom build investment</span></div>
+            <div class="bar-col"><div class="bar" style="height:28%"></div><span data-i18n="bar3">Unused feature waste</span></div>
+            <div class="bar-col"><div class="bar" style="height:84%"></div><span data-i18n="bar4">Operational clarity gained</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="services">
+    <section class="section alt-orange" id="services">
       <div class="container">
-        <span class="eyebrow">Services wall</span>
-        <h2 class="section-title">Hover any service. Let it take over the whole stage.</h2>
-        <p class="section-copy">
-          Flowent does not sell a rigid product list. But these are some of the custom systems we can design and build depending on what the client actually needs.
-        </p>
+        <span class="eyebrow" data-i18n="servicesEyebrow">Services</span>
+        <h2 class="section-title" data-i18n="servicesTitle">Built around the challenge, not a fixed catalog</h2>
+        <p class="section-copy" data-i18n="servicesCopy">FLOWENT can build focused custom systems as standalone solutions or connected internal ecosystems.</p>
 
-        <div class="services-stage" id="servicesStage">
-          <article class="panel service-tile active is-expanded">
-            <div class="service-name">Websites</div>
-            <div class="service-panel">
-              <span class="service-kicker">01 / Websites</span>
-              <h3>Websites that feel premium, not templated</h3>
-              <p>Marketing websites, bilingual corporate sites, landing pages, portfolio experiences, and service-led fronts built to look serious and convert properly without the weight of bloated website stacks.</p>
-              <ul class="service-list">
-                <li>Brand-led marketing sites</li>
-                <li>Bilingual layouts and content blocks</li>
-                <li>Custom interactions and motion</li>
-                <li>Built inside the client’s own digital ecosystem</li>
-              </ul>
-              <div class="service-visual">
-                <img src="assets/service-websites.jpg" alt="Flowent websites showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="service-visual-fallback" style="display:none;">Websites Visual</div>
-              </div>
-            </div>
+        <div class="services-grid">
+          <article class="panel service-card">
+            <div class="number">01</div>
+            <h3 data-i18n="service1Title">Websites</h3>
+            <p data-i18n="service1Copy">Marketing websites, bilingual corporate sites, landing pages, and digital fronts built to feel serious without software bloat.</p>
           </article>
-
-          <article class="panel service-tile">
-            <div class="service-name">Recruitment</div>
-            <div class="service-panel">
-              <span class="service-kicker">02 / Recruitment Portals</span>
-              <h3>Hiring experiences inside the company’s own site</h3>
-              <p>Interactive recruitment systems with branded vacancy pages, auto-filled application context, filtering logic, admin handling, and a much cleaner applicant journey than generic job posting forms.</p>
-              <ul class="service-list">
-                <li>Job listings and vacancy pages</li>
-                <li>Smart forms and application routing</li>
-                <li>Branded employer experience</li>
-                <li>Expandable later into full recruitment workflows</li>
-              </ul>
-              <div class="service-visual">
-                <img src="assets/service-recruitment.jpg" alt="Recruitment portal showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="service-visual-fallback" style="display:none;">Recruitment Visual</div>
-              </div>
-            </div>
+          <article class="panel service-card">
+            <div class="number">02</div>
+            <h3 data-i18n="service2Title">Recruitment Portals</h3>
+            <p data-i18n="service2Copy">Interactive hiring portals inside the client’s own website with branded vacancy pages and smarter application flow.</p>
           </article>
-
-          <article class="panel service-tile">
-            <div class="service-name">Employee</div>
-            <div class="service-panel">
-              <span class="service-kicker">03 / Employee Service Portals</span>
-              <h3>Internal employee systems without paying for oversized HR stacks</h3>
-              <p>Custom internal service portals on the company’s own website for requests, approvals, onboarding, profiles, notices, leave handling, and internal communication flows.</p>
-              <ul class="service-list">
-                <li>Requests and approvals</li>
-                <li>Employee profiles and onboarding</li>
-                <li>Role-based access</li>
-                <li>Alternative to costly external HR platforms</li>
-              </ul>
-              <div class="service-visual">
-                <img src="assets/service-employee.jpg" alt="Employee portal showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="service-visual-fallback" style="display:none;">Employee Portal Visual</div>
-              </div>
-            </div>
+          <article class="panel service-card">
+            <div class="number">03</div>
+            <h3 data-i18n="service3Title">Employee Service Portals</h3>
+            <p data-i18n="service3Copy">Internal employee portals for requests, approvals, onboarding, profiles, notices, and self-service workflows.</p>
           </article>
-
-          <article class="panel service-tile">
-            <div class="service-name">ERP</div>
-            <div class="service-panel">
-              <span class="service-kicker">04 / ERP Systems</span>
-              <h3>Mini or mid-size ERP logic built around real operations</h3>
-              <p>Not every company needs a monster ERP rollout. Some need a focused operational core for approvals, records, finance visibility, inventory logic, or internal controls — and nothing more.</p>
-              <ul class="service-list">
-                <li>Only the modules that matter</li>
-                <li>Cleaner rollout and lower complexity</li>
-                <li>Built around current process reality</li>
-                <li>Expandable when the client grows</li>
-              </ul>
-              <div class="service-visual">
-                <img src="assets/service-erp.jpg" alt="ERP showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="service-visual-fallback" style="display:none;">ERP Visual</div>
-              </div>
-            </div>
+          <article class="panel service-card">
+            <div class="number">04</div>
+            <h3 data-i18n="service4Title">ERP Systems</h3>
+            <p data-i18n="service4Copy">Focused operational systems tailored to the workflow instead of giant ERP complexity that the client does not need.</p>
           </article>
-
-          <article class="panel service-tile">
-            <div class="service-name">AI Ops</div>
-            <div class="service-panel">
-              <span class="service-kicker">05 / AI Internal Operations</span>
-              <h3>Use AI where it reduces friction, not where it looks trendy</h3>
-              <p>Flowent can help structure internal operations with AI-powered support across routing, summaries, search, monitoring, task shaping, repetitive admin assistance, and better internal visibility.</p>
-              <ul class="service-list">
-                <li>Internal process automation</li>
-                <li>Workflow support and summarization</li>
-                <li>Operational assistants for teams</li>
-                <li>Applied AI with practical value</li>
-              </ul>
-              <div class="service-visual">
-                <img src="assets/service-ai.jpg" alt="AI operations showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="service-visual-fallback" style="display:none;">AI Operations Visual</div>
-              </div>
-            </div>
+          <article class="panel service-card">
+            <div class="number">05</div>
+            <h3 data-i18n="service5Title">AI Internal Operations</h3>
+            <p data-i18n="service5Copy">Practical AI support for summaries, routing, automation, internal search, and repetitive operational assistance.</p>
           </article>
-
-          <article class="panel service-tile">
-            <div class="service-name">Dashboards</div>
-            <div class="service-panel">
-              <span class="service-kicker">06 / Dashboards & Monitoring</span>
-              <h3>Dashboards that make decisions clearer, not prettier only</h3>
-              <p>Internal platforms and dashboards for management, operations, HR, project health, financial visibility, and executive-level monitoring — designed around the decisions the business actually needs to make.</p>
-              <ul class="service-list">
-                <li>Executive visibility</li>
-                <li>Team and project tracking</li>
-                <li>Internal KPI platforms</li>
-                <li>Better reporting inside one environment</li>
-              </ul>
-              <div class="service-visual">
-                <img src="assets/service-dashboards.jpg" alt="Dashboards showcase" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="service-visual-fallback" style="display:none;">Dashboards Visual</div>
-              </div>
-            </div>
+          <article class="panel service-card">
+            <div class="number">06</div>
+            <h3 data-i18n="service6Title">Dashboards & Monitoring</h3>
+            <p data-i18n="service6Copy">Custom dashboards and monitoring platforms for clearer visibility across leadership, teams, projects, and operations.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="story">
+    <section class="section alt-teal" id="showcase">
       <div class="container">
-        <span class="eyebrow">How Flowent works</span>
-        <h2 class="section-title">Diagnosis first. Product second.</h2>
-        <div class="story-grid">
-          <article class="panel story-card">
-            <h3>We start from the friction point</h3>
-            <p>Flowent does not begin by pushing a pre-packaged tool. It begins by asking what is slowing the team down, what they are overpaying for, and what should actually live inside their own ecosystem instead of rented external software.</p>
-            <ul>
-              <li>What process feels expensive or clumsy?</li>
-              <li>What tools are being paid for but not fully used?</li>
-              <li>What needs to be unified, simplified, or automated?</li>
-            </ul>
-          </article>
-          <article class="panel story-card">
-            <h3>Then we build the right-fit system</h3>
-            <p>Some clients need a recruitment portal. Some need an internal dashboard. Some need a service portal or a lean ERP layer. The point is not the label. The point is solving the right problem at the right level.</p>
-            <div class="timeline">
-              <div class="step"><div class="num">01</div><div><strong>Discovery</strong><br>Understand the workflow, friction, and business logic.</div></div>
-              <div class="step"><div class="num">02</div><div><strong>Solution Map</strong><br>Define what should be custom-built and what should be avoided.</div></div>
-              <div class="step"><div class="num">03</div><div><strong>Build</strong><br>Launch a focused system without unnecessary complexity.</div></div>
-              <div class="step"><div class="num">04</div><div><strong>Scale</strong><br>Add only what creates real value later.</div></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="proof">
-      <div class="container">
-        <span class="eyebrow">Client proof</span>
-        <h2 class="section-title">What Flowent built for BIG Creative Boutique</h2>
-        <p class="section-copy">
-          BIG is a visible proof of Flowent’s approach: custom systems, integrated into the company’s own ecosystem, with branded user experience and practical business value.
-        </p>
-
-        <div class="proof-grid">
-          <article class="panel proof-card">
-            <h3>From our clients</h3>
-            <p><strong>BIG Creative Boutique</strong></p>
-            <ul>
-              <li>Interactive recruitment portal</li>
-              <li>Portfolio and project showcase experience</li>
-              <li>Shared services / internal employee portal</li>
-              <li>Operational and admin flows inside the website itself</li>
-            </ul>
-            <p>Use this section later to add outcomes, screenshots, and results once you are ready to publish them more openly.</p>
-          </article>
-
-          <article class="panel proof-card">
-            <h3>Explore the build</h3>
-            <p>Each tile below can later link to a dedicated mini case study page or detailed walkthrough.</p>
-            <div class="client-gallery">
-              <a class="thumb" href="#"><img src="assets/case-big-01.jpg" alt="BIG case 1" onerror="this.style.display='none'"></a>
-              <a class="thumb" href="#"><img src="assets/case-big-02.jpg" alt="BIG case 2" onerror="this.style.display='none'"></a>
-              <a class="thumb" href="#"><img src="assets/case-big-03.jpg" alt="BIG case 3" onerror="this.style.display='none'"></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="pricing-logic">
-      <div class="container">
-        <span class="eyebrow">Why this model wins</span>
-        <h2 class="section-title">You do not need seven subscriptions to run one company</h2>
-        <div class="pricing-grid">
-          <article class="panel pricing-card">
-            <h3>Traditional Route</h3>
-            <div class="pricing-cards">
-              <div class="pricing-chip">Separate HR platform</div>
-              <div class="pricing-chip">Separate ERP subscription</div>
-              <div class="pricing-chip">Separate dashboard stack</div>
-              <div class="pricing-chip">Separate website vendor</div>
-              <div class="pricing-chip">Separate integrations and monthly overhead</div>
-            </div>
-          </article>
-          <article class="panel pricing-card">
-            <h3>Flowent Route</h3>
-            <div class="pricing-cards">
-              <div class="pricing-chip">Understand the problem first</div>
-              <div class="pricing-chip">Build only what the business needs</div>
-              <div class="pricing-chip">Keep ownership closer to the client</div>
-              <div class="pricing-chip">Reduce fragmentation across systems</div>
-              <div class="pricing-chip">Make the stack leaner and more affordable</div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container">
-        <span class="eyebrow">FAQ</span>
-        <h2 class="section-title">Common questions</h2>
-        <div class="faq-grid">
-          <article class="panel faq-card">
-            <h3>Do you sell fixed software packages?</h3>
-            <p>No. Flowent is deliberately custom-led. We assess the challenge first, then recommend and build the most useful solution.</p>
-          </article>
-          <article class="panel faq-card">
-            <h3>Are your solutions only for large enterprises?</h3>
-            <p>No. Flowent especially exists for SMEs that need strong tech without giant enterprise pricing or unnecessary complexity.</p>
-          </article>
-          <article class="panel faq-card">
-            <h3>Can you build inside our current website?</h3>
-            <p>Yes. In many cases that is exactly the point: keep the solution inside your ecosystem rather than scattering it across unrelated platforms.</p>
-          </article>
-          <article class="panel faq-card">
-            <h3>Can this start small and grow later?</h3>
-            <p>Yes. The preferred model is to launch the most useful version first, then add layers once the value is proven.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <span class="eyebrow">Let’s build what you actually need</span>
-        <h2 class="section-title">Tell Flowent where the friction is</h2>
-        <p class="section-copy">
-          If your company is overpaying for disconnected tools, struggling with internal visibility, or needs a custom system that actually matches how the business runs, Flowent is built for that.
-        </p>
-
-        <div class="contact-grid">
-          <article class="panel contact-card">
-            <h3>Start here</h3>
-            <div class="contact-list">
-              <a class="contact-item" href="mailto:hello@flowentsa.com">
-                <strong>Email</strong>
-                <span>hello@flowentsa.com</span>
-              </a>
-              <a class="contact-item" href="https://wa.me/966500000000" target="_blank" rel="noopener">
-                <strong>WhatsApp</strong>
-                <span>+966 50 000 0000</span>
-              </a>
-              <a class="contact-item" href="https://linkedin.com/company/flowent" target="_blank" rel="noopener">
-                <strong>LinkedIn</strong>
-                <span>Flowent</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="panel contact-card">
-            <h3>What to send us</h3>
-            <ul>
-              <li>What tool or process is currently painful?</li>
-              <li>What are you paying for today?</li>
-              <li>What should be simplified, unified, or automated?</li>
-              <li>What would success look like in 90 days?</li>
-            </ul>
-            <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;">
-              <a class="btn btn-primary" href="https://wa.me/966500000000" target="_blank" rel="noopener">Talk on WhatsApp</a>
-              <a class="btn btn-secondary" href="mailto:hello@flowentsa.com">Email Flowent</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-      <section class="section" id="showcase">
-      <div class="container">
-        <span class="eyebrow">Deeper showcase</span>
-        <h2 class="section-title">Not products. Operating layers.</h2>
-        <p class="section-copy">
-          Flowent can become the layer that connects how a business presents itself, hires, operates internally, sees its data, and removes unnecessary software friction.
-        </p>
+        <span class="eyebrow" data-i18n="showcaseEyebrow">Showcase</span>
+        <h2 class="section-title" data-i18n="showcaseTitle">Not products. Operating layers.</h2>
+        <p class="section-copy" data-i18n="showcaseCopy">The strongest version of FLOWENT is not a single service. It is a connected operating layer: website, internal portals, workflows, dashboards, and AI-enabled support inside one cleaner ecosystem.</p>
 
         <div class="showcase-shell">
           <div class="showcase-head">
             <article class="panel showcase-panel">
-              <span class="mini-label">Flowent Operating Logic</span>
-              <h3 style="margin:0 0 14px;font-size:44px;line-height:.92;letter-spacing:-.04em;text-transform:uppercase;color:var(--teal-deep);">One ecosystem.<br>Less sprawl.</h3>
-              <p style="margin:0;color:var(--text);line-height:1.85;font-size:16px;">The strongest version of Flowent is not a single service. It is a connected operating layer: public-facing website, internal portals, workflows, dashboards, and AI-enabled support sitting in one cleaner ecosystem.</p>
+              <span class="mini-label" data-i18n="showcaseLabel1">FLOWENT operating logic</span>
+              <h3 data-i18n="showcaseHead1">One ecosystem.<br>Less sprawl.</h3>
+              <p data-i18n="showcaseText1">Move away from scattered subscriptions and toward a simpler stack that is closer to the client’s own environment.</p>
               <div class="showcase-kpis">
-                <div class="kpi-chip"><strong>Website</strong><span>brand layer</span></div>
-                <div class="kpi-chip"><strong>Portal</strong><span>internal layer</span></div>
-                <div class="kpi-chip"><strong>Dashboard</strong><span>visibility layer</span></div>
+                <div class="kpi-chip"><strong data-i18n="kpi1">Website</strong><span data-i18n="kpi1Sub">brand layer</span></div>
+                <div class="kpi-chip"><strong data-i18n="kpi2">Portal</strong><span data-i18n="kpi2Sub">internal layer</span></div>
+                <div class="kpi-chip"><strong data-i18n="kpi3">Dashboard</strong><span data-i18n="kpi3Sub">visibility layer</span></div>
               </div>
             </article>
             <article class="panel showcase-panel">
-              <span class="mini-label">What that means</span>
+              <span class="mini-label" data-i18n="showcaseLabel2">What that means</span>
               <div class="timeline">
-                <div class="step"><div class="num">A</div><div><strong>Fewer subscriptions</strong><br>Move away from paying for scattered tools that do not talk to each other well.</div></div>
-                <div class="step"><div class="num">B</div><div><strong>More ownership</strong><br>Keep business logic and branded experience closer to the client’s own environment.</div></div>
-                <div class="step"><div class="num">C</div><div><strong>Better fit</strong><br>Build around the real workflow instead of bending the workflow around software limitations.</div></div>
+                <div class="step"><div class="num">A</div><div><strong data-i18n="step1Head">Fewer subscriptions</strong><br><span data-i18n="step1Text">Move away from paying for scattered tools that do not talk to each other well.</span></div></div>
+                <div class="step"><div class="num">B</div><div><strong data-i18n="step2Head">More ownership</strong><br><span data-i18n="step2Text">Keep business logic and branded experience closer to the client’s own environment.</span></div></div>
+                <div class="step"><div class="num">C</div><div><strong data-i18n="step3Head">Better fit</strong><br><span data-i18n="step3Text">Build around the real workflow instead of bending the workflow around software limitations.</span></div></div>
               </div>
             </article>
           </div>
@@ -1865,33 +954,33 @@
             <article class="rail-card">
               <img src="assets/rail-website.jpg" alt="Website layer showcase" onerror="this.style.display='none'">
               <div class="rail-meta">
-                <span class="micro">Layer 01</span>
-                <h4>Website</h4>
-                <p>Where the brand, message, and first impression become sharper and more credible.</p>
+                <span class="micro" data-i18n="rail1Micro">Layer 01</span>
+                <h4 data-i18n="rail1Title">Website</h4>
+                <p data-i18n="rail1Text">Where the brand, message, and first impression become sharper and more credible.</p>
               </div>
             </article>
             <article class="rail-card">
               <img src="assets/rail-portal.jpg" alt="Portal layer showcase" onerror="this.style.display='none'">
               <div class="rail-meta">
-                <span class="micro">Layer 02</span>
-                <h4>Portals</h4>
-                <p>Where recruitment, employee service, and internal flows stop feeling disconnected.</p>
+                <span class="micro" data-i18n="rail2Micro">Layer 02</span>
+                <h4 data-i18n="rail2Title">Portals</h4>
+                <p data-i18n="rail2Text">Where recruitment, employee service, and internal flows stop feeling disconnected.</p>
               </div>
             </article>
             <article class="rail-card">
               <img src="assets/rail-dashboard.jpg" alt="Dashboard layer showcase" onerror="this.style.display='none'">
               <div class="rail-meta">
-                <span class="micro">Layer 03</span>
-                <h4>Dashboards</h4>
-                <p>Where leadership gets visibility, not just another report exported from elsewhere.</p>
+                <span class="micro" data-i18n="rail3Micro">Layer 03</span>
+                <h4 data-i18n="rail3Title">Dashboards</h4>
+                <p data-i18n="rail3Text">Where leadership gets visibility, not just another report exported from elsewhere.</p>
               </div>
             </article>
             <article class="rail-card">
               <img src="assets/rail-ai.jpg" alt="AI layer showcase" onerror="this.style.display='none'">
               <div class="rail-meta">
-                <span class="micro">Layer 04</span>
-                <h4>AI Ops</h4>
-                <p>Where repetitive work is reduced and teams get assistance where it actually matters.</p>
+                <span class="micro" data-i18n="rail4Micro">Layer 04</span>
+                <h4 data-i18n="rail4Title">AI Ops</h4>
+                <p data-i18n="rail4Text">Where repetitive work is reduced and teams get assistance where it actually matters.</p>
               </div>
             </article>
           </div>
@@ -1899,39 +988,86 @@
       </div>
     </section>
 
-    <section class="section" id="ops-map">
+    <section class="section alt-red" id="ops-map">
       <div class="container">
-        <span class="eyebrow">Pain map</span>
-        <h2 class="section-title">Where Flowent usually creates the most value</h2>
+        <span class="eyebrow" data-i18n="opsEyebrow">Pain map</span>
+        <h2 class="section-title" data-i18n="opsTitle">Where FLOWENT usually creates the most value</h2>
         <div class="ops-grid">
           <article class="panel ops-card">
             <div class="ops-icon">01</div>
-            <h4>Fragmented tools</h4>
-            <p>Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.</p>
+            <h4 data-i18n="ops1Title">Fragmented tools</h4>
+            <p data-i18n="ops1Text">Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.</p>
           </article>
           <article class="panel ops-card">
             <div class="ops-icon">02</div>
-            <h4>Weak visibility</h4>
-            <p>Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.</p>
+            <h4 data-i18n="ops2Title">Weak visibility</h4>
+            <p data-i18n="ops2Text">Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.</p>
           </article>
           <article class="panel ops-card">
             <div class="ops-icon">03</div>
-            <h4>Cost mismatch</h4>
-            <p>Teams pay enterprise-level subscription costs while using only a small fraction of the value promised.</p>
+            <h4 data-i18n="ops3Title">Cost mismatch</h4>
+            <p data-i18n="ops3Text">Teams pay enterprise-level subscription costs while using only a small fraction of the promised value.</p>
           </article>
           <article class="panel ops-card">
             <div class="ops-icon">04</div>
-            <h4>Bad fit</h4>
-            <p>The software may be popular, but it still does not map cleanly to the company’s actual workflow or operating style.</p>
+            <h4 data-i18n="ops4Title">Bad fit</h4>
+            <p data-i18n="ops4Text">The software may be popular, but it still does not map cleanly to the company’s actual workflow or operating style.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <section class="section" id="contact">
+      <div class="container">
+        <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
+        <h2 class="section-title" data-i18n="contactTitle">Tell FLOWENT where the friction is</h2>
+        <p class="section-copy" data-i18n="contactCopy">If your company is overpaying for disconnected tools, struggling with internal visibility, or needs a custom system that actually matches how the business runs, FLOWENT is built for that.</p>
+
+        <div class="contact-grid">
+          <article class="panel contact-card">
+            <h3 data-i18n="contactCard1Title">Start here</h3>
+            <div class="contact-list">
+              <a class="contact-item" href="mailto:flowentsa@gmail.com">
+                <strong>Email</strong>
+                <span>flowentsa@gmail.com</span>
+              </a>
+              <a class="contact-item" href="https://wa.me/966583941213" target="_blank" rel="noopener">
+                <strong>WhatsApp</strong>
+                <span>0583941213</span>
+              </a>
+              <a class="contact-item" href="https://www.instagram.com/flowent_sa" target="_blank" rel="noopener">
+                <strong>Instagram</strong>
+                <span>@flowent_sa</span>
+              </a>
+              <a class="contact-item" href="https://x.com/FlowentSA" target="_blank" rel="noopener">
+                <strong>X</strong>
+                <span>@FlowentSA</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="panel contact-card">
+            <h3 data-i18n="contactCard2Title">What to send us</h3>
+            <ul>
+              <li data-i18n="contactLi1">What tool or process is currently painful?</li>
+              <li data-i18n="contactLi2">What are you paying for today?</li>
+              <li data-i18n="contactLi3">What should be simplified, unified, or automated?</li>
+              <li data-i18n="contactLi4">What would success look like in 90 days?</li>
+            </ul>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;">
+              <a class="btn btn-primary" href="https://wa.me/966583941213" target="_blank" rel="noopener" data-i18n="contactBtn1">Talk on WhatsApp</a>
+              <a class="btn btn-secondary" href="mailto:flowentsa@gmail.com" data-i18n="contactBtn2">Email FLOWENT</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
     <div class="container footer-row">
-      <div>© 2026 Flowent. All Rights Reserved.</div>
-      <div>Custom tech for smaller teams with serious ambition.</div>
+      <div>© 2026 FLOWENT. All Rights Reserved.</div>
+      <div data-i18n="footerText">Custom tech for smaller teams with serious ambition.</div>
     </div>
   </footer>
 
@@ -1967,50 +1103,106 @@
       });
     }
 
-    const serviceTiles = [...document.querySelectorAll('.service-tile')];
-    function expandTile(tile) {
-      serviceTiles.forEach(t => t.classList.remove('is-expanded', 'active'));
-      tile.classList.add('active', 'is-expanded');
-    }
-    serviceTiles.forEach((tile, index) => {
-      if (index === 0) expandTile(tile);
-      tile.addEventListener('mouseenter', () => {
-        if (window.innerWidth > 920) expandTile(tile);
-      });
-      tile.addEventListener('click', () => {
-        expandTile(tile);
-      });
-    });
-
     const translations = {
       en: {
+        navWhy: 'Why', navServices: 'Services', navShowcase: 'Showcase', navContact: 'Contact', navCta: 'Book a Call',
         heroTag: 'Affordable custom tech for SMEs',
         heroTitle: 'Technology,<br>Yours Truly.',
-        heroCopy: 'Flowent exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.',
-        heroBtn1: 'Talk on WhatsApp',
-        heroBtn2: 'Explore Services'
+        heroCopy: 'FLOWENT exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.',
+        heroBtn1: 'Talk on WhatsApp', heroBtn2: 'Explore Services',
+        sideLabel1: 'Built on actual need', sideTitle1: 'Custom.<br>Lean.<br>Useful.', sideCopy1: 'No fixed product shelf. FLOWENT starts with the friction point, then builds the most useful system around it.',
+        sideLabel2: 'Built to scale with the client', sideTitle2: 'Fast.<br>Sharp.<br>Scalable.', sideCopy2: 'Launch a focused version first. Add depth later. FLOWENT is designed to reduce complexity, not create more of it.',
+        whyEyebrow: 'Why FLOWENT started', whyTitle: 'Because smaller businesses deserve custom technology too', whyCopy: 'Many businesses do not need a giant software stack. They need the right subset, designed around how they really run. FLOWENT is built for that gap: fewer subscriptions, better fit, simpler systems, and more control.',
+        stat1Label: 'Problem', stat1Desc: 'Too many teams are trapped inside expensive subscriptions they barely use.',
+        stat2Label: 'Reality', stat2Desc: 'They need practical systems, not enterprise overhead with 70 unused modules.',
+        stat3Label: 'FLOWENT', stat3Desc: 'We design the stack around the client’s pain, workflow, budget, and internal capability.',
+        stat4Label: 'Outcome', stat4Desc: 'Lower cost, better adoption, cleaner visibility, and a system people actually use.',
+        chartLabel: 'FLOWENT value logic',
+        bar1: 'Traditional software cost', bar2: 'Custom build investment', bar3: 'Unused feature waste', bar4: 'Operational clarity gained',
+        servicesEyebrow: 'Services', servicesTitle: 'Built around the challenge, not a fixed catalog', servicesCopy: 'FLOWENT can build focused custom systems as standalone solutions or connected internal ecosystems.',
+        service1Title: 'Websites', service1Copy: 'Marketing websites, bilingual corporate sites, landing pages, and digital fronts built to feel serious without software bloat.',
+        service2Title: 'Recruitment Portals', service2Copy: 'Interactive hiring portals inside the client’s own website with branded vacancy pages and smarter application flow.',
+        service3Title: 'Employee Service Portals', service3Copy: 'Internal employee portals for requests, approvals, onboarding, profiles, notices, and self-service workflows.',
+        service4Title: 'ERP Systems', service4Copy: 'Focused operational systems tailored to the workflow instead of giant ERP complexity that the client does not need.',
+        service5Title: 'AI Internal Operations', service5Copy: 'Practical AI support for summaries, routing, automation, internal search, and repetitive operational assistance.',
+        service6Title: 'Dashboards & Monitoring', service6Copy: 'Custom dashboards and monitoring platforms for clearer visibility across leadership, teams, projects, and operations.',
+        showcaseEyebrow: 'Showcase', showcaseTitle: 'Not products. Operating layers.', showcaseCopy: 'The strongest version of FLOWENT is not a single service. It is a connected operating layer: website, internal portals, workflows, dashboards, and AI-enabled support inside one cleaner ecosystem.',
+        showcaseLabel1: 'FLOWENT operating logic', showcaseHead1: 'One ecosystem.<br>Less sprawl.', showcaseText1: 'Move away from scattered subscriptions and toward a simpler stack that is closer to the client’s own environment.',
+        kpi1: 'Website', kpi1Sub: 'brand layer', kpi2: 'Portal', kpi2Sub: 'internal layer', kpi3: 'Dashboard', kpi3Sub: 'visibility layer',
+        showcaseLabel2: 'What that means', step1Head: 'Fewer subscriptions', step1Text: 'Move away from paying for scattered tools that do not talk to each other well.', step2Head: 'More ownership', step2Text: 'Keep business logic and branded experience closer to the client’s own environment.', step3Head: 'Better fit', step3Text: 'Build around the real workflow instead of bending the workflow around software limitations.',
+        rail1Micro: 'Layer 01', rail1Title: 'Website', rail1Text: 'Where the brand, message, and first impression become sharper and more credible.',
+        rail2Micro: 'Layer 02', rail2Title: 'Portals', rail2Text: 'Where recruitment, employee service, and internal flows stop feeling disconnected.',
+        rail3Micro: 'Layer 03', rail3Title: 'Dashboards', rail3Text: 'Where leadership gets visibility, not just another report exported from elsewhere.',
+        rail4Micro: 'Layer 04', rail4Title: 'AI Ops', rail4Text: 'Where repetitive work is reduced and teams get assistance where it actually matters.',
+        opsEyebrow: 'Pain map', opsTitle: 'Where FLOWENT usually creates the most value',
+        ops1Title: 'Fragmented tools', ops1Text: 'Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.',
+        ops2Title: 'Weak visibility', ops2Text: 'Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.',
+        ops3Title: 'Cost mismatch', ops3Text: 'Teams pay enterprise-level subscription costs while using only a small fraction of the promised value.',
+        ops4Title: 'Bad fit', ops4Text: 'The software may be popular, but it still does not map cleanly to the company’s actual workflow or operating style.',
+        contactEyebrow: 'Contact', contactTitle: 'Tell FLOWENT where the friction is', contactCopy: 'If your company is overpaying for disconnected tools, struggling with internal visibility, or needs a custom system that actually matches how the business runs, FLOWENT is built for that.',
+        contactCard1Title: 'Start here', contactCard2Title: 'What to send us',
+        contactLi1: 'What tool or process is currently painful?', contactLi2: 'What are you paying for today?', contactLi3: 'What should be simplified, unified, or automated?', contactLi4: 'What would success look like in 90 days?',
+        contactBtn1: 'Talk on WhatsApp', contactBtn2: 'Email FLOWENT', footerText: 'Custom tech for smaller teams with serious ambition.'
       },
       ar: {
+        navWhy: 'لماذا', navServices: 'الخدمات', navShowcase: 'الاستعراض', navContact: 'التواصل', navCta: 'احجز مكالمة',
         heroTag: 'حلول تقنية مخصصة للمنشآت الصغيرة والمتوسطة',
         heroTitle: 'تقنية<br>مفصلة لك.',
-        heroCopy: 'فلوينت موجودة للشركات التي تحتاج أنظمة حقيقية، لا اشتراكات متضخمة. ندرس الألم التشغيلي الحقيقي لدى العميل، ثم نبني مواقع وبوابات وأدوات داخلية ولوحات متابعة وتدفقات عمل تناسب طبيعة النشاط بدلًا من إجبار النشاط أن يتكيّف مع البرنامج.',
-        heroBtn1: 'تواصل واتساب',
-        heroBtn2: 'استعرض الخدمات'
+        heroCopy: 'FLOWENT موجودة للشركات التي تحتاج أنظمة حقيقية، لا اشتراكات متضخمة. ندرس الألم التشغيلي الحقيقي لدى العميل، ثم نبني مواقع وبوابات وأدوات داخلية ولوحات متابعة وتدفقات عمل تناسب طبيعة النشاط بدلًا من إجبار النشاط أن يتكيّف مع البرنامج.',
+        heroBtn1: 'تواصل واتساب', heroBtn2: 'استعرض الخدمات',
+        sideLabel1: 'مبنية على الاحتياج الفعلي', sideTitle1: 'مخصص.<br>أخف.<br>أنفع.', sideCopy1: 'FLOWENT لا تبدأ من قائمة منتجات جاهزة، بل من نقطة الألم، ثم تبني النظام الأنسب حولها.',
+        sideLabel2: 'مبنية لتكبر مع العميل', sideTitle2: 'سريع.<br>أوضح.<br>قابل للتوسع.', sideCopy2: 'أطلق النسخة الأهم أولًا، ثم أضف العمق لاحقًا. FLOWENT تقلل التعقيد بدل ما تخلق تعقيدًا جديدًا.',
+        whyEyebrow: 'لماذا بدأت FLOWENT', whyTitle: 'لأن المنشآت الأصغر تستحق تقنية مخصصة أيضًا', whyCopy: 'كثير من الشركات لا تحتاج كومة برامج ضخمة. هي تحتاج الجزء الصحيح، المصمم حول طريقة عملها الفعلية. وهنا تأتي FLOWENT: اشتراكات أقل، ملاءمة أعلى، وأنظمة أبسط وتحكم أكبر.',
+        stat1Label: 'المشكلة', stat1Desc: 'فرق كثيرة عالقة داخل اشتراكات مكلفة لا تستفيد منها فعليًا.',
+        stat2Label: 'الواقع', stat2Desc: 'الاحتياج الحقيقي هو أنظمة عملية، لا حمل مؤسسي ضخم بعشرات الموديولات غير المستخدمة.',
+        stat3Label: 'FLOWENT', stat3Desc: 'نصمم الحل حول ألم العميل، وسير العمل، والميزانية، والقدرة الداخلية.',
+        stat4Label: 'النتيجة', stat4Desc: 'تكلفة أقل، تبنٍّ أفضل، وضوح أعلى، ونظام يستخدمه الفريق فعلًا.',
+        chartLabel: 'منطق قيمة FLOWENT',
+        bar1: 'تكلفة البرامج التقليدية', bar2: 'استثمار البناء المخصص', bar3: 'هدر الخصائص غير المستخدمة', bar4: 'الوضوح التشغيلي المكتسب',
+        servicesEyebrow: 'الخدمات', servicesTitle: 'مبنية حول التحدي، لا حول كتالوج ثابت', servicesCopy: 'FLOWENT تستطيع بناء أنظمة مخصصة مركزة كحلول مستقلة أو كمنظومات داخلية مترابطة.',
+        service1Title: 'المواقع الإلكترونية', service1Copy: 'مواقع تسويقية، شركات، صفحات هبوط، وواجهات رقمية ثنائية اللغة تبدو احترافية بدون تضخم برمجي.',
+        service2Title: 'بوابات التوظيف', service2Copy: 'بوابات توظيف تفاعلية داخل موقع العميل نفسه مع صفحات شاغر أكثر ذكاءً وتجربة تقديم أنظف.',
+        service3Title: 'بوابات خدمات الموظفين', service3Copy: 'بوابات داخلية للطلبات والموافقات والتعريف والتهيئة والإشعارات وخدمات الموظفين الذاتية.',
+        service4Title: 'أنظمة ERP', service4Copy: 'أنظمة تشغيلية مخصصة حول سير العمل بدل تعقيد ERP ضخم لا يحتاجه العميل كله.',
+        service5Title: 'الذكاء الاصطناعي الداخلي', service5Copy: 'دعم عملي بالذكاء الاصطناعي للتلخيص والتوجيه والأتمتة والبحث الداخلي والمساندة التشغيلية المتكررة.',
+        service6Title: 'الداشبوردز والمتابعة', service6Copy: 'لوحات متابعة ومنصات رؤية أوضح للإدارة والفرق والمشاريع والعمليات والقرارات.',
+        showcaseEyebrow: 'الاستعراض', showcaseTitle: 'ليست منتجات. بل طبقات تشغيل.', showcaseCopy: 'أقوى نسخة من FLOWENT ليست خدمة واحدة، بل طبقة تشغيل مترابطة: موقع، بوابات داخلية، تدفقات عمل، لوحات متابعة، ودعم ذكي داخل منظومة أنظف.',
+        showcaseLabel1: 'منطق تشغيل FLOWENT', showcaseHead1: 'منظومة واحدة.<br>تشظي أقل.', showcaseText1: 'ابتعد عن الاشتراكات المتناثرة، واقترب من ستاك أبسط وأقرب لبيئة العميل نفسه.',
+        kpi1: 'الموقع', kpi1Sub: 'طبقة العلامة', kpi2: 'البوابة', kpi2Sub: 'الطبقة الداخلية', kpi3: 'الداشبورد', kpi3Sub: 'طبقة الرؤية',
+        showcaseLabel2: 'ما معنى ذلك', step1Head: 'اشتراكات أقل', step1Text: 'ابتعد عن الدفع لأدوات متفرقة لا تتكلم مع بعضها بشكل جيد.', step2Head: 'ملكية أعلى', step2Text: 'ابقِ منطق العمل والتجربة البراندية أقرب لبيئة العميل نفسها.', step3Head: 'ملاءمة أفضل', step3Text: 'ابنِ حول سير العمل الحقيقي بدل ليّ سير العمل حتى يناسب قيود البرنامج.',
+        rail1Micro: 'طبقة 01', rail1Title: 'الموقع', rail1Text: 'حيث تصبح الرسالة والانطباع الأول والواجهة البراندية أكثر حدة واحترافًا.',
+        rail2Micro: 'طبقة 02', rail2Title: 'البوابات', rail2Text: 'حيث تتوقف التوظيفات والخدمات الداخلية والتدفقات عن الظهور كأجزاء منفصلة.',
+        rail3Micro: 'طبقة 03', rail3Title: 'الداشبوردز', rail3Text: 'حيث تحصل الإدارة على رؤية أوضح بدل تقرير آخر معزول عن بقية المنظومة.',
+        rail4Micro: 'طبقة 04', rail4Title: 'الذكاء التشغيلي', rail4Text: 'حيث يقل العمل المتكرر وتحصل الفرق على مساندة حيث يوجد أثر حقيقي.',
+        opsEyebrow: 'خريطة الألم', opsTitle: 'أين تصنع FLOWENT أكبر قيمة غالبًا',
+        ops1Title: 'أدوات متشظية', ops1Text: 'أنظمة كثيرة، حسابات دخول كثيرة، واعتماد كبير على برامج خارجية لم تُصمم أصلًا حول طبيعة العمل.',
+        ops2Title: 'رؤية ضعيفة', ops2Text: 'الإدارة لا ترى ما يهم في مكان واحد، فيبقى اتخاذ القرار أبطأ وأضباب مما يجب.',
+        ops3Title: 'تكلفة غير متناسبة', ops3Text: 'الفرق تدفع أسعارًا مؤسسية وهي تستفيد من جزء صغير فقط من القيمة الموعودة.',
+        ops4Title: 'ملاءمة سيئة', ops4Text: 'قد يكون البرنامج مشهورًا، لكنه لا يطابق شكل التشغيل الحقيقي داخل الشركة.',
+        contactEyebrow: 'التواصل', contactTitle: 'قل لـ FLOWENT أين نقطة الاحتكاك', contactCopy: 'إذا كانت شركتك تدفع كثيرًا لأدوات متفرقة، أو تعاني من ضعف الرؤية الداخلية، أو تحتاج نظامًا مخصصًا يناسب طريقة العمل فعلًا، فـ FLOWENT صُممت لهذا.',
+        contactCard1Title: 'ابدأ من هنا', contactCard2Title: 'وش ترسل لنا',
+        contactLi1: 'ما الأداة أو العملية المزعجة حاليًا؟', contactLi2: 'كم تدفعون اليوم؟', contactLi3: 'ما الذي يحتاج تبسيطًا أو توحيدًا أو أتمتة؟', contactLi4: 'كيف يبدو النجاح خلال 90 يومًا؟',
+        contactBtn1: 'تواصل واتساب', contactBtn2: 'راسل FLOWENT', footerText: 'تقنية مخصصة لفرق أصغر وطموح أكبر.'
       }
     };
 
     const langToggle = document.getElementById('langToggle');
     let currentLang = 'en';
+
     function applyLang(lang) {
       currentLang = lang;
       document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      body.classList.toggle('lang-ar', lang === 'ar');
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) el.innerHTML = translations[lang][key];
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
       });
-      langToggle.textContent = lang === 'ar' ? 'EN / AR' : 'AR / EN';
-      body.classList.toggle('lang-ar', lang === 'ar');
+      if (langToggle) {
+        langToggle.textContent = lang === 'ar' ? 'EN / AR' : 'AR / EN';
+      }
     }
 
     if (langToggle) {
@@ -2021,19 +1213,33 @@
 
     applyLang('en');
 
-    const heroPanels = document.querySelectorAll('.hero-main, .side-card');
-    heroPanels.forEach(panel => {
-      panel.addEventListener('mousemove', e => {
-        if (window.innerWidth < 1024) return;
-        const rect = panel.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        panel.style.transform = `translate3d(${x * 7}px, ${y * 7}px, 0)`;
+    const menuToggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        body.classList.toggle('menu-open');
       });
-      panel.addEventListener('mouseleave', () => {
-        panel.style.transform = 'translate3d(0,0,0)';
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => body.classList.remove('menu-open'));
       });
-    });
+    }
+
+    function endIntro() {
+      const intro = document.getElementById('intro');
+      intro.classList.add('hidden');
+      body.classList.remove('intro-active');
+      sessionStorage.setItem('flowent_intro_seen', '1');
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (sessionStorage.getItem('flowent_intro_seen') === '1' || reduceMotion) {
+      endIntro();
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(endIntro, 2200);
+      });
+      document.getElementById('intro').addEventListener('click', endIntro);
+    }
   </script>
 </body>
 </html>
