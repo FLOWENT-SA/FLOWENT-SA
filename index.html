@@ -618,46 +618,33 @@
     .services-stage {
       margin-top: 34px;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
       min-height: 640px;
-      border: 1px solid rgba(0,0,0,.09);
-      background: rgba(255,255,255,.8);
-      box-shadow: var(--shadow);
-      clip-path: polygon(0 0,100% 0,99% 100%,0 100%);
-      overflow: hidden;
     }
 
     .service-tile {
       position: relative;
       min-width: 0;
+      min-height: 640px;
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: flex-start;
-      padding: 26px 18px;
-      border-right: 1px solid rgba(0,0,0,.07);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,248,244,.95)),
-        linear-gradient(90deg, transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%),
-        linear-gradient(transparent 0, rgba(0,0,0,.02) 49.5%, transparent 50%);
-      background-size: auto, 120px 120px, 120px 120px;
+      padding: 24px 18px;
       cursor: pointer;
-      transition: grid-column .5s var(--ease), background .5s var(--ease), transform .4s var(--ease), width .4s var(--ease);
-      overflow: hidden;
+      transition: flex .45s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
       isolation: isolate;
     }
-
-    .service-tile:last-child { border-right: 0; }
 
     .service-tile::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 80% 20%, rgba(33,215,194,.20), transparent 0 22%),
-        radial-gradient(circle at 76% 20%, rgba(227,117,38,.12), transparent 0 30%);
+        radial-gradient(circle at 78% 18%, rgba(33,215,194,.18), transparent 0 20%),
+        radial-gradient(circle at 74% 22%, rgba(227,117,38,.12), transparent 0 28%);
       opacity: 0;
-      transition: opacity .45s var(--ease);
+      transition: opacity .4s var(--ease);
       z-index: 0;
     }
 
@@ -666,23 +653,23 @@
 
     .service-tile .service-name {
       position: absolute;
-      left: 22px;
-      bottom: 28px;
+      left: 18px;
+      bottom: 24px;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      font-size: 26px;
+      font-size: 24px;
       line-height: .95;
       letter-spacing: -.03em;
       text-transform: uppercase;
       color: var(--teal-deep);
-      transition: opacity .35s var(--ease), transform .4s var(--ease), color .35s var(--ease);
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
       z-index: 1;
     }
 
     .service-tile:hover .service-name,
     .service-tile.active .service-name {
       opacity: 0;
-      transform: rotate(180deg) translateY(-12px);
+      transform: rotate(180deg) translateY(-14px);
     }
 
     .service-panel {
@@ -690,8 +677,8 @@
       z-index: 1;
       width: 100%;
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .38s var(--ease), transform .38s var(--ease);
+      transform: translateY(24px);
+      transition: opacity .35s var(--ease), transform .35s var(--ease);
       pointer-events: none;
     }
 
@@ -766,8 +753,8 @@
       position: absolute;
       right: 22px;
       bottom: 22px;
-      width: min(36vw, 360px);
-      aspect-ratio: 1.05;
+      width: min(34vw, 340px);
+      aspect-ratio: 1.02;
       border: 1px solid rgba(0,0,0,.08);
       background:
         linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,248,245,.94)),
@@ -801,19 +788,16 @@
       letter-spacing: .14em;
     }
 
-    .service-tile:hover,
-    .service-tile.active {
-      transform: translateY(-4px);
+    .services-stage:hover .service-tile {
+      grid-column: span 1;
     }
 
-    .services-stage:has(.service-tile:hover) .service-tile,
     .services-stage .service-tile.active {
       grid-column: span 1;
     }
 
-    .services-stage:has(.service-tile:hover) .service-tile:hover,
-    .services-stage .service-tile.active {
-      grid-column: span 6;
+    .services-stage .service-tile.is-expanded {
+      grid-column: 1 / -1;
     }
 
     .story-grid,
@@ -1018,6 +1002,167 @@
       transform: translateY(0);
     }
 
+        .showcase-shell {
+      margin-top: 34px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .showcase-head {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .showcase-panel {
+      padding: 28px;
+      min-height: 280px;
+    }
+
+    .showcase-kpis {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .kpi-chip {
+      padding: 16px 16px 18px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.88);
+      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
+    }
+
+    .kpi-chip strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 28px;
+      line-height: .9;
+      color: var(--teal-deep);
+    }
+
+    .kpi-chip span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .rail {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(260px,1fr));
+      gap: 16px;
+    }
+
+    .rail-card {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      background: #efefea;
+      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
+      box-shadow: 0 16px 24px rgba(0,0,0,.06);
+      transform: translateZ(0);
+    }
+
+    .rail-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .85s var(--ease), filter .85s var(--ease);
+    }
+
+    .rail-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,.72) 100%);
+      z-index: 1;
+    }
+
+    .rail-meta {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .rail-meta .micro {
+      display: inline-flex;
+      min-height: 32px;
+      align-items: center;
+      padding: 0 10px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
+      backdrop-filter: blur(8px);
+    }
+
+    .rail-meta h4 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: .95;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+    }
+
+    .rail-meta p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.86);
+    }
+
+    .rail-card:hover img {
+      transform: scale(1.1);
+      filter: saturate(1.06) contrast(1.03);
+    }
+
+    .ops-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .ops-card {
+      padding: 22px;
+      min-height: 250px;
+    }
+
+    .ops-card h4 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+      color: var(--teal-deep);
+    }
+
+    .ops-card p { margin: 0; color: var(--text); line-height: 1.8; font-size: 15px; }
+
+    .ops-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      background: rgba(255,249,245,.92);
+      border: 1px solid rgba(227,117,38,.18);
+      color: var(--orange);
+      font-size: 15px;
+      font-weight: 700;
+      clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
+    }
+
     .site-footer {
       position: relative;
       z-index: 2;
@@ -1159,14 +1304,6 @@
     }
 
     @media (max-width: 1200px) {
-      .services-stage {
-        grid-template-columns: repeat(3, 1fr);
-        min-height: auto;
-      }
-      .services-stage:has(.service-tile:hover) .service-tile:hover,
-      .services-stage .service-tile.active {
-        grid-column: span 3;
-      }
       .service-visual {
         position: relative;
         right: auto;
@@ -1177,6 +1314,14 @@
     }
 
     @media (max-width: 1100px) {
+      .showcase-head,
+      .ops-grid,
+      .showcase-kpis {
+        grid-template-columns: 1fr;
+      }
+      .rail {
+        grid-template-columns: 1fr 1fr;
+      }
       .hero-grid,
       .stats-grid,
       .story-grid,
@@ -1200,15 +1345,11 @@
       .nav-right { margin-left: auto; }
       .services-stage {
         grid-template-columns: 1fr;
-      }
-      .services-stage:has(.service-tile:hover) .service-tile:hover,
-      .services-stage .service-tile.active {
-        grid-column: span 1;
+        min-height: auto;
       }
       .service-tile {
-        min-height: 120px;
-        border-right: 0;
-        border-bottom: 1px solid rgba(0,0,0,.07);
+        min-height: auto;
+        padding: 22px 18px;
       }
       .service-tile .service-name {
         position: relative;
@@ -1224,7 +1365,9 @@
         transform: none;
         display: none;
       }
+      .service-tile.is-expanded .service-panel,
       .service-tile.active .service-panel { display: block; }
+      .service-tile.is-expanded .service-name,
       .service-tile.active .service-name { display: none; }
     }
 
@@ -1244,6 +1387,8 @@
     }
 
     @media (max-width: 640px) {
+      .rail { grid-template-columns: 1fr; }
+      .ops-grid { grid-template-columns: 1fr; }
       .hero-actions { display: grid; }
       .btn { width: 100%; }
       .hero { padding-top: 30px; }
@@ -1280,7 +1425,7 @@
       </nav>
 
       <div class="nav-right">
-        <span class="lang-switch">AR / EN</span>
+        <button class="lang-switch" id="langToggle" type="button">AR / EN</button>
         <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span></button>
       </div>
@@ -1300,15 +1445,15 @@
       <div class="container hero-grid">
         <section class="panel hero-main">
           <div class="hero-inner">
-            <p class="hero-tag">Affordable custom tech for SMEs</p>
+            <p class="hero-tag" data-i18n="heroTag">Affordable custom tech for SMEs</p>
             <img class="hero-logo" src="assets/logo-main.svg" alt="Flowent main logo">
-            <h1 class="hero-title">Technology,<br>Yours Truly.</h1>
-            <p class="hero-copy">
+            <h1 class="hero-title" data-i18n="heroTitle">Technology,<br>Yours Truly.</h1>
+            <p class="hero-copy" data-i18n="heroCopy">
               Flowent exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Talk on WhatsApp</a>
-              <a class="btn btn-secondary" href="#services">Explore Services</a>
+              <a class="btn btn-primary" href="#contact" data-i18n="heroBtn1">Talk on WhatsApp</a>
+              <a class="btn btn-secondary" href="#services" data-i18n="heroBtn2">Explore Services</a>
             </div>
             <div class="hero-marquee">
               <span>Websites</span>
@@ -1322,11 +1467,11 @@
             <div class="bilingual">
               <div class="lang-block">
                 <p class="lang-title">English</p>
-                <p style="margin:0;line-height:1.9;">Flowent started because small and medium businesses often do not have the budget for overpriced platforms across HR, operations, accounting, dashboards, and internal systems. So instead of forcing subscriptions on them, we build exactly what they need in a simpler and more affordable way.</p>
+                <p id="langBlockEn" style="margin:0;line-height:1.9;">Flowent started because small and medium businesses often do not have the budget for overpriced platforms across HR, operations, accounting, dashboards, and internal systems. So instead of forcing subscriptions on them, we build exactly what they need in a simpler and more affordable way.</p>
               </div>
               <div class="lang-block" dir="rtl" lang="ar">
                 <p class="lang-title">العربية</p>
-                <p style="margin:0;line-height:2;">بدأت فلوينت لأن كثيرًا من المنشآت الصغيرة والمتوسطة تحتاج حلولًا تقنية فعلًا، لكن لا تملك ميزانيات ضخمة للاشتراك في منصات كثيرة ومكلفة. لذلك تبدأ فلوينت من فهم الاحتياج الحقيقي، ثم تبني حلًا مخصصًا، بسيطًا، وبتكلفة معقولة جدًا.</p>
+                <p id="langBlockAr" style="margin:0;line-height:2;">بدأت فلوينت لأن كثيرًا من المنشآت الصغيرة والمتوسطة تحتاج حلولًا تقنية فعلًا، لكن لا تملك ميزانيات ضخمة للاشتراك في منصات كثيرة ومكلفة. لذلك تبدأ فلوينت من فهم الاحتياج الحقيقي، ثم تبني حلًا مخصصًا، بسيطًا، وبتكلفة معقولة جدًا.</p>
               </div>
             </div>
           </div>
@@ -1408,7 +1553,7 @@
         </p>
 
         <div class="services-stage" id="servicesStage">
-          <article class="service-tile active">
+          <article class="panel service-tile active is-expanded">
             <div class="service-name">Websites</div>
             <div class="service-panel">
               <span class="service-kicker">01 / Websites</span>
@@ -1427,7 +1572,7 @@
             </div>
           </article>
 
-          <article class="service-tile">
+          <article class="panel service-tile">
             <div class="service-name">Recruitment</div>
             <div class="service-panel">
               <span class="service-kicker">02 / Recruitment Portals</span>
@@ -1446,7 +1591,7 @@
             </div>
           </article>
 
-          <article class="service-tile">
+          <article class="panel service-tile">
             <div class="service-name">Employee</div>
             <div class="service-panel">
               <span class="service-kicker">03 / Employee Service Portals</span>
@@ -1465,7 +1610,7 @@
             </div>
           </article>
 
-          <article class="service-tile">
+          <article class="panel service-tile">
             <div class="service-name">ERP</div>
             <div class="service-panel">
               <span class="service-kicker">04 / ERP Systems</span>
@@ -1484,7 +1629,7 @@
             </div>
           </article>
 
-          <article class="service-tile">
+          <article class="panel service-tile">
             <div class="service-name">AI Ops</div>
             <div class="service-panel">
               <span class="service-kicker">05 / AI Internal Operations</span>
@@ -1503,7 +1648,7 @@
             </div>
           </article>
 
-          <article class="service-tile">
+          <article class="panel service-tile">
             <div class="service-name">Dashboards</div>
             <div class="service-panel">
               <span class="service-kicker">06 / Dashboards & Monitoring</span>
@@ -1686,6 +1831,103 @@
     </section>
   </main>
 
+      <section class="section" id="showcase">
+      <div class="container">
+        <span class="eyebrow">Deeper showcase</span>
+        <h2 class="section-title">Not products. Operating layers.</h2>
+        <p class="section-copy">
+          Flowent can become the layer that connects how a business presents itself, hires, operates internally, sees its data, and removes unnecessary software friction.
+        </p>
+
+        <div class="showcase-shell">
+          <div class="showcase-head">
+            <article class="panel showcase-panel">
+              <span class="mini-label">Flowent Operating Logic</span>
+              <h3 style="margin:0 0 14px;font-size:44px;line-height:.92;letter-spacing:-.04em;text-transform:uppercase;color:var(--teal-deep);">One ecosystem.<br>Less sprawl.</h3>
+              <p style="margin:0;color:var(--text);line-height:1.85;font-size:16px;">The strongest version of Flowent is not a single service. It is a connected operating layer: public-facing website, internal portals, workflows, dashboards, and AI-enabled support sitting in one cleaner ecosystem.</p>
+              <div class="showcase-kpis">
+                <div class="kpi-chip"><strong>Website</strong><span>brand layer</span></div>
+                <div class="kpi-chip"><strong>Portal</strong><span>internal layer</span></div>
+                <div class="kpi-chip"><strong>Dashboard</strong><span>visibility layer</span></div>
+              </div>
+            </article>
+            <article class="panel showcase-panel">
+              <span class="mini-label">What that means</span>
+              <div class="timeline">
+                <div class="step"><div class="num">A</div><div><strong>Fewer subscriptions</strong><br>Move away from paying for scattered tools that do not talk to each other well.</div></div>
+                <div class="step"><div class="num">B</div><div><strong>More ownership</strong><br>Keep business logic and branded experience closer to the client’s own environment.</div></div>
+                <div class="step"><div class="num">C</div><div><strong>Better fit</strong><br>Build around the real workflow instead of bending the workflow around software limitations.</div></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="rail">
+            <article class="rail-card">
+              <img src="assets/rail-website.jpg" alt="Website layer showcase" onerror="this.style.display='none'">
+              <div class="rail-meta">
+                <span class="micro">Layer 01</span>
+                <h4>Website</h4>
+                <p>Where the brand, message, and first impression become sharper and more credible.</p>
+              </div>
+            </article>
+            <article class="rail-card">
+              <img src="assets/rail-portal.jpg" alt="Portal layer showcase" onerror="this.style.display='none'">
+              <div class="rail-meta">
+                <span class="micro">Layer 02</span>
+                <h4>Portals</h4>
+                <p>Where recruitment, employee service, and internal flows stop feeling disconnected.</p>
+              </div>
+            </article>
+            <article class="rail-card">
+              <img src="assets/rail-dashboard.jpg" alt="Dashboard layer showcase" onerror="this.style.display='none'">
+              <div class="rail-meta">
+                <span class="micro">Layer 03</span>
+                <h4>Dashboards</h4>
+                <p>Where leadership gets visibility, not just another report exported from elsewhere.</p>
+              </div>
+            </article>
+            <article class="rail-card">
+              <img src="assets/rail-ai.jpg" alt="AI layer showcase" onerror="this.style.display='none'">
+              <div class="rail-meta">
+                <span class="micro">Layer 04</span>
+                <h4>AI Ops</h4>
+                <p>Where repetitive work is reduced and teams get assistance where it actually matters.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ops-map">
+      <div class="container">
+        <span class="eyebrow">Pain map</span>
+        <h2 class="section-title">Where Flowent usually creates the most value</h2>
+        <div class="ops-grid">
+          <article class="panel ops-card">
+            <div class="ops-icon">01</div>
+            <h4>Fragmented tools</h4>
+            <p>Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.</p>
+          </article>
+          <article class="panel ops-card">
+            <div class="ops-icon">02</div>
+            <h4>Weak visibility</h4>
+            <p>Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.</p>
+          </article>
+          <article class="panel ops-card">
+            <div class="ops-icon">03</div>
+            <h4>Cost mismatch</h4>
+            <p>Teams pay enterprise-level subscription costs while using only a small fraction of the value promised.</p>
+          </article>
+          <article class="panel ops-card">
+            <div class="ops-icon">04</div>
+            <h4>Bad fit</h4>
+            <p>The software may be popular, but it still does not map cleanly to the company’s actual workflow or operating style.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
   <footer class="site-footer">
     <div class="container footer-row">
       <div>© 2026 Flowent. All Rights Reserved.</div>
@@ -1714,7 +1956,6 @@
       intro.addEventListener('click', endIntro);
     }
 
-    // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const drawer = document.getElementById('mobileDrawer');
     if (menuToggle) {
@@ -1726,25 +1967,60 @@
       });
     }
 
-    // Services interaction for touch + desktop fallback
-    const serviceTiles = document.querySelectorAll('.service-tile');
-    serviceTiles.forEach(tile => {
-      tile.addEventListener('click', () => {
-        if (window.innerWidth <= 920) {
-          const already = tile.classList.contains('active');
-          serviceTiles.forEach(t => t.classList.remove('active'));
-          if (!already) tile.classList.add('active');
-        }
-      });
+    const serviceTiles = [...document.querySelectorAll('.service-tile')];
+    function expandTile(tile) {
+      serviceTiles.forEach(t => t.classList.remove('is-expanded', 'active'));
+      tile.classList.add('active', 'is-expanded');
+    }
+    serviceTiles.forEach((tile, index) => {
+      if (index === 0) expandTile(tile);
       tile.addEventListener('mouseenter', () => {
-        if (window.innerWidth > 920) {
-          serviceTiles.forEach(t => t.classList.remove('active'));
-          tile.classList.add('active');
-        }
+        if (window.innerWidth > 920) expandTile(tile);
+      });
+      tile.addEventListener('click', () => {
+        expandTile(tile);
       });
     });
 
-    // Simple parallax nudge on hero cards
+    const translations = {
+      en: {
+        heroTag: 'Affordable custom tech for SMEs',
+        heroTitle: 'Technology,<br>Yours Truly.',
+        heroCopy: 'Flowent exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.',
+        heroBtn1: 'Talk on WhatsApp',
+        heroBtn2: 'Explore Services'
+      },
+      ar: {
+        heroTag: 'حلول تقنية مخصصة للمنشآت الصغيرة والمتوسطة',
+        heroTitle: 'تقنية<br>مفصلة لك.',
+        heroCopy: 'فلوينت موجودة للشركات التي تحتاج أنظمة حقيقية، لا اشتراكات متضخمة. ندرس الألم التشغيلي الحقيقي لدى العميل، ثم نبني مواقع وبوابات وأدوات داخلية ولوحات متابعة وتدفقات عمل تناسب طبيعة النشاط بدلًا من إجبار النشاط أن يتكيّف مع البرنامج.',
+        heroBtn1: 'تواصل واتساب',
+        heroBtn2: 'استعرض الخدمات'
+      }
+    };
+
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = 'en';
+    function applyLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) el.innerHTML = translations[lang][key];
+      });
+      langToggle.textContent = lang === 'ar' ? 'EN / AR' : 'AR / EN';
+      body.classList.toggle('lang-ar', lang === 'ar');
+    }
+
+    if (langToggle) {
+      langToggle.addEventListener('click', () => {
+        applyLang(currentLang === 'en' ? 'ar' : 'en');
+      });
+    }
+
+    applyLang('en');
+
     const heroPanels = document.querySelectorAll('.hero-main, .side-card');
     heroPanels.forEach(panel => {
       panel.addEventListener('mousemove', e => {
@@ -1752,7 +2028,7 @@
         const rect = panel.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        panel.style.transform = `translate3d(${x * 8}px, ${y * 8}px, 0)`;
+        panel.style.transform = `translate3d(${x * 7}px, ${y * 7}px, 0)`;
       });
       panel.addEventListener('mouseleave', () => {
         panel.style.transform = 'translate3d(0,0,0)';
