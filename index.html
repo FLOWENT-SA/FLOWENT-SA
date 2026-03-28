@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FLOWENT | Custom Tech That Fits</title>
+  <title>FLOWENT | Technology, Yours Truly.</title>
   <meta name="description" content="FLOWENT builds affordable custom technology for SMEs: websites, portals, dashboards, ERP systems, and AI-powered internal operations tools.">
 
   <style>
@@ -1071,281 +1071,132 @@
     </div>
   </footer>
 
- <script>
-  const body = document.body;
-  const introEl = document.getElementById('intro');
-  const langToggle = document.getElementById('langToggle');
-  const menuToggle = document.getElementById('menuToggle');
-  const drawer = document.getElementById('mobileDrawer');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  <script>
+  (() => {
+    const body = document.body;
+    const introEl = document.getElementById('intro');
+    const langToggle = document.getElementById('langToggle');
+    const menuBtn = document.getElementById('menuToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function endIntro() {
-    if (!introEl) return;
-    introEl.classList.add('hidden');
-    body.classList.remove('intro-active');
-    sessionStorage.setItem('flowent_intro_seen', '1');
-  }
-
-  if (sessionStorage.getItem('flowent_intro_seen') === '1' || reduceMotion) {
-    if (introEl) introEl.classList.add('hidden');
-    body.classList.remove('intro-active');
-  } else {
-    document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(endIntro, 1800);
-    });
-
-    window.addEventListener('load', () => {
-      setTimeout(endIntro, 2200);
-    });
-
-    if (introEl) {
-      introEl.addEventListener('click', endIntro);
+    function endIntro() {
+      if (!introEl) return;
+      introEl.classList.add('hidden');
+      body.classList.remove('intro-active');
+      try {
+        sessionStorage.setItem('flowent_intro_seen', '1');
+      } catch (e) {}
     }
 
-    setTimeout(endIntro, 3200);
-  }
+    try {
+      const seenIntro = sessionStorage.getItem('flowent_intro_seen') === '1';
+      if (seenIntro || reduceMotion) {
+        if (introEl) introEl.classList.add('hidden');
+        body.classList.remove('intro-active');
+      } else {
+        window.addEventListener('load', () => {
+          setTimeout(endIntro, 1800);
+        }, { once: true });
 
-  const translations = {
-    en: {
-      navWhy: 'Why',
-      navServices: 'Services',
-      navShowcase: 'Showcase',
-      navContact: 'Contact',
-      navCta: 'Book a Call',
+        document.addEventListener('DOMContentLoaded', () => {
+          setTimeout(endIntro, 2400);
+        }, { once: true });
 
-      heroTag: 'Affordable custom tech for SMEs',
-      heroTitle: 'Technology,<br>Yours Truly.',
-      heroCopy: 'FLOWENT exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.',
-      heroBtn1: 'Talk on WhatsApp',
-      heroBtn2: 'Explore Services',
+        if (introEl) {
+          introEl.addEventListener('click', endIntro, { once: true });
+        }
 
-      sideLabel1: 'Built on actual need',
-      sideTitle1: 'Custom.<br>Lean.<br>Useful.',
-      sideCopy1: 'No fixed product shelf. FLOWENT starts with the friction point, then builds the most useful system around it.',
-      sideLabel2: 'Built to scale with the client',
-      sideTitle2: 'Fast.<br>Sharp.<br>Scalable.',
-      sideCopy2: 'Launch a focused version first. Add depth later. FLOWENT is designed to reduce complexity, not create more of it.',
+        setTimeout(endIntro, 3200);
+      }
+    } catch (e) {
+      endIntro();
+    }
 
-      whyEyebrow: 'Why FLOWENT started',
-      whyTitle: 'Because smaller businesses deserve custom technology too',
-      whyCopy: 'Many businesses do not need a giant software stack. They need the right subset, designed around how they really run. FLOWENT is built for that gap: fewer subscriptions, better fit, simpler systems, and more control.',
-
-      stat1Label: 'Problem',
-      stat1Desc: 'Too many teams are trapped inside expensive subscriptions they barely use.',
-      stat2Label: 'Reality',
-      stat2Desc: 'They need practical systems, not enterprise overhead with 70 unused modules.',
-      stat3Label: 'FLOWENT',
-      stat3Desc: 'We design the stack around the client’s pain, workflow, budget, and internal capability.',
-      stat4Label: 'Outcome',
-      stat4Desc: 'Lower cost, better adoption, cleaner visibility, and a system people actually use.',
-
-      chartLabel: 'FLOWENT value logic',
-      bar1: 'Traditional software cost',
-      bar2: 'Custom build investment',
-      bar3: 'Unused feature waste',
-      bar4: 'Operational clarity gained',
-
-      servicesEyebrow: 'Services',
-      servicesTitle: 'Built around the challenge, not a fixed catalog',
-      servicesCopy: 'FLOWENT can build focused custom systems as standalone solutions or connected internal ecosystems.',
-
-      service1Title: 'Websites',
-      service1Copy: 'Marketing websites, bilingual corporate sites, landing pages, and digital fronts built to feel serious without software bloat.',
-      service2Title: 'Recruitment Portals',
-      service2Copy: 'Interactive hiring portals inside the client’s own website with branded vacancy pages and smarter application flow.',
-      service3Title: 'Employee Service Portals',
-      service3Copy: 'Internal employee portals for requests, approvals, onboarding, profiles, notices, and self-service workflows.',
-      service4Title: 'ERP Systems',
-      service4Copy: 'Focused operational systems tailored to the workflow instead of giant ERP complexity that the client does not need.',
-      service5Title: 'AI Internal Operations',
-      service5Copy: 'Practical AI support for summaries, routing, automation, internal search, and repetitive operational assistance.',
-      service6Title: 'Dashboards & Monitoring',
-      service6Copy: 'Custom dashboards and monitoring platforms for clearer visibility across leadership, teams, projects, and operations.',
-
-      showcaseEyebrow: 'Showcase',
-      showcaseTitle: 'Not products. Operating layers.',
-      showcaseCopy: 'The strongest version of FLOWENT is not a single service. It is a connected operating layer: website, internal portals, workflows, dashboards, and AI-enabled support inside one cleaner ecosystem.',
-
-      showcaseLabel1: 'FLOWENT operating logic',
-      showcaseHead1: 'One ecosystem.<br>Less sprawl.',
-      showcaseText1: 'Move away from scattered subscriptions and toward a simpler stack that is closer to the client’s own environment.',
-
-      kpi1: 'Website',
-      kpi1Sub: 'brand layer',
-      kpi2: 'Portal',
-      kpi2Sub: 'internal layer',
-      kpi3: 'Dashboard',
-      kpi3Sub: 'visibility layer',
-
-      showcaseLabel2: 'What that means',
-      step1Head: 'Fewer subscriptions',
-      step1Text: 'Move away from paying for scattered tools that do not talk to each other well.',
-      step2Head: 'More ownership',
-      step2Text: 'Keep business logic and branded experience closer to the client’s own environment.',
-      step3Head: 'Better fit',
-      step3Text: 'Build around the real workflow instead of bending the workflow around software limitations.',
-
-      rail1Micro: 'Layer 01',
-      rail1Title: 'Website',
-      rail1Text: 'Where the brand, message, and first impression become sharper and more credible.',
-      rail2Micro: 'Layer 02',
-      rail2Title: 'Portals',
-      rail2Text: 'Where recruitment, employee service, and internal flows stop feeling disconnected.',
-      rail3Micro: 'Layer 03',
-      rail3Title: 'Dashboards',
-      rail3Text: 'Where leadership gets visibility, not just another report exported from elsewhere.',
-      rail4Micro: 'Layer 04',
-      rail4Title: 'AI Ops',
-      rail4Text: 'Where repetitive work is reduced and teams get assistance where it actually matters.',
-
-      opsEyebrow: 'Pain map',
-      opsTitle: 'Where FLOWENT usually creates the most value',
-      ops1Title: 'Fragmented tools',
-      ops1Text: 'Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.',
-      ops2Title: 'Weak visibility',
-      ops2Text: 'Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.',
-      ops3Title: 'Cost mismatch',
-      ops3Text: 'Teams pay enterprise-level subscription costs while using only a small fraction of the promised value.',
-      ops4Title: 'Bad fit',
-      ops4Text: 'The software may be popular, but it still does not map cleanly to the company’s actual workflow or operating style.',
-
-      contactEyebrow: 'Contact',
-      contactTitle: 'Tell FLOWENT where the friction is',
-      contactCopy: 'If your company is overpaying for disconnected tools, struggling with internal visibility, or needs a custom system that actually matches how the business runs, FLOWENT is built for that.',
-      contactCard1Title: 'Start here',
-      contactCard2Title: 'What to send us',
-      contactLi1: 'What tool or process is currently painful?',
-      contactLi2: 'What are you paying for today?',
-      contactLi3: 'What should be simplified, unified, or automated?',
-      contactLi4: 'What would success look like in 90 days?',
-      contactBtn1: 'Talk on WhatsApp',
-      contactBtn2: 'Email FLOWENT',
-      footerText: 'Custom tech for smaller teams with serious ambition.'
-    },
-
-    ar: {
-      navWhy: 'لماذا',
-      navServices: 'الخدمات',
-      navShowcase: 'الاستعراض',
-      navContact: 'التواصل',
-      navCta: 'احجز مكالمة',
-
-      heroTag: 'حلول تقنية مخصصة للمنشآت الصغيرة والمتوسطة',
-      heroTitle: 'Technology,<br>Yours Truly.',
-      heroCopy: 'FLOWENT موجودة للشركات التي تحتاج أنظمة حقيقية، لا اشتراكات متضخمة. ندرس الألم التشغيلي الحقيقي لدى العميل، ثم نبني مواقع وبوابات وأدوات داخلية ولوحات متابعة وتدفقات عمل تناسب طبيعة النشاط بدلًا من إجبار النشاط أن يتكيّف مع البرنامج.',
-      heroBtn1: 'تواصل واتساب',
-      heroBtn2: 'استعرض الخدمات',
-
-      sideLabel1: 'مبنية على الاحتياج الفعلي',
-      sideTitle1: 'مخصص.<br>أخف.<br>أنفع.',
-      sideCopy1: 'FLOWENT لا تبدأ من قائمة منتجات جاهزة، بل من نقطة الألم، ثم تبني النظام الأنسب حولها.',
-      sideLabel2: 'مبنية لتكبر مع العميل',
-      sideTitle2: 'سريع.<br>أوضح.<br>قابل للتوسع.',
-      sideCopy2: 'أطلق النسخة الأهم أولًا، ثم أضف العمق لاحقًا. FLOWENT تقلل التعقيد بدل ما تخلق تعقيدًا جديدًا.',
-
-      whyEyebrow: 'لماذا بدأت FLOWENT',
-      whyTitle: 'لأن المنشآت الأصغر تستحق تقنية مخصصة أيضًا',
-      whyCopy: 'كثير من الشركات لا تحتاج كومة برامج ضخمة. هي تحتاج الجزء الصحيح، المصمم حول طريقة عملها الفعلية. وهنا تأتي FLOWENT: اشتراكات أقل، ملاءمة أعلى، وأنظمة أبسط وتحكم أكبر.',
-
-      stat1Label: 'المشكلة',
-      stat1Desc: 'فرق كثيرة عالقة داخل اشتراكات مكلفة لا تستفيد منها فعليًا.',
-      stat2Label: 'الواقع',
-      stat2Desc: 'الاحتياج الحقيقي هو أنظمة عملية، لا حمل مؤسسي ضخم بعشرات الموديولات غير المستخدمة.',
-      stat3Label: 'FLOWENT',
-      stat3Desc: 'نصمم الحل حول ألم العميل، وسير العمل، والميزانية، والقدرة الداخلية.',
-      stat4Label: 'النتيجة',
-      stat4Desc: 'تكلفة أقل، تبنٍّ أفضل، وضوح أعلى، ونظام يستخدمه الفريق فعلًا.',
-
-      chartLabel: 'منطق قيمة FLOWENT',
-      bar1: 'تكلفة البرامج التقليدية',
-      bar2: 'استثمار البناء المخصص',
-      bar3: 'هدر الخصائص غير المستخدمة',
-      bar4: 'الوضوح التشغيلي المكتسب',
-
-      servicesEyebrow: 'الخدمات',
-      servicesTitle: 'مبنية حول التحدي، لا حول كتالوج ثابت',
-      servicesCopy: 'FLOWENT تستطيع بناء أنظمة مخصصة مركزة كحلول مستقلة أو كمنظومات داخلية مترابطة.',
-
-      service1Title: 'المواقع الإلكترونية',
-      service1Copy: 'مواقع تسويقية، شركات، صفحات هبوط، وواجهات رقمية ثنائية اللغة تبدو احترافية بدون تضخم برمجي.',
-      service2Title: 'بوابات التوظيف',
-      service2Copy: 'بوابات توظيف تفاعلية داخل موقع العميل نفسه مع صفحات شاغر أكثر ذكاءً وتجربة تقديم أنظف.',
-      service3Title: 'بوابات خدمات الموظفين',
-      service3Copy: 'بوابات داخلية للطلبات والموافقات والتعريف والتهيئة والإشعارات وخدمات الموظفين الذاتية.',
-      service4Title: 'أنظمة ERP',
-      service4Copy: 'أنظمة تشغيلية مخصصة حول سير العمل بدل تعقيد ERP ضخم لا يحتاجه العميل كله.',
-      service5Title: 'الذكاء الاصطناعي الداخلي',
-      service5Copy: 'دعم عملي بالذكاء الاصطناعي للتلخيص والتوجيه والأتمتة والبحث الداخلي والمساندة التشغيلية المتكررة.',
-      service6Title: 'الداشبوردز والمتابعة',
-      service6Copy: 'لوحات متابعة ومنصات رؤية أوضح للإدارة والفرق والمشاريع والعمليات والقرارات.',
-
-      showcaseEyebrow: 'الاستعراض',
-      showcaseTitle: 'ليست منتجات. بل طبقات تشغيل.',
-      showcaseCopy: 'أقوى نسخة من FLOWENT ليست خدمة واحدة، بل طبقة تشغيل مترابطة: موقع، بوابات داخلية، تدفقات عمل، لوحات متابعة، ودعم ذكي داخل منظومة أنظف.',
-
-      showcaseLabel1: 'منطق تشغيل FLOWENT',
-      showcaseHead1: 'منظومة واحدة.<br>تشظي أقل.',
-      showcaseText1: 'ابتعد عن الاشتراكات المتناثرة، واقترب من ستاك أبسط وأقرب لبيئة العميل نفسه.',
-
-      kpi1: 'الموقع',
-      kpi1Sub: 'طبقة العلامة',
-      kpi2: 'البوابة',
-      kpi2Sub: 'الطبقة الداخلية',
-      kpi3: 'الداشبورد',
-      kpi3Sub: 'طبقة الرؤية',
-
-      showcaseLabel2: 'ما معنى ذلك',
-      step1Head: 'اشتراكات أقل',
-      step1Text: 'ابتعد عن الدفع لأدوات متفرقة لا تتكلم مع بعضها بشكل جيد.',
-      step2Head: 'ملكية أعلى',
-      step2Text: 'ابقِ منطق العمل والتجربة البراندية أقرب لبيئة العميل نفسها.',
-      step3Head: 'ملاءمة أفضل',
-      step3Text: 'ابنِ حول سير العمل الحقيقي بدل ليّ سير العمل حتى يناسب قيود البرنامج.',
-
-      rail1Micro: 'طبقة 01',
-      rail1Title: 'الموقع',
-      rail1Text: 'حيث تصبح الرسالة والانطباع الأول والواجهة البراندية أكثر حدة واحترافًا.',
-      rail2Micro: 'طبقة 02',
-      rail2Title: 'البوابات',
-      rail2Text: 'حيث تتوقف التوظيفات والخدمات الداخلية والتدفقات عن الظهور كأجزاء منفصلة.',
-      rail3Micro: 'طبقة 03',
-      rail3Title: 'الداشبوردز',
-      rail3Text: 'حيث تحصل الإدارة على رؤية أوضح بدل تقرير آخر معزول عن بقية المنظومة.',
-      rail4Micro: 'طبقة 04',
-      rail4Title: 'الذكاء التشغيلي',
-      rail4Text: 'حيث يقل العمل المتكرر وتحصل الفرق على مساندة حيث يوجد أثر حقيقي.',
-
-      opsEyebrow: 'خريطة الألم',
-      opsTitle: 'أين تصنع FLOWENT أكبر قيمة غالبًا',
-      ops1Title: 'أدوات متشظية',
-      ops1Text: 'أنظمة كثيرة، حسابات دخول كثيرة، واعتماد كبير على برامج خارجية لم تُصمم أصلًا حول طبيعة العمل.',
-      ops2Title: 'رؤية ضعيفة',
-      ops2Text: 'الإدارة لا ترى ما يهم في مكان واحد، فيبقى اتخاذ القرار أبطأ وأضباب مما يجب.',
-      ops3Title: 'تكلفة غير متناسبة',
-      ops3Text: 'الفرق تدفع أسعارًا مؤسسية وهي تستفيد من جزء صغير فقط من القيمة الموعودة.',
-      ops4Title: 'ملاءمة سيئة',
-      ops4Text: 'قد يكون البرنامج مشهورًا، لكنه لا يطابق شكل التشغيل الحقيقي داخل الشركة.',
-
-      contactEyebrow: 'التواصل',
-      contactTitle: 'قل لـ FLOWENT أين نقطة الاحتكاك',
-      contactCopy: 'إذا كانت شركتك تدفع كثيرًا لأدوات متفرقة، أو تعاني من ضعف الرؤية الداخلية، أو تحتاج نظامًا مخصصًا يناسب طريقة العمل فعلًا، فـ FLOWENT صُممت لهذا.',
-      contactCard1Title: 'ابدأ من هنا',
-      contactCard2Title: 'وش ترسل لنا',
-      contactLi1: 'ما الأداة أو العملية المزعجة حاليًا؟',
-      contactLi2: 'كم تدفعون اليوم؟',
-      contactLi3: 'ما الذي يحتاج تبسيطًا أو توحيدًا أو أتمتة؟',
-      contactLi4: 'كيف يبدو النجاح خلال 90 يومًا؟',
-      contactBtn1: 'تواصل واتساب',
-      contactBtn2: 'راسل FLOWENT',
-      footerText: 'تقنية مخصصة لفرق أصغر وطموح أكبر.'
+    const translations = {
+      en: {
+        navWhy: 'Why', navServices: 'Services', navShowcase: 'Showcase', navContact: 'Contact', navCta: 'Book a Call',
+        heroTag: 'Affordable custom tech for SMEs',
+        heroTitle: 'Technology,<br>Yours Truly.',
+        heroCopy: 'FLOWENT exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.',
+        heroBtn1: 'Talk on WhatsApp', heroBtn2: 'Explore Services',
+        sideLabel1: 'Built on actual need', sideTitle1: 'Custom.<br>Lean.<br>Useful.', sideCopy1: 'No fixed product shelf. FLOWENT starts with the friction point, then builds the most useful system around it.',
+        sideLabel2: 'Built to scale with the client', sideTitle2: 'Fast.<br>Sharp.<br>Scalable.', sideCopy2: 'Launch a focused version first. Add depth later. FLOWENT is designed to reduce complexity, not create more of it.',
+        whyEyebrow: 'Why FLOWENT started', whyTitle: 'Because smaller businesses deserve custom technology too', whyCopy: 'Many businesses do not need a giant software stack. They need the right subset, designed around how they really run. FLOWENT is built for that gap: fewer subscriptions, better fit, simpler systems, and more control.',
+        stat1Label: 'Problem', stat1Desc: 'Too many teams are trapped inside expensive subscriptions they barely use.',
+        stat2Label: 'Reality', stat2Desc: 'They need practical systems, not enterprise overhead with 70 unused modules.',
+        stat3Label: 'FLOWENT', stat3Desc: 'We design the stack around the client’s pain, workflow, budget, and internal capability.',
+        stat4Label: 'Outcome', stat4Desc: 'Lower cost, better adoption, cleaner visibility, and a system people actually use.',
+        chartLabel: 'FLOWENT value logic',
+        bar1: 'Traditional software cost', bar2: 'Custom build investment', bar3: 'Unused feature waste', bar4: 'Operational clarity gained',
+        servicesEyebrow: 'Services', servicesTitle: 'Built around the challenge, not a fixed catalog', servicesCopy: 'FLOWENT can build focused custom systems as standalone solutions or connected internal ecosystems.',
+        service1Title: 'Websites', service1Copy: 'Marketing websites, bilingual corporate sites, landing pages, and digital fronts built to feel serious without software bloat.',
+        service2Title: 'Recruitment Portals', service2Copy: 'Interactive hiring portals inside the client’s own website with branded vacancy pages and smarter application flow.',
+        service3Title: 'Employee Service Portals', service3Copy: 'Internal employee portals for requests, approvals, onboarding, profiles, notices, and self-service workflows.',
+        service4Title: 'ERP Systems', service4Copy: 'Focused operational systems tailored to the workflow instead of giant ERP complexity that the client does not need.',
+        service5Title: 'AI Internal Operations', service5Copy: 'Practical AI support for summaries, routing, automation, internal search, and repetitive operational assistance.',
+        service6Title: 'Dashboards & Monitoring', service6Copy: 'Custom dashboards and monitoring platforms for clearer visibility across leadership, teams, projects, and operations.',
+        showcaseEyebrow: 'Showcase', showcaseTitle: 'Not products. Operating layers.', showcaseCopy: 'The strongest version of FLOWENT is not a single service. It is a connected operating layer: website, internal portals, workflows, dashboards, and AI-enabled support inside one cleaner ecosystem.',
+        showcaseLabel1: 'FLOWENT operating logic', showcaseHead1: 'One ecosystem.<br>Less sprawl.', showcaseText1: 'Move away from scattered subscriptions and toward a simpler stack that is closer to the client’s own environment.',
+        kpi1: 'Website', kpi1Sub: 'brand layer', kpi2: 'Portal', kpi2Sub: 'internal layer', kpi3: 'Dashboard', kpi3Sub: 'visibility layer',
+        showcaseLabel2: 'What that means', step1Head: 'Fewer subscriptions', step1Text: 'Move away from paying for scattered tools that do not talk to each other well.', step2Head: 'More ownership', step2Text: 'Keep business logic and branded experience closer to the client’s own environment.', step3Head: 'Better fit', step3Text: 'Build around the real workflow instead of bending the workflow around software limitations.',
+        rail1Micro: 'Layer 01', rail1Title: 'Website', rail1Text: 'Where the brand, message, and first impression become sharper and more credible.',
+        rail2Micro: 'Layer 02', rail2Title: 'Portals', rail2Text: 'Where recruitment, employee service, and internal flows stop feeling disconnected.',
+        rail3Micro: 'Layer 03', rail3Title: 'Dashboards', rail3Text: 'Where leadership gets visibility, not just another report exported from elsewhere.',
+        rail4Micro: 'Layer 04', rail4Title: 'AI Ops', rail4Text: 'Where repetitive work is reduced and teams get assistance where it actually matters.',
+        opsEyebrow: 'Pain map', opsTitle: 'Where FLOWENT usually creates the most value',
+        ops1Title: 'Fragmented tools', ops1Text: 'Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.',
+        ops2Title: 'Weak visibility', ops2Text: 'Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.',
+        ops3Title: 'Cost mismatch', ops3Text: 'Teams pay enterprise-level subscription costs while using only a small fraction of the promised value.',
+        ops4Title: 'Bad fit', ops4Text: 'The software may be popular, but it still does not map cleanly to the company’s actual workflow or operating style.',
+        contactEyebrow: 'Contact', contactTitle: 'Tell FLOWENT where the friction is', contactCopy: 'If your company is overpaying for disconnected tools, struggling with internal visibility, or needs a custom system that actually matches how the business runs, FLOWENT is built for that.',
+        contactCard1Title: 'Start here', contactCard2Title: 'What to send us',
+        contactLi1: 'What tool or process is currently painful?', contactLi2: 'What are you paying for today?', contactLi3: 'What should be simplified, unified, or automated?', contactLi4: 'What would success look like in 90 days?',
+        contactBtn1: 'Talk on WhatsApp', contactBtn2: 'Email FLOWENT', footerText: 'Technology, Yours Truly.'
+      },
+      ar: {
+        navWhy: 'لماذا', navServices: 'الخدمات', navShowcase: 'الاستعراض', navContact: 'التواصل', navCta: 'احجز مكالمة',
+        heroTag: 'حلول تقنية مخصصة للمنشآت الصغيرة والمتوسطة',
+        heroTitle: 'Technology,<br>Yours Truly.',
+        heroCopy: 'FLOWENT موجودة للشركات التي تحتاج أنظمة حقيقية، لا اشتراكات متضخمة. ندرس الألم التشغيلي الحقيقي لدى العميل، ثم نبني مواقع وبوابات وأدوات داخلية ولوحات متابعة وتدفقات عمل تناسب طبيعة النشاط بدلًا من إجبار النشاط أن يتكيّف مع البرنامج.',
+        heroBtn1: 'تواصل واتساب', heroBtn2: 'استعرض الخدمات',
+        sideLabel1: 'مبنية على الاحتياج الفعلي', sideTitle1: 'مخصص.<br>أخف.<br>أنفع.', sideCopy1: 'FLOWENT لا تبدأ من قائمة منتجات جاهزة، بل من نقطة الألم، ثم تبني النظام الأنسب حولها.',
+        sideLabel2: 'مبنية لتكبر مع العميل', sideTitle2: 'سريع.<br>أوضح.<br>قابل للتوسع.', sideCopy2: 'أطلق النسخة الأهم أولًا، ثم أضف العمق لاحقًا. FLOWENT تقلل التعقيد بدل ما تخلق تعقيدًا جديدًا.',
+        whyEyebrow: 'لماذا بدأت FLOWENT', whyTitle: 'لأن المنشآت الأصغر تستحق تقنية مخصصة أيضًا', whyCopy: 'كثير من الشركات لا تحتاج كومة برامج ضخمة. هي تحتاج الجزء الصحيح، المصمم حول طريقة عملها الفعلية. وهنا تأتي FLOWENT: اشتراكات أقل، ملاءمة أعلى، وأنظمة أبسط وتحكم أكبر.',
+        stat1Label: 'المشكلة', stat1Desc: 'فرق كثيرة عالقة داخل اشتراكات مكلفة لا تستفيد منها فعليًا.',
+        stat2Label: 'الواقع', stat2Desc: 'الاحتياج الحقيقي هو أنظمة عملية، لا حمل مؤسسي ضخم بعشرات الموديولات غير المستخدمة.',
+        stat3Label: 'FLOWENT', stat3Desc: 'نصمم الحل حول ألم العميل، وسير العمل، والميزانية، والقدرة الداخلية.',
+        stat4Label: 'النتيجة', stat4Desc: 'تكلفة أقل، تبنٍّ أفضل، وضوح أعلى، ونظام يستخدمه الفريق فعلًا.',
+        chartLabel: 'منطق قيمة FLOWENT',
+        bar1: 'تكلفة البرامج التقليدية', bar2: 'استثمار البناء المخصص', bar3: 'هدر الخصائص غير المستخدمة', bar4: 'الوضوح التشغيلي المكتسب',
+        servicesEyebrow: 'الخدمات', servicesTitle: 'مبنية حول التحدي، لا حول كتالوج ثابت', servicesCopy: 'FLOWENT تستطيع بناء أنظمة مخصصة مركزة كحلول مستقلة أو كمنظومات داخلية مترابطة.',
+        service1Title: 'المواقع الإلكترونية', service1Copy: 'مواقع تسويقية، شركات، صفحات هبوط، وواجهات رقمية ثنائية اللغة تبدو احترافية بدون تضخم برمجي.',
+        service2Title: 'بوابات التوظيف', service2Copy: 'بوابات توظيف تفاعلية داخل موقع العميل نفسه مع صفحات شاغر أكثر ذكاءً وتجربة تقديم أنظف.',
+        service3Title: 'بوابات خدمات الموظفين', service3Copy: 'بوابات داخلية للطلبات والموافقات والتعريف والتهيئة والإشعارات وخدمات الموظفين الذاتية.',
+        service4Title: 'أنظمة ERP', service4Copy: 'أنظمة تشغيلية مخصصة حول سير العمل بدل تعقيد ERP ضخم لا يحتاجه العميل كله.',
+        service5Title: 'الذكاء الاصطناعي الداخلي', service5Copy: 'دعم عملي بالذكاء الاصطناعي للتلخيص والتوجيه والأتمتة والبحث الداخلي والمساندة التشغيلية المتكررة.',
+        service6Title: 'الداشبوردز والمتابعة', service6Copy: 'لوحات متابعة ومنصات رؤية أوضح للإدارة والفرق والمشاريع والعمليات والقرارات.',
+        showcaseEyebrow: 'الاستعراض', showcaseTitle: 'ليست منتجات. بل طبقات تشغيل.', showcaseCopy: 'أقوى نسخة من FLOWENT ليست خدمة واحدة، بل طبقة تشغيل مترابطة: موقع، بوابات داخلية، تدفقات عمل، لوحات متابعة، ودعم ذكي داخل منظومة أنظف.',
+        showcaseLabel1: 'منطق تشغيل FLOWENT', showcaseHead1: 'منظومة واحدة.<br>تشظي أقل.', showcaseText1: 'ابتعد عن الاشتراكات المتناثرة، واقترب من ستاك أبسط وأقرب لبيئة العميل نفسه.',
+        kpi1: 'الموقع', kpi1Sub: 'طبقة العلامة', kpi2: 'البوابة', kpi2Sub: 'الطبقة الداخلية', kpi3: 'الداشبورد', kpi3Sub: 'طبقة الرؤية',
+        showcaseLabel2: 'ما معنى ذلك', step1Head: 'اشتراكات أقل', step1Text: 'ابتعد عن الدفع لأدوات متفرقة لا تتكلم مع بعضها بشكل جيد.', step2Head: 'ملكية أعلى', step2Text: 'ابقِ منطق العمل والتجربة البراندية أقرب لبيئة العميل نفسها.', step3Head: 'ملاءمة أفضل', step3Text: 'ابنِ حول سير العمل الحقيقي بدل ليّ سير العمل حتى يناسب قيود البرنامج.',
+        rail1Micro: 'طبقة 01', rail1Title: 'الموقع', rail1Text: 'حيث تصبح الرسالة والانطباع الأول والواجهة البراندية أكثر حدة واحترافًا.',
+        rail2Micro: 'طبقة 02', rail2Title: 'البوابات', rail2Text: 'حيث تتوقف التوظيفات والخدمات الداخلية والتدفقات عن الظهور كأجزاء منفصلة.',
+        rail3Micro: 'طبقة 03', rail3Title: 'الداشبوردز', rail3Text: 'حيث تحصل الإدارة على رؤية أوضح بدل تقرير آخر معزول عن بقية المنظومة.',
+        rail4Micro: 'طبقة 04', rail4Title: 'الذكاء التشغيلي', rail4Text: 'حيث يقل العمل المتكرر وتحصل الفرق على مساندة حيث يوجد أثر حقيقي.',
+        opsEyebrow: 'خريطة الألم', opsTitle: 'أين تصنع FLOWENT أكبر قيمة غالبًا',
+        ops1Title: 'أدوات متشظية', ops1Text: 'أنظمة كثيرة، حسابات دخول كثيرة، واعتماد كبير على برامج خارجية لم تُصمم أصلًا حول طبيعة العمل.',
+        ops2Title: 'رؤية ضعيفة', ops2Text: 'الإدارة لا ترى ما يهم في مكان واحد، فيبقى اتخاذ القرار أبطأ وأضباب مما يجب.',
+        ops3Title: 'تكلفة غير متناسبة', ops3Text: 'الفرق تدفع أسعارًا مؤسسية وهي تستفيد من جزء صغير فقط من القيمة الموعودة.',
+        ops4Title: 'ملاءمة سيئة', ops4Text: 'قد يكون البرنامج مشهورًا، لكنه لا يطابق شكل التشغيل الحقيقي داخل الشركة.',
+        contactEyebrow: 'التواصل', contactTitle: 'قل لـ FLOWENT أين نقطة الاحتكاك', contactCopy: 'إذا كانت شركتك تدفع كثيرًا لأدوات متفرقة، أو تعاني من ضعف الرؤية الداخلية، أو تحتاج نظامًا مخصصًا يناسب طريقة العمل فعلًا، فـ FLOWENT صُممت لهذا.',
+        contactCard1Title: 'ابدأ من هنا', contactCard2Title: 'وش ترسل لنا',
+        contactLi1: 'ما الأداة أو العملية المزعجة حاليًا؟', contactLi2: 'كم تدفعون اليوم؟', contactLi3: 'ما الذي يحتاج تبسيطًا أو توحيدًا أو أتمتة؟', contactLi4: 'كيف يبدو النجاح خلال 90 يومًا؟',
+        contactBtn1: 'تواصل واتساب', contactBtn2: 'راسل FLOWENT', footerText: 'تقنية، مفصلة لك.'
       }
     };
 
-    const langToggle = document.getElementById('langToggle');
-    let currentLang = 'en';
-
     function applyLang(lang) {
-      currentLang = lang;
       document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       body.classList.toggle('lang-ar', lang === 'ar');
@@ -1360,51 +1211,36 @@
       }
     }
 
+    let currentLang = 'en';
     if (langToggle) {
       langToggle.addEventListener('click', () => {
-        applyLang(currentLang === 'en' ? 'ar' : 'en');
+        currentLang = currentLang === 'en' ? 'ar' : 'en';
+        applyLang(currentLang);
       });
     }
 
     applyLang('en');
 
-    const menuToggle = document.getElementById('menuToggle');
-    const drawer = document.getElementById('mobileDrawer');
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
         body.classList.toggle('menu-open');
       });
-      drawer.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => body.classList.remove('menu-open'));
-      });
-    }
-
-    function endIntro() {
-      const intro = document.getElementById('intro');
-      if (!intro) return;
-
-      intro.classList.add('hidden');
-      body.classList.remove('intro-active');
-      sessionStorage.setItem('flowent_intro_seen', '1');
-    }
-
-    const introEl = document.getElementById('intro');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (sessionStorage.getItem('flowent_intro_seen') === '1' || reduceMotion) {
-      if (introEl) introEl.classList.add('hidden');
-      body.classList.remove('intro-active');
-    } else {
-      window.addEventListener('load', () => {
-        setTimeout(endIntro, 2200);
-      });
-
-      if (introEl) {
-        introEl.addEventListener('click', endIntro);
+      if (drawer) {
+        drawer.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => body.classList.remove('menu-open'));
+        });
       }
-
-      setTimeout(endIntro, 3200);
     }
-  </script>
+  })();
+</script>```
+
+هذا يحل خطأ `Identifier 'menuToggle' has already been declared` لأن السكربت صار داخل IIFE ومعرّفات نظيفة غير مكررة، ويحل تعليق الـ glitch لأنه صار عندك 3 مسارات لإغلاقه: `DOMContentLoaded` و`load` وfallback إجباري بعد 3.2 ثواني. fileciteturn1file0
+
+بعدها سو:
+1. استبدل آخر `<script>` كامل.
+2. احفظ و`Commit changes`.
+3. افتح الموقع في نافذة خاصة أو سو hard refresh.
+
+إذا تبي، أطلع لك بعدها نسخة `index.html` كاملة جاهزة بدون ترقيع.
 </body>
 </html>
