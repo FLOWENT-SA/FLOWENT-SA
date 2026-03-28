@@ -1225,21 +1225,31 @@
     }
 
     function endIntro() {
-      const intro = document.getElementById('intro');
-      intro.classList.add('hidden');
-      body.classList.remove('intro-active');
-      sessionStorage.setItem('flowent_intro_seen', '1');
-    }
+  const intro = document.getElementById('intro');
+  if (!intro) return;
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (sessionStorage.getItem('flowent_intro_seen') === '1' || reduceMotion) {
-      endIntro();
-    } else {
-      window.addEventListener('load', () => {
-        setTimeout(endIntro, 2200);
-      });
-      document.getElementById('intro').addEventListener('click', endIntro);
-    }
+  intro.classList.add('hidden');
+  body.classList.remove('intro-active');
+  sessionStorage.setItem('flowent_intro_seen', '1');
+}
+
+const introEl = document.getElementById('intro');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (sessionStorage.getItem('flowent_intro_seen') === '1' || reduceMotion) {
+  if (introEl) introEl.classList.add('hidden');
+  body.classList.remove('intro-active');
+} else {
+  window.addEventListener('load', () => {
+    setTimeout(endIntro, 2200);
+  });
+
+  if (introEl) {
+    introEl.addEventListener('click', endIntro);
+  }
+
+  setTimeout(endIntro, 3200);
+}
   </script>
 </body>
 </html>
