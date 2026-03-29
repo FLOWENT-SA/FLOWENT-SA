@@ -73,7 +73,10 @@
     img { display: block; max-width: 100%; }
     button { font: inherit; }
 
-    .container { width: min(calc(100% - 32px), var(--container)); margin: 0 auto; }
+    .container {
+      width: min(calc(100% - 32px), var(--container));
+      margin: 0 auto;
+    }
 
     .grid-overlay {
       position: fixed;
@@ -471,30 +474,12 @@
       text-transform: uppercase;
       color: var(--teal-deep);
     }
-    .side-copy { margin: 0; max-width: 420px; font-size: 17px; line-height: 1.8; color: var(--text); }
-    .video-shell {
-      margin-top: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(227,117,38,.18);
-      background: var(--orange-soft);
-      clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
-      box-shadow: 0 14px 24px rgba(227,117,38,.06);
-      transform: translateZ(0);
-    }
-    .video-shell img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      transition: transform .7s var(--ease);
-    }
-    .video-shell:hover img { transform: scale(1.08); }
-    .video-note {
-      padding: 14px 16px;
-      border-top: 1px solid rgba(0,0,0,.06);
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
+    .side-copy {
+      margin: 0;
+      max-width: 420px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text);
     }
 
     .stats-grid {
@@ -504,29 +489,73 @@
       gap: 18px;
     }
     .stat-box { min-height: 180px; padding: 24px; }
-    .stat-num { margin: 0 0 8px; font-size: clamp(30px,4vw,56px); line-height: .88; color: var(--teal-deep); }
-    .stat-label { margin: 0 0 10px; color: var(--orange); text-transform: uppercase; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
-    .stat-desc { margin: 0; color: var(--text); line-height: 1.7; font-size: 15px; }
+    .stat-num {
+      margin: 0 0 8px;
+      font-size: clamp(30px,4vw,56px);
+      line-height: .88;
+      color: var(--teal-deep);
+    }
+    .stat-label {
+      margin: 0 0 10px;
+      color: var(--orange);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    .stat-desc {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
 
-    .chart-wrap { margin-top: 30px; padding: 20px; }
-    .chart {
-      height: 260px;
+    .trusted-strip {
+      margin-top: 30px;
+      padding: 20px;
+    }
+    .trusted-head {
       display: flex;
-      align-items: end;
+      align-items: center;
+      justify-content: space-between;
       gap: 14px;
-      padding-top: 30px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
     }
-    .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .bar {
-      width: 100%;
-      max-width: 88px;
-      background: linear-gradient(180deg, rgba(227,117,38,.86), rgba(33,215,194,.96));
-      clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
-      box-shadow: 0 14px 18px rgba(33,215,194,.12);
-      transition: transform .32s var(--ease);
+    .trusted-title {
+      margin: 0;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 13px;
+      font-weight: 700;
     }
-    .bar-col:hover .bar { transform: translateY(-6px) scaleY(1.03); }
-    .bar-col span { font-size: 11px; text-transform: uppercase; color: var(--muted); letter-spacing: .08em; text-align: center; max-width: 150px; }
+    .trusted-logos {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px;
+    }
+    .trusted-logo {
+      min-height: 88px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.88);
+      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .trusted-logo img {
+      max-height: 34px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: .88;
+    }
 
     .services-grid {
       margin-top: 34px;
@@ -535,10 +564,15 @@
       gap: 22px;
     }
     .service-card { padding: 28px; min-height: 260px; }
-    .service-card:hover { transform: translateY(-4px); transition: transform .3s var(--ease); }
+    .service-card:hover {
+      transform: translateY(-4px);
+      transition: transform .3s var(--ease);
+    }
     .number {
-      width: 52px; height: 52px;
-      display: grid; place-items: center;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
       margin-bottom: 18px;
       background: var(--orange-soft);
       border: 1px solid rgba(227,117,38,.24);
@@ -547,10 +581,7 @@
       clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
     }
     .service-card h3,
-    .story-card h3,
-    .proof-card h3,
     .pricing-card h3,
-    .faq-card h3,
     .contact-card h3,
     .ops-card h4,
     .showcase-panel h3 {
@@ -562,16 +593,10 @@
       color: var(--teal-deep);
     }
     .service-card p,
-    .story-card p,
-    .proof-card p,
     .pricing-card p,
-    .faq-card p,
     .contact-card p,
     .service-card li,
-    .story-card li,
-    .proof-card li,
     .pricing-card li,
-    .faq-card li,
     .contact-card li,
     .showcase-panel p,
     .ops-card p {
@@ -580,9 +605,7 @@
       line-height: 1.9;
     }
 
-    .story-grid,
     .pricing-grid,
-    .faq-grid,
     .contact-grid,
     .showcase-head,
     .ops-grid {
@@ -592,9 +615,8 @@
       gap: 22px;
     }
     .ops-grid { grid-template-columns: repeat(4,1fr); }
-    .story-card,
+
     .pricing-card,
-    .faq-card,
     .contact-card,
     .showcase-panel,
     .ops-card { padding: 30px; }
@@ -610,18 +632,39 @@
       background: rgba(255,255,255,.86);
       clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
     }
-    .step .num { color: var(--orange); font-weight: 700; font-size: 18px; text-transform: uppercase; }
+    .step .num {
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
 
     .showcase-shell { margin-top: 34px; display: grid; gap: 18px; }
-    .showcase-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 18px; }
+    .showcase-kpis {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
     .kpi-chip {
       padding: 16px 16px 18px;
       border: 1px solid rgba(0,0,0,.08);
       background: rgba(255,255,255,.88);
       clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
     }
-    .kpi-chip strong { display: block; margin-bottom: 6px; font-size: 28px; line-height: .9; color: var(--teal-deep); }
-    .kpi-chip span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+    .kpi-chip strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 28px;
+      line-height: .9;
+      color: var(--teal-deep);
+    }
+    .kpi-chip span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
 
     .rail {
       display: grid;
@@ -638,7 +681,9 @@
       box-shadow: 0 16px 24px rgba(0,0,0,.06);
     }
     .rail-card img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform .85s var(--ease), filter .85s var(--ease);
     }
     .rail-card::before {
@@ -650,8 +695,11 @@
     }
     .rail-meta {
       position: absolute;
-      left: 18px; right: 18px; bottom: 18px;
-      z-index: 2; color: #fff;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      color: #fff;
     }
     .rail-meta .micro {
       display: inline-flex;
@@ -668,14 +716,30 @@
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
       backdrop-filter: blur(8px);
     }
-    .rail-meta h4 { margin: 0 0 6px; font-size: 30px; line-height: .95; letter-spacing: -.03em; text-transform: uppercase; }
-    .rail-meta p { margin: 0; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.86); }
-    .rail-card:hover img { transform: scale(1.1); filter: saturate(1.06) contrast(1.03); }
+    .rail-meta h4 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: .95;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+    }
+    .rail-meta p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.86);
+    }
+    .rail-card:hover img {
+      transform: scale(1.1);
+      filter: saturate(1.06) contrast(1.03);
+    }
 
     .ops-card { min-height: 240px; }
     .ops-icon {
-      width: 46px; height: 46px;
-      display: grid; place-items: center;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
       margin-bottom: 16px;
       background: rgba(255,249,245,.92);
       border: 1px solid rgba(227,117,38,.18);
@@ -684,8 +748,6 @@
       font-weight: 700;
       clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
     }
-
-    .faq-grid { grid-template-columns: repeat(2,1fr); }
 
     .contact-list { display: grid; gap: 14px; margin-top: 20px; }
     .contact-item {
@@ -696,7 +758,11 @@
       clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
       transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
     }
-    .contact-item:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(227,117,38,.08); border-color: rgba(227,117,38,.34); }
+    .contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(227,117,38,.08);
+      border-color: rgba(227,117,38,.34);
+    }
     .contact-item strong {
       display: block;
       margin-bottom: 6px;
@@ -705,7 +771,10 @@
       letter-spacing: .12em;
       font-size: 12px;
     }
-    .contact-item span { color: var(--text); line-height: 1.7; }
+    .contact-item span {
+      color: var(--text);
+      line-height: 1.7;
+    }
 
     .site-footer {
       position: relative;
@@ -717,19 +786,23 @@
       text-transform: uppercase;
       letter-spacing: .06em;
     }
-    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
     @media (max-width: 1100px) {
       .hero-grid,
       .stats-grid,
-      .story-grid,
       .pricing-grid,
-      .faq-grid,
       .contact-grid,
       .showcase-head,
       .ops-grid,
       .showcase-kpis,
-      .rail {
+      .rail,
+      .trusted-logos {
         grid-template-columns: 1fr;
       }
       .hero-side { grid-template-rows: auto; }
@@ -744,14 +817,12 @@
       .hero-main,
       .side-card,
       .service-card,
-      .story-card,
       .pricing-card,
-      .faq-card,
       .contact-card,
       .stat-box,
       .showcase-panel,
       .ops-card,
-      .chart-wrap { padding: 24px; }
+      .trusted-strip { padding: 24px; }
       .services-grid { grid-template-columns: 1fr; }
       .step { grid-template-columns: 1fr; }
     }
@@ -790,7 +861,7 @@
       <nav class="nav-links">
         <a href="#why" data-i18n="navWhy">Why We Exist</a>
         <a href="#services" data-i18n="navServices">What We Offer</a>
-        <a href="#showcase" data-i18n="navShowcase">Who We've Helped</a>
+        <a href="#showcase" data-i18n="navShowcase">Who We Help</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
 
@@ -816,7 +887,7 @@
           <div class="hero-inner">
             <p class="hero-tag" data-i18n="heroTag">Custom Tech for SMEs</p>
             <h1 class="hero-title" data-i18n="heroTitle">Technology,<br>Yours Truly.</h1>
-            <p class="hero-copy" data-i18n="heroCopy">FLOWENT exists for companies that need real systems, not inflated subscriptions. We build custom internal tools that fit your business' workflow, instead of forcing the business to fit the tool.</p>
+            <p class="hero-copy" data-i18n="heroCopy">FLOWENT exists for companies that need real systems, not inflated subscriptions. We build custom internal tools that fit your business workflow instead of forcing the business to fit the tool.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="https://wa.me/966583941213" target="_blank" rel="noopener" data-i18n="heroBtn1">Talk on WhatsApp</a>
               <a class="btn btn-secondary" href="#services" data-i18n="heroBtn2">Explore Services</a>
@@ -833,8 +904,8 @@
 
           <article class="panel side-card">
             <span class="mini-label" data-i18n="sideLabel2">Built to scale</span>
-            <h2 class="side-title" data-i18n="sideTitle2">Deeply<br>Simple.<br> </h2>
-            <p class="side-copy" data-i18n="sideCopy2">Your needs are met within your ecosystem, just like that!</p>
+            <h2 class="side-title" data-i18n="sideTitle2">Deeply<br>Simple.</h2>
+            <p class="side-copy" data-i18n="sideCopy2">Your needs are handled inside your own ecosystem, simply and clearly.</p>
           </article>
         </aside>
       </div>
@@ -844,13 +915,13 @@
       <div class="container">
         <span class="eyebrow" data-i18n="whyEyebrow">Why FLOWENT started</span>
         <h2 class="section-title" data-i18n="whyTitle">Because running SMEs is messy work</h2>
-        <p class="section-copy" data-i18n="whyCopy">Choosing between a wild west or a NASA-level system isn't fair!</p>
+        <p class="section-copy" data-i18n="whyCopy">Choosing between complete chaos and a NASA-level system is not a fair choice.</p>
 
         <div class="stats-grid">
           <article class="panel stat-box">
             <p class="stat-label" data-i18n="stat1Label">Problem</p>
             <h3 class="stat-num">01</h3>
-            <p class="stat-desc" data-i18n="stat1Desc">Too many SMEs either wing their workflow management, or are trapped inside expensive subscriptions they barely use.</p>
+            <p class="stat-desc" data-i18n="stat1Desc">Too many SMEs either wing their workflow management or get trapped inside expensive subscriptions they barely use.</p>
           </article>
           <article class="panel stat-box">
             <p class="stat-label" data-i18n="stat2Label">Reality</p>
@@ -860,7 +931,7 @@
           <article class="panel stat-box">
             <p class="stat-label" data-i18n="stat3Label">FLOWENT</p>
             <h3 class="stat-num">03</h3>
-            <p class="stat-desc" data-i18n="stat3Desc">We design the stack around the client’s pain, workflow, and internal capability. No more, no less!</p>
+            <p class="stat-desc" data-i18n="stat3Desc">We design the stack around the client’s pain, workflow, and internal capability. No more, no less.</p>
           </article>
           <article class="panel stat-box">
             <p class="stat-label" data-i18n="stat4Label">Outcome</p>
@@ -869,13 +940,27 @@
           </article>
         </div>
 
-        <div class="panel chart-wrap">
-          <span class="mini-label" data-i18n="chartLabel">FLOWENT value logic</span>
-          <div class="chart">
-            <div class="bar-col"><div class="bar" style="height:76%"></div><span data-i18n="bar1">Traditional software cost</span></div>
-            <div class="bar-col"><div class="bar" style="height:44%"></div><span data-i18n="bar2">Custom build investment</span></div>
-            <div class="bar-col"><div class="bar" style="height:28%"></div><span data-i18n="bar3">Unused feature waste</span></div>
-            <div class="bar-col"><div class="bar" style="height:84%"></div><span data-i18n="bar4">Operational clarity gained</span></div>
+        <div class="panel trusted-strip">
+          <div class="trusted-head">
+            <h3 class="trusted-title" data-i18n="trustedTitle">Trusted by</h3>
+          </div>
+
+          <div class="trusted-logos">
+            <div class="trusted-logo">
+              <img src="assets/client-01.png" alt="Client logo 1" onerror="this.style.display='none'; this.parentNode.textContent='Client 01';">
+            </div>
+            <div class="trusted-logo">
+              <img src="assets/client-02.png" alt="Client logo 2" onerror="this.style.display='none'; this.parentNode.textContent='Client 02';">
+            </div>
+            <div class="trusted-logo">
+              <img src="assets/client-03.png" alt="Client logo 3" onerror="this.style.display='none'; this.parentNode.textContent='Client 03';">
+            </div>
+            <div class="trusted-logo">
+              <img src="assets/client-04.png" alt="Client logo 4" onerror="this.style.display='none'; this.parentNode.textContent='Client 04';">
+            </div>
+            <div class="trusted-logo">
+              <img src="assets/client-05.png" alt="Client logo 5" onerror="this.style.display='none'; this.parentNode.textContent='Client 05';">
+            </div>
           </div>
         </div>
       </div>
@@ -891,7 +976,7 @@
           <article class="panel service-card">
             <div class="number">01</div>
             <h3 data-i18n="service1Title">Websites</h3>
-            <p data-i18n="service1Copy">Marketing websites, landing pages, and digital fronts built to amaze, without software bloat.</p>
+            <p data-i18n="service1Copy">Marketing websites, landing pages, and digital fronts built to amaze without software bloat.</p>
           </article>
           <article class="panel service-card">
             <div class="number">02</div>
@@ -901,12 +986,12 @@
           <article class="panel service-card">
             <div class="number">03</div>
             <h3 data-i18n="service3Title">Employee Portals</h3>
-            <p data-i18n="service3Copy">Internal HR portals for evaluations, requests, approvals, onboardings, profiles, notices, and self-service workflows.</p>
+            <p data-i18n="service3Copy">Internal HR portals for evaluations, requests, approvals, onboarding, profiles, notices, and self-service workflows.</p>
           </article>
           <article class="panel service-card">
             <div class="number">04</div>
             <h3 data-i18n="service4Title">ERP Systems</h3>
-            <p data-i18n="service4Copy">Focused operational systems tailored to the workflow instead of giant ERP complexity that you don't need.</p>
+            <p data-i18n="service4Copy">Focused operational systems tailored to the workflow instead of giant ERP complexity that you do not need.</p>
           </article>
           <article class="panel service-card">
             <div class="number">05</div>
@@ -980,7 +1065,7 @@
               <div class="rail-meta">
                 <span class="micro" data-i18n="rail4Micro">Layer 04</span>
                 <h4 data-i18n="rail4Title">AI Ops</h4>
-                <p data-i18n="rail4Text">Where repetitive work is reduced, and team efficiency hits the roof. </p>
+                <p data-i18n="rail4Text">Where repetitive work is reduced and the team becomes more efficient.</p>
               </div>
             </article>
           </div>
@@ -1011,7 +1096,7 @@
           <article class="panel ops-card">
             <div class="ops-icon">04</div>
             <h4 data-i18n="ops4Title">Bad fit</h4>
-            <p data-i18n="ops4Text">The software may be popular, but it does not map cleanly to the business’ actual workflow.</p>
+            <p data-i18n="ops4Text">The software may be popular, but it does not map cleanly to the business workflow.</p>
           </article>
         </div>
       </div>
@@ -1021,7 +1106,7 @@
       <div class="container">
         <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
         <h2 class="section-title" data-i18n="contactTitle">We speak your language FLOWENTly</h2>
-        <p class="section-copy" data-i18n="contactCopy">Talk to us, your business needs us!</p>
+        <p class="section-copy" data-i18n="contactCopy">Talk to us. Your business probably needs this more than you think.</p>
 
         <div class="contact-grid">
           <article class="panel contact-card">
@@ -1115,84 +1200,231 @@
 
     const translations = {
       en: {
-        navWhy: 'Why', navServices: 'Services', navShowcase: 'Showcase', navContact: 'Contact', navCta: 'Book a Call',
-        heroTag: 'Affordable custom tech for SMEs',
+        navWhy: 'Why We Exist',
+        navServices: 'What We Offer',
+        navShowcase: 'Who We Help',
+        navContact: 'Contact',
+        navCta: 'Book a Call',
+
+        heroTag: 'Custom Tech for SMEs',
         heroTitle: 'Technology,<br>Yours Truly.',
-        heroCopy: 'FLOWENT exists for companies that need real systems, not inflated subscriptions. We study the client’s actual operational pain, then build websites, portals, internal tools, dashboards, and workflows that fit the business instead of forcing the business to fit the software.',
-        heroBtn1: 'Talk on WhatsApp', heroBtn2: 'Explore Services',
-        sideLabel1: 'Built on actual need', sideTitle1: 'Custom.<br>Lean.<br>Useful.', sideCopy1: 'No fixed product shelf. FLOWENT starts with the friction point, then builds the most useful system around it.',
-        sideLabel2: 'Built to scale with the client', sideTitle2: 'Fast.<br>Sharp.<br>Scalable.', sideCopy2: 'Launch a focused version first. Add depth later. FLOWENT is designed to reduce complexity, not create more of it.',
-        whyEyebrow: 'Why FLOWENT started', whyTitle: 'Because smaller businesses deserve custom technology too', whyCopy: 'Many businesses do not need a giant software stack. They need the right subset, designed around how they really run. FLOWENT is built for that gap: fewer subscriptions, better fit, simpler systems, and more control.',
-        stat1Label: 'Problem', stat1Desc: 'Too many teams are trapped inside expensive subscriptions they barely use.',
-        stat2Label: 'Reality', stat2Desc: 'They need practical systems, not enterprise overhead with 70 unused modules.',
-        stat3Label: 'FLOWENT', stat3Desc: 'We design the stack around the client’s pain, workflow, budget, and internal capability.',
-        stat4Label: 'Outcome', stat4Desc: 'Lower cost, better adoption, cleaner visibility, and a system people actually use.',
-        chartLabel: 'FLOWENT value logic',
-        bar1: 'Traditional software cost', bar2: 'Custom build investment', bar3: 'Unused feature waste', bar4: 'Operational clarity gained',
-        servicesEyebrow: 'Services', servicesTitle: 'Built around the challenge, not a fixed catalog', servicesCopy: 'FLOWENT can build focused custom systems as standalone solutions or connected internal ecosystems.',
-        service1Title: 'Websites', service1Copy: 'Marketing websites, bilingual corporate sites, landing pages, and digital fronts built to feel serious without software bloat.',
-        service2Title: 'Recruitment Portals', service2Copy: 'Interactive hiring portals inside the client’s own website with branded vacancy pages and smarter application flow.',
-        service3Title: 'Employee Service Portals', service3Copy: 'Internal employee portals for requests, approvals, onboarding, profiles, notices, and self-service workflows.',
-        service4Title: 'ERP Systems', service4Copy: 'Focused operational systems tailored to the workflow instead of giant ERP complexity that the client does not need.',
-        service5Title: 'AI Internal Operations', service5Copy: 'Practical AI support for summaries, routing, automation, internal search, and repetitive operational assistance.',
-        service6Title: 'Dashboards & Monitoring', service6Copy: 'Custom dashboards and monitoring platforms for clearer visibility across leadership, teams, projects, and operations.',
-        showcaseEyebrow: 'Showcase', showcaseTitle: 'Not products. Operating layers.', showcaseCopy: 'The strongest version of FLOWENT is not a single service. It is a connected operating layer: website, internal portals, workflows, dashboards, and AI-enabled support inside one cleaner ecosystem.',
-        showcaseLabel1: 'FLOWENT operating logic', showcaseHead1: 'One ecosystem.<br>Less sprawl.', showcaseText1: 'Move away from scattered subscriptions and toward a simpler stack that is closer to the client’s own environment.',
-        kpi1: 'Website', kpi1Sub: 'brand layer', kpi2: 'Portal', kpi2Sub: 'internal layer', kpi3: 'Dashboard', kpi3Sub: 'visibility layer',
-        showcaseLabel2: 'What that means', step1Head: 'Fewer subscriptions', step1Text: 'Move away from paying for scattered tools that do not talk to each other well.', step2Head: 'More ownership', step2Text: 'Keep business logic and branded experience closer to the client’s own environment.', step3Head: 'Better fit', step3Text: 'Build around the real workflow instead of bending the workflow around software limitations.',
-        rail1Micro: 'Layer 01', rail1Title: 'Website', rail1Text: 'Where the brand, message, and first impression become sharper and more credible.',
-        rail2Micro: 'Layer 02', rail2Title: 'Portals', rail2Text: 'Where recruitment, employee service, and internal flows stop feeling disconnected.',
-        rail3Micro: 'Layer 03', rail3Title: 'Dashboards', rail3Text: 'Where leadership gets visibility, not just another report exported from elsewhere.',
-        rail4Micro: 'Layer 04', rail4Title: 'AI Ops', rail4Text: 'Where repetitive work is reduced and teams get assistance where it actually matters.',
-        opsEyebrow: 'Pain map', opsTitle: 'Where FLOWENT usually creates the most value',
-        ops1Title: 'Fragmented tools', ops1Text: 'Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.',
-        ops2Title: 'Weak visibility', ops2Text: 'Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.',
-        ops3Title: 'Cost mismatch', ops3Text: 'Teams pay enterprise-level subscription costs while using only a small fraction of the promised value.',
-        ops4Title: 'Bad fit', ops4Text: 'The software may be popular, but it still does not map cleanly to the company’s actual workflow or operating style.',
-        contactEyebrow: 'Contact', contactTitle: 'Tell FLOWENT where the friction is', contactCopy: 'If your company is overpaying for disconnected tools, struggling with internal visibility, or needs a custom system that actually matches how the business runs, FLOWENT is built for that.',
-        contactCard1Title: 'Start here', contactCard2Title: 'What to send us',
-        contactLi1: 'What tool or process is currently painful?', contactLi2: 'What are you paying for today?', contactLi3: 'What should be simplified, unified, or automated?', contactLi4: 'What would success look like in 90 days?',
-        contactBtn1: 'Talk on WhatsApp', contactBtn2: 'Email FLOWENT', footerText: 'Technology, Yours Truly.'
+        heroCopy: 'FLOWENT exists for companies that need real systems, not inflated subscriptions. We build custom internal tools that fit your business workflow instead of forcing the business to fit the tool.',
+        heroBtn1: 'Talk on WhatsApp',
+        heroBtn2: 'Explore Services',
+
+        sideLabel1: 'Built on need',
+        sideTitle1: 'Custom.<br>Lean.<br>Clean.',
+        sideCopy1: 'No fixed product shelf. FLOWENT starts with your pain point, then builds the most useful system around it.',
+        sideLabel2: 'Built to scale',
+        sideTitle2: 'Deeply<br>Simple.',
+        sideCopy2: 'Your needs are handled inside your own ecosystem, simply and clearly.',
+
+        whyEyebrow: 'Why FLOWENT started',
+        whyTitle: 'Because running SMEs is messy work',
+        whyCopy: 'Choosing between complete chaos and a NASA-level system is not a fair choice.',
+
+        stat1Label: 'Problem',
+        stat1Desc: 'Too many SMEs either wing their workflow management or get trapped inside expensive subscriptions they barely use.',
+        stat2Label: 'Reality',
+        stat2Desc: 'They need practical systems, not enterprise overhead with 70 unused modules.',
+        stat3Label: 'FLOWENT',
+        stat3Desc: 'We design the stack around the client’s pain, workflow, and internal capability. No more, no less.',
+        stat4Label: 'Outcome',
+        stat4Desc: 'Lower cost, better adoption, cleaner visibility, and a system you actually use.',
+
+        trustedTitle: 'Trusted by',
+
+        servicesEyebrow: 'Services',
+        servicesTitle: 'Built around the challenge, not a fixed catalog',
+        servicesCopy: 'FLOWENT builds focused, relevant, custom systems as standalone solutions or connected internal ecosystems.',
+
+        service1Title: 'Websites',
+        service1Copy: 'Marketing websites, landing pages, and digital fronts built to amaze without software bloat.',
+        service2Title: 'Recruitment Portals',
+        service2Copy: 'Interactive hiring portals inside the client’s own website with branded vacancy pages and smarter application flow.',
+        service3Title: 'Employee Portals',
+        service3Copy: 'Internal HR portals for evaluations, requests, approvals, onboarding, profiles, notices, and self-service workflows.',
+        service4Title: 'ERP Systems',
+        service4Copy: 'Focused operational systems tailored to the workflow instead of giant ERP complexity that you do not need.',
+        service5Title: 'AI Internal Operations',
+        service5Copy: 'Practical AI support for workflow automation, internal search, reporting, and repetitive operational assistance.',
+        service6Title: 'Dashboards & Monitoring',
+        service6Copy: 'Custom dashboards and monitoring platforms for clearer visibility across leadership, teams, projects, and operations.',
+
+        showcaseEyebrow: 'Showcase',
+        showcaseTitle: 'Not products. Operating layers.',
+        showcaseCopy: 'The strongest version of FLOWENT is not a single service. It is a connected operating layer: website, internal portals, workflows, dashboards, and AI-enabled support inside one cleaner ecosystem.',
+
+        showcaseLabel1: 'FLOWENT operating logic',
+        showcaseHead1: 'One ecosystem.<br>Less sprawl.',
+        showcaseText1: 'Move away from scattered subscriptions and toward a simpler stack that is closer to your business environment.',
+
+        kpi1: 'Website',
+        kpi1Sub: 'brand layer',
+        kpi2: 'Portal',
+        kpi2Sub: 'internal layer',
+        kpi3: 'Dashboard',
+        kpi3Sub: 'visibility layer',
+
+        showcaseLabel2: 'What that means',
+        step1Head: 'Fewer subscriptions',
+        step1Text: 'Move away from paying for scattered tools that do not talk to each other well.',
+        step2Head: 'More ownership',
+        step2Text: 'Keep business logic and branded experience closer to the client’s own environment.',
+        step3Head: 'Better fit',
+        step3Text: 'Build around the real workflow instead of bending the workflow around software limitations.',
+
+        rail1Micro: 'Layer 01',
+        rail1Title: 'Websites',
+        rail1Text: 'Where the brand, message, and first impression become sharper and more credible.',
+        rail2Micro: 'Layer 02',
+        rail2Title: 'Portals',
+        rail2Text: 'Where recruitment, employee service, and internal flows stop feeling disconnected.',
+        rail3Micro: 'Layer 03',
+        rail3Title: 'Dashboards',
+        rail3Text: 'Where leadership gets visibility, not just another report exported from elsewhere.',
+        rail4Micro: 'Layer 04',
+        rail4Title: 'AI Ops',
+        rail4Text: 'Where repetitive work is reduced and the team becomes more efficient.',
+
+        opsEyebrow: 'Pain map',
+        opsTitle: 'Where FLOWENT creates value',
+        ops1Title: 'Fragmented tools',
+        ops1Text: 'Too many systems. Too many logins. Too much dependency on external software that was never tailored to the business.',
+        ops2Title: 'Weak visibility',
+        ops2Text: 'Leadership cannot see what matters in one place, so decision-making stays slower and fuzzier than it should be.',
+        ops3Title: 'Cost mismatch',
+        ops3Text: 'SMEs pay enterprise-level subscription costs while using only a small fraction of the promised value.',
+        ops4Title: 'Bad fit',
+        ops4Text: 'The software may be popular, but it does not map cleanly to the business workflow.',
+
+        contactEyebrow: 'Contact',
+        contactTitle: 'We speak your language FLOWENTly',
+        contactCopy: 'Talk to us. Your business probably needs this more than you think.',
+        contactCard1Title: 'Start here',
+        contactCard2Title: 'What to tell us',
+        contactLi1: 'What tool or process is currently painful?',
+        contactLi2: 'What are you paying for today?',
+        contactLi3: 'What should be simplified, unified, or automated?',
+        contactLi4: 'What would success look like in 90 days?',
+        contactBtn1: 'Talk on WhatsApp',
+        contactBtn2: 'Email FLOWENT',
+
+        footerText: 'Technology, Yours Truly.'
       },
+
       ar: {
-        navWhy: 'لماذا', navServices: 'الخدمات', navShowcase: 'الاستعراض', navContact: 'التواصل', navCta: 'احجز مكالمة',
+        navWhy: 'ليش موجودين',
+        navServices: 'وش نقدم',
+        navShowcase: 'شريك موثوق لـ',
+        navContact: 'التواصل',
+        navCta: 'احجز مكالمة',
+
         heroTag: 'حلول تقنية مخصصة للمنشآت الصغيرة والمتوسطة',
         heroTitle: 'Technology,<br>Yours Truly.',
-        heroCopy: 'FLOWENT موجودة للشركات التي تحتاج أنظمة حقيقية، لا اشتراكات متضخمة. ندرس الألم التشغيلي الحقيقي لدى العميل، ثم نبني مواقع وبوابات وأدوات داخلية ولوحات متابعة وتدفقات عمل تناسب طبيعة النشاط بدلًا من إجبار النشاط أن يتكيّف مع البرنامج.',
-        heroBtn1: 'تواصل واتساب', heroBtn2: 'استعرض الخدمات',
-        sideLabel1: 'مبنية على الاحتياج الفعلي', sideTitle1: 'مخصص.<br>أخف.<br>أنفع.', sideCopy1: 'FLOWENT لا تبدأ من قائمة منتجات جاهزة، بل من نقطة الألم، ثم تبني النظام الأنسب حولها.',
-        sideLabel2: 'مبنية لتكبر مع العميل', sideTitle2: 'سريع.<br>أوضح.<br>قابل للتوسع.', sideCopy2: 'أطلق النسخة الأهم أولًا، ثم أضف العمق لاحقًا. FLOWENT تقلل التعقيد بدل ما تخلق تعقيدًا جديدًا.',
-        whyEyebrow: 'لماذا بدأت FLOWENT', whyTitle: 'لأن المنشآت الأصغر تستحق تقنية مخصصة أيضًا', whyCopy: 'كثير من الشركات لا تحتاج كومة برامج ضخمة. هي تحتاج الجزء الصحيح، المصمم حول طريقة عملها الفعلية. وهنا تأتي FLOWENT: اشتراكات أقل، ملاءمة أعلى، وأنظمة أبسط وتحكم أكبر.',
-        stat1Label: 'المشكلة', stat1Desc: 'فرق كثيرة عالقة داخل اشتراكات مكلفة لا تستفيد منها فعليًا.',
-        stat2Label: 'الواقع', stat2Desc: 'الاحتياج الحقيقي هو أنظمة عملية، لا حمل مؤسسي ضخم بعشرات الموديولات غير المستخدمة.',
-        stat3Label: 'FLOWENT', stat3Desc: 'نصمم الحل حول ألم العميل، وسير العمل، والميزانية، والقدرة الداخلية.',
-        stat4Label: 'النتيجة', stat4Desc: 'تكلفة أقل، تبنٍّ أفضل، وضوح أعلى، ونظام يستخدمه الفريق فعلًا.',
-        chartLabel: 'منطق قيمة FLOWENT',
-        bar1: 'تكلفة البرامج التقليدية', bar2: 'استثمار البناء المخصص', bar3: 'هدر الخصائص غير المستخدمة', bar4: 'الوضوح التشغيلي المكتسب',
-        servicesEyebrow: 'الخدمات', servicesTitle: 'مبنية حول التحدي، لا حول كتالوج ثابت', servicesCopy: 'FLOWENT تستطيع بناء أنظمة مخصصة مركزة كحلول مستقلة أو كمنظومات داخلية مترابطة.',
-        service1Title: 'المواقع الإلكترونية', service1Copy: 'مواقع تسويقية، شركات، صفحات هبوط، وواجهات رقمية ثنائية اللغة تبدو احترافية بدون تضخم برمجي.',
-        service2Title: 'بوابات التوظيف', service2Copy: 'بوابات توظيف تفاعلية داخل موقع العميل نفسه مع صفحات شاغر أكثر ذكاءً وتجربة تقديم أنظف.',
-        service3Title: 'بوابات خدمات الموظفين', service3Copy: 'بوابات داخلية للطلبات والموافقات والتعريف والتهيئة والإشعارات وخدمات الموظفين الذاتية.',
-        service4Title: 'أنظمة ERP', service4Copy: 'أنظمة تشغيلية مخصصة حول سير العمل بدل تعقيد ERP ضخم لا يحتاجه العميل كله.',
-        service5Title: 'الذكاء الاصطناعي الداخلي', service5Copy: 'دعم عملي بالذكاء الاصطناعي للتلخيص والتوجيه والأتمتة والبحث الداخلي والمساندة التشغيلية المتكررة.',
-        service6Title: 'الداشبوردز والمتابعة', service6Copy: 'لوحات متابعة ومنصات رؤية أوضح للإدارة والفرق والمشاريع والعمليات والقرارات.',
-        showcaseEyebrow: 'الاستعراض', showcaseTitle: 'ليست منتجات. بل طبقات تشغيل.', showcaseCopy: 'أقوى نسخة من FLOWENT ليست خدمة واحدة، بل طبقة تشغيل مترابطة: موقع، بوابات داخلية، تدفقات عمل، لوحات متابعة، ودعم ذكي داخل منظومة أنظف.',
-        showcaseLabel1: 'منطق تشغيل FLOWENT', showcaseHead1: 'منظومة واحدة.<br>تشظي أقل.', showcaseText1: 'ابتعد عن الاشتراكات المتناثرة، واقترب من ستاك أبسط وأقرب لبيئة العميل نفسه.',
-        kpi1: 'الموقع', kpi1Sub: 'طبقة العلامة', kpi2: 'البوابة', kpi2Sub: 'الطبقة الداخلية', kpi3: 'الداشبورد', kpi3Sub: 'طبقة الرؤية',
-        showcaseLabel2: 'ما معنى ذلك', step1Head: 'اشتراكات أقل', step1Text: 'ابتعد عن الدفع لأدوات متفرقة لا تتكلم مع بعضها بشكل جيد.', step2Head: 'ملكية أعلى', step2Text: 'ابقِ منطق العمل والتجربة البراندية أقرب لبيئة العميل نفسها.', step3Head: 'ملاءمة أفضل', step3Text: 'ابنِ حول سير العمل الحقيقي بدل ليّ سير العمل حتى يناسب قيود البرنامج.',
-        rail1Micro: 'طبقة 01', rail1Title: 'الموقع', rail1Text: 'حيث تصبح الرسالة والانطباع الأول والواجهة البراندية أكثر حدة واحترافًا.',
-        rail2Micro: 'طبقة 02', rail2Title: 'البوابات', rail2Text: 'حيث تتوقف التوظيفات والخدمات الداخلية والتدفقات عن الظهور كأجزاء منفصلة.',
-        rail3Micro: 'طبقة 03', rail3Title: 'الداشبوردز', rail3Text: 'حيث تحصل الإدارة على رؤية أوضح بدل تقرير آخر معزول عن بقية المنظومة.',
-        rail4Micro: 'طبقة 04', rail4Title: 'الذكاء التشغيلي', rail4Text: 'حيث يقل العمل المتكرر وتحصل الفرق على مساندة حيث يوجد أثر حقيقي.',
-        opsEyebrow: 'خريطة الألم', opsTitle: 'أين تصنع FLOWENT أكبر قيمة غالبًا',
-        ops1Title: 'أدوات متشظية', ops1Text: 'أنظمة كثيرة، حسابات دخول كثيرة، واعتماد كبير على برامج خارجية لم تُصمم أصلًا حول طبيعة العمل.',
-        ops2Title: 'رؤية ضعيفة', ops2Text: 'الإدارة لا ترى ما يهم في مكان واحد، فيبقى اتخاذ القرار أبطأ وأضباب مما يجب.',
-        ops3Title: 'تكلفة غير متناسبة', ops3Text: 'الفرق تدفع أسعارًا مؤسسية وهي تستفيد من جزء صغير فقط من القيمة الموعودة.',
-        ops4Title: 'ملاءمة سيئة', ops4Text: 'قد يكون البرنامج مشهورًا، لكنه لا يطابق شكل التشغيل الحقيقي داخل الشركة.',
-        contactEyebrow: 'التواصل', contactTitle: 'قل لـ FLOWENT أين نقطة الاحتكاك', contactCopy: 'إذا كانت شركتك تدفع كثيرًا لأدوات متفرقة، أو تعاني من ضعف الرؤية الداخلية، أو تحتاج نظامًا مخصصًا يناسب طريقة العمل فعلًا، فـ FLOWENT صُممت لهذا.',
-        contactCard1Title: 'ابدأ من هنا', contactCard2Title: 'وش ترسل لنا',
-        contactLi1: 'ما الأداة أو العملية المزعجة حاليًا؟', contactLi2: 'كم تدفعون اليوم؟', contactLi3: 'ما الذي يحتاج تبسيطًا أو توحيدًا أو أتمتة؟', contactLi4: 'كيف يبدو النجاح خلال 90 يومًا؟',
-        contactBtn1: 'تواصل واتساب', contactBtn2: 'راسل FLOWENT', footerText: 'تقنية، مفصلة لك.'
+        heroCopy: 'FLOWENT موجودة للجهات اللي تحتاج أنظمة فعلية، مو اشتراكات متضخمة. نبني أدوات داخلية وحلول مخصصة تمشي مع طريقة شغلكم، بدل ما تضطرون تغيّرون شغلكم عشان يناسب الأداة.',
+        heroBtn1: 'تواصل واتساب',
+        heroBtn2: 'استعرض الخدمات',
+
+        sideLabel1: 'مبني على الاحتياج',
+        sideTitle1: 'مخصص.<br>خفيف.<br>مرتب.',
+        sideCopy1: 'ما عندنا رف منتجات ثابت. FLOWENT تبدأ من نقطة الألم، وبعدها تبني النظام الأنسب حولها.',
+        sideLabel2: 'مبني عشان يكبر معك',
+        sideTitle2: 'بسيط<br>لكن عميق.',
+        sideCopy2: 'احتياجك ينخدم داخل منظومتك أنت، بشكل واضح ومرتب.',
+
+        whyEyebrow: 'ليش بدأت FLOWENT',
+        whyTitle: 'لأن شغل المنشآت الصغيرة والمتوسطة أصلًا ملخبط كفاية',
+        whyCopy: 'مو منطقي تكون خياراتك يا فوضى كاملة، يا نظام معقد كأنك تدير وكالة فضاء.',
+
+        stat1Label: 'المشكلة',
+        stat1Desc: 'منشآت كثيرة يا تمشي أمورها بشكل ارتجالي، أو تدخل في اشتراكات غالية وهي أصلًا ما تستخدم إلا جزء بسيط منها.',
+        stat2Label: 'الواقع',
+        stat2Desc: 'الاحتياج الحقيقي غالبًا نظام عملي وواضح، مو حمل مؤسسي ضخم فيه عشرات الموديولات غير المستخدمة.',
+        stat3Label: 'FLOWENT',
+        stat3Desc: 'نصمم الحل حول ألم العميل، وسير العمل، وقدرته الداخلية. لا زيادة ولا نقص.',
+        stat4Label: 'النتيجة',
+        stat4Desc: 'تكلفة أقل، تبنّي أفضل، رؤية أوضح، ونظام فعلًا يتم استخدامه.',
+
+        trustedTitle: 'شريك موثوق لـ',
+
+        servicesEyebrow: 'الخدمات',
+        servicesTitle: 'نبني حول التحدي، مو حول كتالوج ثابت',
+        servicesCopy: 'FLOWENT تبني أنظمة مخصصة ومركزة، سواء كحل مستقل أو كمنظومة داخلية مترابطة.',
+
+        service1Title: 'المواقع الإلكترونية',
+        service1Copy: 'مواقع تسويقية وصفحات هبوط وواجهات رقمية مصممة لتبهر، بدون تضخم تقني ما له داعي.',
+        service2Title: 'بوابات التوظيف',
+        service2Copy: 'بوابات توظيف تفاعلية داخل موقع العميل نفسه، مع صفحات شاغر أوضح وتجربة تقديم أذكى.',
+        service3Title: 'بوابات الموظفين',
+        service3Copy: 'بوابات داخلية للموارد البشرية تشمل التقييمات والطلبات والموافقات والتهيئة والملفات والتنبيهات والخدمات الذاتية.',
+        service4Title: 'أنظمة ERP',
+        service4Copy: 'أنظمة تشغيلية مركزة ومفصلة على سير العمل، بدل تعقيد ERP ضخم أنتم أصلًا ما تحتاجونه كامل.',
+        service5Title: 'الذكاء الاصطناعي الداخلي',
+        service5Copy: 'دعم عملي بالذكاء الاصطناعي للأتمتة والبحث الداخلي والتقارير والمساندة التشغيلية المتكررة.',
+        service6Title: 'الداشبوردز والمتابعة',
+        service6Copy: 'لوحات متابعة ومنصات رؤية أوضح للإدارة والفرق والمشاريع والعمليات.',
+
+        showcaseEyebrow: 'الاستعراض',
+        showcaseTitle: 'مو منتجات. هي طبقات تشغيل.',
+        showcaseCopy: 'أقوى نسخة من FLOWENT مو خدمة واحدة، بل طبقة تشغيل مترابطة: موقع، بوابات داخلية، تدفقات عمل، داشبوردز، ودعم ذكي داخل منظومة أنظف.',
+
+        showcaseLabel1: 'منطق FLOWENT التشغيلي',
+        showcaseHead1: 'منظومة وحدة.<br>تشظي أقل.',
+        showcaseText1: 'خفف الاشتراكات المتفرقة، وقرّب أدواتك من بيئة شغلك الفعلية بدل ما تكون موزعة بكل مكان.',
+
+        kpi1: 'الموقع',
+        kpi1Sub: 'طبقة البراند',
+        kpi2: 'البوابة',
+        kpi2Sub: 'الطبقة الداخلية',
+        kpi3: 'الداشبورد',
+        kpi3Sub: 'طبقة الرؤية',
+
+        showcaseLabel2: 'وش يعني هذا',
+        step1Head: 'اشتراكات أقل',
+        step1Text: 'بدل ما تدفع لأدوات متفرقة ما تتكلم مع بعض بشكل كويس.',
+        step2Head: 'ملكية أعلى',
+        step2Text: 'خلك أقرب لمنطق شغلك وتجربتك البراندية داخل بيئتك أنت.',
+        step3Head: 'ملاءمة أفضل',
+        step3Text: 'نبني حول سير العمل الحقيقي بدل ما نلوي سير العمل عشان يناسب قيود البرنامج.',
+
+        rail1Micro: 'طبقة 01',
+        rail1Title: 'المواقع',
+        rail1Text: 'هنا يصير الانطباع الأول والرسالة والواجهة البراندية أوضح وأقوى.',
+        rail2Micro: 'طبقة 02',
+        rail2Title: 'البوابات',
+        rail2Text: 'هنا تتوقف الخدمات الداخلية والتوظيف عن الظهور كأجزاء منفصلة عن بعض.',
+        rail3Micro: 'طبقة 03',
+        rail3Title: 'الداشبوردز',
+        rail3Text: 'هنا تأخذ الإدارة رؤية أوضح بدل تقرير إضافي معزول عن بقية المنظومة.',
+        rail4Micro: 'طبقة 04',
+        rail4Title: 'الذكاء التشغيلي',
+        rail4Text: 'هنا يقل الشغل المتكرر ويصير الفريق أكفأ بشكل واضح.',
+
+        opsEyebrow: 'خريطة الألم',
+        opsTitle: 'وين تصنع FLOWENT القيمة فعلًا',
+        ops1Title: 'أدوات متفرقة',
+        ops1Text: 'أنظمة كثيرة، حسابات دخول كثيرة، واعتماد زائد على برامج خارجية ما انبنت أصلًا على طبيعة شغلك.',
+        ops2Title: 'رؤية ضعيفة',
+        ops2Text: 'الإدارة ما تشوف اللي يهم في مكان واحد، فيصير القرار أبطأ وأضيع من اللازم.',
+        ops3Title: 'تكلفة مو منطقية',
+        ops3Text: 'منشآت صغيرة ومتوسطة تدفع قيمة اشتراكات مؤسسية وهي تستفيد من جزء بسيط فقط من القيمة الموعودة.',
+        ops4Title: 'ملاءمة سيئة',
+        ops4Text: 'البرنامج قد يكون مشهور، لكن ما يركب بشكل نظيف على سير العمل الفعلي داخل النشاط.',
+
+        contactEyebrow: 'التواصل',
+        contactTitle: 'نتكلم لغتك... بطريقة FLOWENT',
+        contactCopy: 'كلّمنا. غالبًا نشاطك يحتاج هذا أكثر مما تتوقع.',
+        contactCard1Title: 'ابدأ من هنا',
+        contactCard2Title: 'وش نحتاج نعرف',
+        contactLi1: 'وش الأداة أو العملية اللي مضايقتكم حاليًا؟',
+        contactLi2: 'وش اللي تدفعون عليه اليوم؟',
+        contactLi3: 'وش اللي يحتاج تبسيط أو توحيد أو أتمتة؟',
+        contactLi4: 'كيف تتخيلون شكل النجاح خلال 90 يوم؟',
+        contactBtn1: 'تواصل واتساب',
+        contactBtn2: 'راسل FLOWENT',
+
+        footerText: 'تقنية، مفصلة لك.'
       }
     };
 
@@ -1200,12 +1432,14 @@
       document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       body.classList.toggle('lang-ar', lang === 'ar');
+
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
           el.innerHTML = translations[lang][key];
         }
       });
+
       if (langToggle) {
         langToggle.textContent = lang === 'ar' ? 'EN / AR' : 'AR / EN';
       }
@@ -1225,6 +1459,7 @@
       menuBtn.addEventListener('click', () => {
         body.classList.toggle('menu-open');
       });
+
       if (drawer) {
         drawer.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => body.classList.remove('menu-open'));
@@ -1232,7 +1467,6 @@
       }
     }
   })();
-</script>
-
+  </script>
 </body>
 </html>
