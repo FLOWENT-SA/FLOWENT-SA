@@ -73,10 +73,7 @@
     img { display: block; max-width: 100%; }
     button { font: inherit; }
 
-    .container {
-      width: min(calc(100% - 32px), var(--container));
-      margin: 0 auto;
-    }
+    .container { width: min(calc(100% - 32px), var(--container)); margin: 0 auto; }
 
     .grid-overlay {
       position: fixed;
@@ -474,13 +471,7 @@
       text-transform: uppercase;
       color: var(--teal-deep);
     }
-    .side-copy {
-      margin: 0;
-      max-width: 420px;
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--text);
-    }
+    .side-copy { margin: 0; max-width: 420px; font-size: 17px; line-height: 1.8; color: var(--text); }
 
     .stats-grid {
       margin-top: 34px;
@@ -489,73 +480,9 @@
       gap: 18px;
     }
     .stat-box { min-height: 180px; padding: 24px; }
-    .stat-num {
-      margin: 0 0 8px;
-      font-size: clamp(30px,4vw,56px);
-      line-height: .88;
-      color: var(--teal-deep);
-    }
-    .stat-label {
-      margin: 0 0 10px;
-      color: var(--orange);
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .12em;
-    }
-    .stat-desc {
-      margin: 0;
-      color: var(--text);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    .trusted-strip {
-      margin-top: 30px;
-      padding: 20px;
-    }
-    .trusted-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-    .trusted-title {
-      margin: 0;
-      color: var(--orange);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .trusted-logos {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0,1fr));
-      gap: 12px;
-    }
-    .trusted-logo {
-      min-height: 88px;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      border: 1px solid rgba(0,0,0,.08);
-      background: rgba(255,255,255,.88);
-      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .trusted-logo img {
-      max-height: 34px;
-      width: auto;
-      object-fit: contain;
-      filter: grayscale(100%);
-      opacity: .88;
-    }
+    .stat-num { margin: 0 0 8px; font-size: clamp(30px,4vw,56px); line-height: .88; color: var(--teal-deep); }
+    .stat-label { margin: 0 0 10px; color: var(--orange); text-transform: uppercase; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+    .stat-desc { margin: 0; color: var(--text); line-height: 1.7; font-size: 15px; }
 
     .services-grid {
       margin-top: 34px;
@@ -564,15 +491,10 @@
       gap: 22px;
     }
     .service-card { padding: 28px; min-height: 260px; }
-    .service-card:hover {
-      transform: translateY(-4px);
-      transition: transform .3s var(--ease);
-    }
+    .service-card:hover { transform: translateY(-4px); transition: transform .3s var(--ease); }
     .number {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
+      width: 52px; height: 52px;
+      display: grid; place-items: center;
       margin-bottom: 18px;
       background: var(--orange-soft);
       border: 1px solid rgba(227,117,38,.24);
@@ -584,7 +506,8 @@
     .pricing-card h3,
     .contact-card h3,
     .ops-card h4,
-    .showcase-panel h3 {
+    .showcase-panel h3,
+    .trusted-title {
       margin: 0 0 12px;
       font-size: 30px;
       line-height: .96;
@@ -599,7 +522,8 @@
     .pricing-card li,
     .contact-card li,
     .showcase-panel p,
-    .ops-card p {
+    .ops-card p,
+    .trusted-note {
       color: var(--text);
       font-size: 16px;
       line-height: 1.9;
@@ -615,7 +539,6 @@
       gap: 22px;
     }
     .ops-grid { grid-template-columns: repeat(4,1fr); }
-
     .pricing-card,
     .contact-card,
     .showcase-panel,
@@ -632,39 +555,18 @@
       background: rgba(255,255,255,.86);
       clip-path: polygon(0 0,100% 0,97% 100%,0 100%);
     }
-    .step .num {
-      color: var(--orange);
-      font-weight: 700;
-      font-size: 18px;
-      text-transform: uppercase;
-    }
+    .step .num { color: var(--orange); font-weight: 700; font-size: 18px; text-transform: uppercase; }
 
     .showcase-shell { margin-top: 34px; display: grid; gap: 18px; }
-    .showcase-kpis {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
+    .showcase-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 18px; }
     .kpi-chip {
       padding: 16px 16px 18px;
       border: 1px solid rgba(0,0,0,.08);
       background: rgba(255,255,255,.88);
       clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
     }
-    .kpi-chip strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 28px;
-      line-height: .9;
-      color: var(--teal-deep);
-    }
-    .kpi-chip span {
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-    }
+    .kpi-chip strong { display: block; margin-bottom: 6px; font-size: 28px; line-height: .9; color: var(--teal-deep); }
+    .kpi-chip span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
 
     .rail {
       display: grid;
@@ -681,9 +583,7 @@
       box-shadow: 0 16px 24px rgba(0,0,0,.06);
     }
     .rail-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover;
       transition: transform .85s var(--ease), filter .85s var(--ease);
     }
     .rail-card::before {
@@ -695,11 +595,8 @@
     }
     .rail-meta {
       position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      z-index: 2;
-      color: #fff;
+      left: 18px; right: 18px; bottom: 18px;
+      z-index: 2; color: #fff;
     }
     .rail-meta .micro {
       display: inline-flex;
@@ -716,30 +613,14 @@
       clip-path: polygon(0 0,100% 0,94% 100%,0 100%);
       backdrop-filter: blur(8px);
     }
-    .rail-meta h4 {
-      margin: 0 0 6px;
-      font-size: 30px;
-      line-height: .95;
-      letter-spacing: -.03em;
-      text-transform: uppercase;
-    }
-    .rail-meta p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255,255,255,.86);
-    }
-    .rail-card:hover img {
-      transform: scale(1.1);
-      filter: saturate(1.06) contrast(1.03);
-    }
+    .rail-meta h4 { margin: 0 0 6px; font-size: 30px; line-height: .95; letter-spacing: -.03em; text-transform: uppercase; }
+    .rail-meta p { margin: 0; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.86); }
+    .rail-card:hover img { transform: scale(1.1); filter: saturate(1.06) contrast(1.03); }
 
     .ops-card { min-height: 240px; }
     .ops-icon {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
+      width: 46px; height: 46px;
+      display: grid; place-items: center;
       margin-bottom: 16px;
       background: rgba(255,249,245,.92);
       border: 1px solid rgba(227,117,38,.18);
@@ -747,6 +628,48 @@
       font-size: 15px;
       font-weight: 700;
       clip-path: polygon(0 0,100% 0,88% 100%,0 100%);
+    }
+
+    .trusted-section[hidden] { display: none !important; }
+    .trusted-strip {
+      margin-top: 34px;
+      padding: 22px;
+    }
+    .trusted-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .trusted-title {
+      margin-bottom: 0;
+      color: var(--orange);
+      font-size: 13px;
+      letter-spacing: .12em;
+    }
+    .trusted-logos {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px;
+    }
+    .trusted-logo {
+      min-height: 88px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.88);
+      clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
+    }
+    .trusted-logo img {
+      max-height: 34px;
+      max-width: 100%;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: .9;
     }
 
     .contact-list { display: grid; gap: 14px; margin-top: 20px; }
@@ -758,11 +681,7 @@
       clip-path: polygon(0 0,100% 0,96% 100%,0 100%);
       transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
     }
-    .contact-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 22px rgba(227,117,38,.08);
-      border-color: rgba(227,117,38,.34);
-    }
+    .contact-item:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(227,117,38,.08); border-color: rgba(227,117,38,.34); }
     .contact-item strong {
       display: block;
       margin-bottom: 6px;
@@ -771,10 +690,7 @@
       letter-spacing: .12em;
       font-size: 12px;
     }
-    .contact-item span {
-      color: var(--text);
-      line-height: 1.7;
-    }
+    .contact-item span { color: var(--text); line-height: 1.7; }
 
     .site-footer {
       position: relative;
@@ -786,12 +702,7 @@
       text-transform: uppercase;
       letter-spacing: .06em;
     }
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
     @media (max-width: 1100px) {
       .hero-grid,
@@ -939,30 +850,6 @@
             <p class="stat-desc" data-i18n="stat4Desc">Lower cost, better adoption, cleaner visibility, and a system you actually use.</p>
           </article>
         </div>
-
-        <div class="panel trusted-strip">
-          <div class="trusted-head">
-            <h3 class="trusted-title" data-i18n="trustedTitle">Trusted by</h3>
-          </div>
-
-          <div class="trusted-logos">
-            <div class="trusted-logo">
-              <img src="assets/client-01.png" alt="Client logo 1" onerror="this.style.display='none'; this.parentNode.textContent='Client 01';">
-            </div>
-            <div class="trusted-logo">
-              <img src="assets/client-02.png" alt="Client logo 2" onerror="this.style.display='none'; this.parentNode.textContent='Client 02';">
-            </div>
-            <div class="trusted-logo">
-              <img src="assets/client-03.png" alt="Client logo 3" onerror="this.style.display='none'; this.parentNode.textContent='Client 03';">
-            </div>
-            <div class="trusted-logo">
-              <img src="assets/client-04.png" alt="Client logo 4" onerror="this.style.display='none'; this.parentNode.textContent='Client 04';">
-            </div>
-            <div class="trusted-logo">
-              <img src="assets/client-05.png" alt="Client logo 5" onerror="this.style.display='none'; this.parentNode.textContent='Client 05';">
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1102,6 +989,17 @@
       </div>
     </section>
 
+    <section class="section trusted-section" id="trusted-clients" hidden>
+      <div class="container">
+        <div class="panel trusted-strip">
+          <div class="trusted-head">
+            <h3 class="trusted-title" data-i18n="trustedTitle">Trusted by</h3>
+          </div>
+          <div class="trusted-logos" id="trustedLogos"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contact">
       <div class="container">
         <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
@@ -1163,6 +1061,8 @@
     const langToggle = document.getElementById('langToggle');
     const menuBtn = document.getElementById('menuToggle');
     const drawer = document.getElementById('mobileDrawer');
+    const trustedSection = document.getElementById('trusted-clients');
+    const trustedLogos = document.getElementById('trustedLogos');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function endIntro() {
@@ -1198,6 +1098,45 @@
       endIntro();
     }
 
+    const trustedClients = [
+      // Add clients only when ready. Section stays hidden if this array is empty.
+      // Example:
+       { name: 'BIG Creative Boutique', logo: 'assets/client-big.svg', url: 'https://go-big.agency' },
+      // { name: 'Client Name', logo: 'assets/client-02.png' }
+    ];
+
+    function renderTrustedClients() {
+      if (!trustedSection || !trustedLogos) return;
+      trustedLogos.innerHTML = '';
+
+      const validClients = trustedClients.filter(client => client && client.name && client.logo);
+      if (!validClients.length) {
+        trustedSection.hidden = true;
+        return;
+      }
+
+      validClients.forEach(client => {
+        const item = document.createElement(client.url ? 'a' : 'div');
+        item.className = 'trusted-logo';
+        if (client.url) {
+          item.href = client.url;
+          item.target = '_blank';
+          item.rel = 'noopener';
+        }
+
+        const img = document.createElement('img');
+        img.src = client.logo;
+        img.alt = client.name;
+        img.loading = 'lazy';
+        img.onerror = () => item.remove();
+
+        item.appendChild(img);
+        trustedLogos.appendChild(item);
+      });
+
+      trustedSection.hidden = !trustedLogos.children.length;
+    }
+
     const translations = {
       en: {
         navWhy: 'Why We Exist',
@@ -1231,8 +1170,6 @@
         stat3Desc: 'We design the stack around the client’s pain, workflow, and internal capability. No more, no less.',
         stat4Label: 'Outcome',
         stat4Desc: 'Lower cost, better adoption, cleaner visibility, and a system you actually use.',
-
-        trustedTitle: 'Trusted by',
 
         servicesEyebrow: 'Services',
         servicesTitle: 'Built around the challenge, not a fixed catalog',
@@ -1298,6 +1235,8 @@
         ops4Title: 'Bad fit',
         ops4Text: 'The software may be popular, but it does not map cleanly to the business workflow.',
 
+        trustedTitle: 'Trusted by',
+
         contactEyebrow: 'Contact',
         contactTitle: 'We speak your language FLOWENTly',
         contactCopy: 'Talk to us. Your business probably needs this more than you think.',
@@ -1316,7 +1255,7 @@
       ar: {
         navWhy: 'ليش موجودين',
         navServices: 'وش نقدم',
-        navShowcase: 'شريك موثوق لـ',
+        navShowcase: 'من نخدم',
         navContact: 'التواصل',
         navCta: 'احجز مكالمة',
 
@@ -1345,8 +1284,6 @@
         stat3Desc: 'نصمم الحل حول ألم العميل، وسير العمل، وقدرته الداخلية. لا زيادة ولا نقص.',
         stat4Label: 'النتيجة',
         stat4Desc: 'تكلفة أقل، تبنّي أفضل، رؤية أوضح، ونظام فعلًا يتم استخدامه.',
-
-        trustedTitle: 'شريك موثوق لـ',
 
         servicesEyebrow: 'الخدمات',
         servicesTitle: 'نبني حول التحدي، مو حول كتالوج ثابت',
@@ -1412,6 +1349,8 @@
         ops4Title: 'ملاءمة سيئة',
         ops4Text: 'البرنامج قد يكون مشهور، لكن ما يركب بشكل نظيف على سير العمل الفعلي داخل النشاط.',
 
+        trustedTitle: 'شريك موثوق لـ',
+
         contactEyebrow: 'التواصل',
         contactTitle: 'نتكلم لغتك... بطريقة FLOWENT',
         contactCopy: 'كلّمنا. غالبًا نشاطك يحتاج هذا أكثر مما تتوقع.',
@@ -1432,14 +1371,12 @@
       document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       body.classList.toggle('lang-ar', lang === 'ar');
-
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
           el.innerHTML = translations[lang][key];
         }
       });
-
       if (langToggle) {
         langToggle.textContent = lang === 'ar' ? 'EN / AR' : 'AR / EN';
       }
@@ -1453,13 +1390,13 @@
       });
     }
 
+    renderTrustedClients();
     applyLang('en');
 
     if (menuBtn) {
       menuBtn.addEventListener('click', () => {
         body.classList.toggle('menu-open');
       });
-
       if (drawer) {
         drawer.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => body.classList.remove('menu-open'));
